@@ -1,0 +1,470 @@
+1) Single Level Inheritance 
+===========================
+If we derived a class in the presence of one base class is called single level inheritance.
+
+Diagram:
+		A (Parent / Super / Base class)
+		|
+		|
+		|
+		B (Child / Sub / Derived class)
+
+ex:
+----
+class A 
+{
+	int i=10;
+}
+class B extends A 
+{
+	int j=20;
+}
+
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		System.out.println(a.i); // 10
+		
+		B b = new B();
+		System.out.println(b.i+" "+b.j);// 10  20
+	}
+}
+
+ex:
+---
+class A 
+{
+	public void m1()
+	{
+		System.out.println("A-M1 Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("B-M2 Method");
+	}
+}
+
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+	}
+}
+
+2) Multi-Level inheritance 
+==========================
+If we derived a class in presence of one base class and that class is derived from another base class is called multi level inheritance.
+
+Diagram:
+		A
+		|
+		|
+		B
+		|
+		|
+		C
+
+ex:
+--
+class A 
+{
+	public void m1()
+	{
+		System.out.println("A-M1 Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("B-M2 Method");
+	}
+}
+class C extends B 
+{
+	public void m3()
+	{
+		System.out.println("C-M3 Method");
+	}
+}
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m2();
+		c.m3();
+	}
+}
+
+
+3) Multiple inheritance 
+=======================
+In java, we can't extends more then one class simultenously because java does not support multiple inheritance.
+ex:
+	class A 
+	{
+	}
+	class B 
+	{
+	}
+	class C extends A,B --> invalid 
+	{
+	}
+
+But interface can extends more then one interface so we can achieve multiple inheritance concept through interfaces.
+ex:
+	interface A 
+	{
+	}
+	interface B 
+	{
+	}
+	interface C extends A,B --> valid 
+	{
+	}	
+
+If our class does not extends any other class then it is a direct child class of Object class.
+ex:			Diag:
+	class A 		Object
+	{			|
+	}			|
+				A 
+
+If our class extends any other class then our class is a indirect child class of Object class.
+ex:			Diag:
+	class A 		Object
+	{			|
+				|
+	}			A
+	class B extends A 	|
+	{			|
+	}			B 
+
+Java does not support cyclic inheritance.
+ex:
+	class A extends B 
+	{
+	}
+	class B extends A 
+	{
+	}
+
+
+
+Q) Why java does not support multiple inheritance?
+
+There is a chance of raising ambiguity problem that's why java does not support multiple inheritance.
+
+Diagram:
+		P1.m1()				P2.m1()
+		|-------------------------------------|
+				|
+				C.m1()	
+
+
+4) Hierarchical inheritance
+============================
+If we derived multiple classes in the presence of one base class is called hierarchical inheritance.
+
+Diagram:
+				A
+				|
+		|-------------------------------|
+		B				C
+
+
+class A 
+{
+	public void m1()
+	{
+		System.out.println("A-M1 Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		System.out.println("B-M2 Method");
+	}
+}
+class C extends A
+{
+	public void m3()
+	{
+		System.out.println("C-M3 Method");
+	}
+}
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+		
+		B b = new B();
+		b.m1();
+		b.m2();
+		
+		C c = new C();
+		c.m1();
+		c.m3();
+	}
+}
+
+5) Hybrid inheritance 
+======================
+Hybrid inheritance is a combination of more than two inheritance.
+Java does not support hybrid inheritance.
+
+Diagram:
+				A
+				|
+		|-------------------------------|
+		B				C
+		|-------------------------------|
+				|
+				D 
+		
+
+Has-A relationship 
+==================
+Has-A relationship is also known as composition and aggregation.
+
+There is no specific keyword to implements Has-A relationship but mostly we will use new operator.
+
+The main objective of Has-A relationship is to provide reusability.
+
+Has-A relationship will increase dependency between two components.
+
+ex:
+----
+class Ihub
+{
+	public String courseName()
+	{
+		return "Full Stack Java with AI";
+	}
+	public double courseFee()
+	{
+		return 30000d;
+	}
+	public String trainerName()
+	{
+		return "Niyaz Sir";
+	}
+}
+class Usha 
+{
+	public void getCourseDetails()
+	{
+		Ihub i = new Ihub();
+		System.out.println("Course Name :"+i.courseName());
+		System.out.println("Course Fee :"+i.courseFee());
+		System.out.println("Trainer Name :"+i.trainerName());
+	}
+}
+class Student 
+{
+	public static void main(String[] args)
+	{
+		Usha u = new Usha();
+		u.getCourseDetails();
+	}
+}
+
+Composition
+===========
+Without existing container object there is no chance of having contained object then the relationship between container and contained object is called composition which is strongly association.
+
+Diagram: class30.1
+
+
+Aggregation
+============
+Without existing container object there is a chance of having contained object then the relationship between container and contained object is called aggregation which is loosely association.
+
+Diagram: class30.2
+
+
+Method Overloading 
+==================
+Having same method name with different parameters or signatures in a single class is called method overloading.
+
+Methods which are present in a class are called overloaded methods.
+
+Method overloading will reduce complexity of the programming.
+
+ex:
+---
+class MeeSeva 
+{
+	//overloaded methods 
+	public void search(int voterId)
+	{
+		System.out.println("Details Found via voterId");
+	}
+	public void search(String houseNo)
+	{
+		System.out.println("Details Found via houseNo");
+	}
+	public void search(long aadharNo)
+	{
+		System.out.println("Details Found via aadharNo");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		MeeSeva ms = new MeeSeva();
+		ms.search(111);
+		ms.search("1-6-67/A/1");
+		ms.search(1234L);
+	}
+}
+
+
+Q) Can we overload main method in java?
+
+Yes, we can overload main method in java but JVM always execute main method with String[] parameter.
+
+ex:
+
+class Test 
+{
+	public static void main(int[] iargs)
+	{
+		System.out.println("int[] iargs");
+	}
+	public static void main(String[] args)
+	{
+		System.out.println("String[] args");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

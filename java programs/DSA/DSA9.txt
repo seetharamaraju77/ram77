@@ -1,0 +1,359 @@
+3) Circular LinkedList 
+======================
+In circular LinkedList our node refers to first node instead of null
+
+Diagram: DSA9.1
+
+ex:
+---
+class LinkedList 
+{
+	class Node
+	{
+		int data;
+		Node next;
+		public Node(int data)
+		{
+			this.data=data;
+			this.next =null;
+		}
+	}
+	Node head,tail;
+	public void add(int data)
+	{
+		Node newNode = new Node(data);	
+		if(head==null)
+		{
+			head = tail = newNode;
+			newNode.next=head; // pointing to itself
+		}
+		else
+		{
+			tail.next = newNode;
+			tail = newNode;
+			tail.next = head;
+		}
+	}
+	public void printData()
+	{
+		Node current = head;
+		do
+		{
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+		while (current!=head);
+	}
+}
+
+class CircularLinkedList  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.add(7);
+		ll.add(3);
+		ll.printData();
+	}
+}
+
+Stack 
+======
+It is a linear data structure which follows LIFO (Last In First Out) order.
+
+It means element which is inserted at last is the element to remove first.
+ex:
+	Plate arrangements
+	Chair arragements 
+
+Key concepts
+------------
+1) push(E)
+---------
+	It is used to add the element to stack.
+
+2) pop()
+--------
+	It is used to return and remove element from stack.
+
+3) peek()
+--------
+	It is used to read toppest element from stack.
+
+4) isEmpty() 
+-----------
+	It is used to check stack is empty or not.
+
+
+Diagram : DSA9.2
+
+ex:
+---
+class MyStack 
+{
+	private int size;
+	private int[] stack;
+	private int top;
+	public MyStack(int size)
+	{
+		this.size = size;
+		stack = new int[size];
+		this.top=-1;
+	}
+	public void push(int data)
+	{
+		if(top<size-1)
+		{
+			stack[++top]=data;
+		}
+		else
+		{
+			System.out.println("Stack is Overflow");
+		}
+	}
+	public void printData()
+	{
+		for(int i=0;i<=top;i++)
+		{
+			System.out.print(stack[i]+" ");
+		}
+		System.out.println();
+	}
+	public int pop()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Stack is Eempty");
+			return -1;
+		}
+		else
+		{
+			return stack[top--];
+		}
+	}
+	public boolean isEmpty()
+	{
+		return top == -1;
+	}
+	
+	public int peek()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Stack is Empty");
+			return -1;
+		}
+		else
+		{
+			return stack[top];
+		}
+	}
+}
+class StackProgram 
+{
+	public static void main(String[] args) 
+	{
+		MyStack ms = new MyStack(5);
+		ms.push(10);
+		ms.push(20);
+		ms.push(30);
+		ms.push(40);
+		ms.push(50);
+		ms.printData();
+		
+		System.out.println("Pop Element : "+ms.pop());
+		
+		System.out.println("Peek Element :"+ms.peek());
+		
+		System.out.println("Stack is Empty ? :"+ms.isEmpty());
+	}
+}
+
+Queue
+======
+Queue is a linear data structure which follows FIFO(First In First Out) order.
+It means element which is inserted first is the element to remove first.
+ex:
+	Bank queue 
+	Ticket queue
+
+key points
+----------
+enqueue : It is used to insert the elements in a queue using rare.
+
+dequeue : It is used to return and remove the elements from a queue using front.
+
+peek    : It reads toppest element from front.
+
+isEmpty : It is used to check queue is empty or not.
+
+Diagram: DSA9.3
+
+
+class MyQueue
+{
+	private int front;
+	private int rare;
+	private int maxSize;
+	private int[] arr;
+	private int size;
+	
+	public MyQueue(int maxSize)
+	{
+		this.maxSize = maxSize;
+		arr = new int[maxSize];
+		front=0;
+		rare=-1;
+		size=0;
+	}
+	
+	public boolean isEmpty()
+	{
+		return  size == 0;
+	}
+	public void enqueue(int data)
+	{
+		if(size<maxSize)
+		{
+			rare++;
+			arr[rare]=data;
+			size++;
+		}
+		else
+		{
+			System.out.println("Queue is full");
+		}
+	}
+	
+	public void printData()
+	{
+		for(int i=front;i<=rare;i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+		System.out.println();
+	}
+	
+	public int dequeue()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is empty ");
+			return -1;
+		}
+		else
+		{
+			return arr[front++];
+		}
+	}
+	public int peek()
+	{
+		if(isEmpty())
+		{
+			System.out.println("Queue is empty");
+			return -1;
+		}
+		else
+		{
+			return arr[front];
+		}
+	}
+	
+}
+class QueueProgram  
+{
+	public static void main(String[] args) 
+	{
+		MyQueue mq = new MyQueue(4);	
+		
+		System.out.println("Queue is Empty ? "+mq.isEmpty());
+		
+		mq.enqueue(10);
+		mq.enqueue(20);
+		mq.enqueue(30);
+		mq.enqueue(40);
+		
+		mq.printData();
+		
+		System.out.println(mq.dequeue());
+		
+		mq.printData();
+		
+		System.out.println(mq.peek());
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

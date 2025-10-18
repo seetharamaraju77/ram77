@@ -1,0 +1,577 @@
+<del> and <ins> tag 
+===================
+The <del> tag defines text that has been deleted from a document
+
+The <ins> tag defines a text that has been inserted into a document
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<h1> My Best Movie is <del>OG</del> <ins>Bahubali</ins> </h1>
+	</body>
+</html>
+
+<small> tag 
+============
+The small tag in HTML is used to display text one font size smaller than the surrounding text.
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+ 
+			<small>Copyright &copy; 2024 Compumax LLC, All rights reserved.</small>
+	</body>
+</html>
+
+<big> tag 
+===========
+The <big> tag in HTML was used to increase the font size of text by one level compared to the surrounding text.
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			This is normal text 
+			<br>
+			<big>This is big text</big>
+			
+	</body>
+</html>
+
+
+Semantic Elements
+=================
+It is clearly describes to both developer and browser about it's content.
+
+We have following list of semantic elements.
+
+1) <datalist> 
+2) <details> 
+3) <summary> 
+4) <header>
+5) <nav> 
+6) <section>
+7) <main> 
+8) <article> 
+9) <figure>
+10) <aside>
+11) <footer>
+and etc. 
+
+Diagram: frontend5.1
+
+datalist tag
+----------------
+A <datalist> tag/element is used to specify list of predefine options for an <input> tag/element.
+
+A <datalist> tag/element provides autocomplete features for an <input> element/tag.
+
+User will see a drop-down list of predefine options for an <input> tag/element.
+
+A <datalist> tag/element  "id" attribute must be same as <input> tag/element "list" attribute.
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			Country : <input type="text" list="myId"/> 
+			
+			<datalist id="myId">
+				<option>India</option>
+				<option>Ireland</option>
+				<option>Iran</option>
+				<option>Australia</option>
+				<option>America</option>
+				<option>China</option>
+			</datalist>
+	</body>
+</html>
+
+<details> and <summary> tags
+-----------------------------
+A <details> tag/element is used display special content where a user can open and close on demand. 
+
+A <details> tag is used to design interactive widgets where user can open and close.
+
+A <details> tag contains <summary> tag.
+
+We can keep any sort of tags inside <details> tags.
+
+ex:
+ 
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<details>
+				<summary> HTML5 </summary>
+				<h3> HTML stands for Hypertext Markup Language </h3>
+				<p> HTML is widely used language on web develop web pages </p>
+				<div> HTML is developed by Burners Lee in late 1991 </div>
+			</details>
+	</body>
+</html>
+
+<header> and <nav> tags 
+------------------------
+The <header> element represents a container for introductory content or a set of navigational links.
+
+The <nav> tag in HTML is used to define navigation sections on a webpage. 
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<header style="background-color:#33ccff">
+				<center>
+				<nav>
+					<a href="" style="text-decoration:none;"> Home </a> &nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="" style="text-decoration:none;"> About </a> &nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="" style="text-decoration:none;"> Service </a> &nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="" style="text-decoration:none;"> Contact </a> &nbsp;&nbsp;&nbsp;&nbsp;
+				</nav>
+				</center>
+			</header>
+			
+	</body>
+</html>
+
+<section>, <main>, <article> and  <figure> tags
+-----------------------------------------------
+The <section> tag defines a section in a document.
+
+The <main> tag specifies the main content of a document. The content inside the <main> element should be unique to the document.
+
+The <article> tag specifies independent, self-contained content. 
+
+The <figure> tag is used to insert self-contained content such as illustrations, diagrams, photos, or code listings in a document.
+
+ex:
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<!-- section -->
+			<section>
+				<!-- main content -->
+				<main>
+					<!-- self-contained box -->
+					<article>
+						<center>
+							<h3>Hollywood Actor</h3>
+							<figure>
+								<img src="images/rock.jpg" width="200px" height="200px"/>	
+								<figcaption>Dwayne Johnson</figcaption>
+							</figure>
+							<p>
+								Dwayne Douglas Johnson (born May 2, 1972), also known by his ring name the Rock, is an American actor and professional wrestler. He is signed to WWE, where he performs on a part-time basis. Widely regarded as one of the greatest professional wrestlers of all time,[6][7] Johnson was integral to the development and success of the World Wrestling Federation (WWF, now WWE) during the Attitude Era. He wrestled for the WWF full-time for eight years before pursuing an acting career. His films have grossed over $14.9 billion worldwide,[8] making him one of the world's highest-grossing and highest-paid actors.[9][10][11] He is a co-owner of the United Football League,[12][13][14] a member of the board of directors of TKO Group Holdings—the parent company of UFC and WWE[15][16][17]—and co-founder of Seven Bucks Productions.
+							</p>
+						</center>
+					</article>
+				</main>	
+			</section>
+			
+	</body>
+</html>
+
+<aside> tag 
+------------
+The <aside> tag defines some content aside from the content it is placed in. The aside content should be indirectly related to the surrounding content.
+
+ex:
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<aside>
+				<ul style="list-style:none;">
+					<li> <a href="" style="text-decoration:none"> Home </a> </li>
+					<li> <a href="" style="text-decoration:none"> About </a> </li>
+					<li> <a href="" style="text-decoration:none"> Services </a> </li>
+					<li> <a href="" style="text-decoration:none"> Portfolio </a> </li>
+					<li> <a href="" style="text-decoration:none"> Contact Us </a> </li>
+				</ul>
+			</aside>
+				
+			
+	</body>
+</html>
+
+<footer> tags
+-------------
+The <footer> tag defines a footer for a document or section.
+
+A <footer> element typically contains:
+
+ex:
+	authorship information
+	copyright information	
+	contact information
+	sitemap
+	back to top links
+	related documents
+Note:
+	You can have several <footer> elements in one document.
+
+ex:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<footer style="background-color:cyan;">
+				
+				<center>
+				<small>Copyright &copy; 2024 Compumax LLC, All rights reserved.</small>
+				</center>
+			</footer>
+				
+			
+	</body>
+</html>
+
+HTML frames 
+===========
+To use frames on a web page we need to use <frameset> tag instead of <body> tag.
+
+The <frameset> tag defines how to divide the window into frames.
+
+The "rows" attribute of <frameset> tag defines horizontal frames.
+
+The "cols" attribute of <frameset> tag defines vertical frames.
+
+Each frame is indicated by <frame> tag and it defines which document should 
+be open into that place.
+
+Note:
+----
+The <frame> tag is deprecated in HTML5 so that don't use this tag.
+
+
+ex:1
+-----
+index.html 
+-----------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<frameset cols="33%,34%,33%">
+			<frame src="a.html"/> 
+			<frame src="b.html"/>
+			<frame src="c.html"/>
+	</frameset>		
+</html>
+
+a.html 
+-------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A.html page </title>
+	</head>
+	<body bgcolor="#eb2f06">
+		
+	</body>
+</html>
+
+b.html 
+-------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>B.html page </title>
+	</head>
+	<body bgcolor="#1e3799">
+		
+	</body>
+</html>
+
+c.html 
+------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>C.html page </title>
+	</head>
+	<body bgcolor="#f6b93b">
+		
+	</body>
+</html>
+
+ex:2
+-----
+index.html 
+-----------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<frameset rows="33%,*,33%">
+			<frame src="a.html"/> 
+			<frame src="b.html"/>
+			<frame src="c.html"/>
+	</frameset>		
+</html>
+
+a.html
+-----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A.html page </title>
+	</head>
+	<body bgcolor="#EE5A24">
+		
+	</body>
+</html>
+
+b.html 
+-------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>B.html page </title>
+	</head>
+	<body bgcolor="#FFFFFF">
+		<center>
+			<img src="images/chakra.png" width="170px" height="170px"/>
+		</center>
+	</body>
+</html>
+
+c.html
+------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>C.html page </title>
+	</head>
+	<body bgcolor="#009432">
+		
+	</body>
+</html>
+
+
+
+HTML <iframe> tag
+====================
+It is used to specify inline frame.
+
+A <iframe> tag/element is used to embed a document into current HTML document.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<h2> This is Our HTML Page </h2>
+		
+		<p>Our Client Web Site </p>
+		<iframe src="http://www.ihubtalent.com" width="200px" height="200px">
+		
+		</iframe>
+	</body>	
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<iframe src="" name="myframe" width="200px" height="200px">
+		</iframe>
+		<br>
+		<a href="http://www.ihubtalent.com" target="myframe"> click Here </a>
+		
+	</body>	
+</html>
+
+
+
+Steps to display google map in a web page
+========================================
+step1:
+------
+	Goto google maps.
+	ex:
+		https://www.google.com/maps
+
+step2:
+------
+	Type Ihub Talent Managemnt in search box.
+
+step3:
+------
+	Click to menu button.
+
+step4:
+-----
+	select to shared or embed map.
+
+step5:
+-----
+	select to embed a map (link).
+
+step6:
+------
+	Now copy the html and paste in HTML document.
+
+
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.4876565021073!2d78.44202777358616!3d17.436358401395655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb919633f78bef%3A0xbb63515db9bc2eba!2siHub%20Talent%20Info%20Systems!5e0!3m2!1sen!2sin!4v1760350187007!5m2!1sen!2sin" 
+		width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		
+	</body>	
+</html>
+
+
+		 
+
+
+
+
+
+		 
+
+
+
+
+
+		 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

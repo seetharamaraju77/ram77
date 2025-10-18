@@ -1,0 +1,336 @@
+Q) What is the difference between GIT and GITHUB ? 
+
+GIT					GITHUB 
+-----					-------
+It is a distributed version control 	It is a hosting server for GIT.
+system which is used to track the 
+changes in each file of a project.
+
+It is a software.			It is a service.
+
+It is locally need to be installed.	It is hosted on web.
+
+It is a command Line.			It is a GUI (Graphica User Interface). 
+
+It contains local repository.		It contains remote repository.
+
+
+GIT Stages 
+==========
+We have three stages in GIT.
+
+1) Working Directory 
+
+2) Staging Area 
+
+3) Repository 
+
+Diagram: jsp7.1
+
+Steps to push the code to GITHUB 
+================================
+step1:
+------
+	Create a account in GITHUB.
+	ex:
+		https://github.com	
+
+step2:
+------
+	Login to GITHUB using credentials.
+	ex:
+		Enter username : NiyazulHasan
+		Enter password : *******
+
+step3:
+------
+	Create a remote repository.
+	ex:
+		https://github.com/NiyazulHasan/batch51
+
+step4:
+-----
+	Download and install GIT Software.
+	ex:
+		https://git-scm.com/downloads
+
+step5:
+------
+	Create a "myfolder" on desktop.
+
+step6:
+------
+	Open GIT bash from "myfolder".
+	
+step7:
+------
+	Initialized empty GIT repository.
+	ex:
+		git init 
+
+step8:
+------
+	Add the files inside myfolder(working directory).
+
+step9:
+------
+	Check GIT status.
+	ex:
+		git status 
+
+step10:
+------
+	Change GIT branch.
+	ex:
+		git branch --move master main 
+step11:
+-------
+	Add the files from working directory to staging area.
+	ex:	
+		git add .
+
+step12:
+------
+	Commit the changes.
+	ex:
+		git commit -m "core java notes"
+
+step13:
+-------
+	Add remote repository to origin main.
+	ex:
+		git remote add origin https://github.com/NiyazulHasan/batch51
+
+step14:
+------
+	Push the code to remote repository.
+	ex:
+		git push -f origin main 
+
+step15:
+------
+	Refresh the remote repository in GITHUB.
+
+
+Steps to pull the code from GITHUB 
+==================================
+step1:
+-----
+	Create a "demo" folder on desktop.
+
+step2:
+-----
+	Open GIT Bash from "demo" folder.
+
+step3:
+------
+	Initialized git empty repository.
+	ex:
+		git init 
+step4:
+------
+	Make a pull request.
+	ex:
+		git pull https://github.com/NiyazulHasan/batch51
+
+
+
+Junit 
+=====
+Junit is a unit testing framework.
+
+Junit is used to perform unit testing in java.
+
+Unit testing means a piece of code working as per requirement or not.
+
+The latest version is Junit5.
+
+Junit is very important for TDD (Test Driven Development).
+
+To perform unit testing we need to create test cases or test suit.
+
+
+Project Structure 
+-----------------
+JunitProject 
+|
+|---src/main/java
+|	|
+	|---com.ihub.www
+		|
+		|---Demo.java
+
+|---src/main/resources
+|
+|---src/test/java
+	|
+	|----com.ihub.www
+		|
+		|---DemoTest.java
+|	
+|---pom.xml 
+
+
+Steps to perform unit testing
+=============================
+step1:
+------
+	Create a simple maven archetype project.
+
+step2:
+-------
+	create a com.ihub.www package inside "src/main/java".
+
+step3:
+------
+	Create a App.java file inside "com.ihub.www" package.
+
+Demo.java
+---------
+package com.ihub.www;
+
+public class Demo 
+{
+	public int sum(int a,int b)
+	{
+		return a+b;
+	}
+	
+	public String concatinate(String str1,String str2)
+	{
+		return str1+str2;
+	}
+}
+
+
+step4:
+-----
+	Create a Test file i.e DemoTest.java.
+	ex:
+		right click to App.java file --> new --> others -->
+		Junit --> test case --> Next --> select the methods for 
+		test cases --> finish.
+
+
+step5:
+-----
+	Add unit testing logic inside DemoTest.java file.
+
+AppTest.java
+------------
+package com.ihub.www;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class DemoTest {
+
+	Demo d=null;
+	
+	@Before
+	public void setUp() throws Exception {
+		d=new Demo();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		
+		
+	}
+
+	@Test
+	public void testSum() {
+		int result=d.sum(10,20);
+		assertEquals(50, result);
+	}
+
+	@Test
+	public void testConcatinate() {
+		String result=d.concatinate("ihub", "talent");
+		assertEquals("ihubtalent",result);
+	}
+
+}
+
+
+step6:
+-----
+	Run the junit test cases.
+	ex:
+		Right click to AppTest.java file --> run as --> Junit test case.
+
+Note:
+-----
+	Green color indicates unit test case is passed.
+	Brown color indicates unit test case is failed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

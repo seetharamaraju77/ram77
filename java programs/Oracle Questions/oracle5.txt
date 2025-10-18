@@ -1,0 +1,288 @@
+DDL commands
+============
+We have five commands in DDL.
+
+1) create (tables)
+
+2) alter (columns)
+
+3) drop (tables)
+
+4) truncate (Records/Rows)
+
+5) rename (tables)
+
+alter command
+=============
+Using alter command we can perform following activities very easily.
+
+1) Adding new columns 
+
+2) Modifying existing columns 
+
+3) Dropping columns
+
+4) Renaming columns 
+
+1) Adding new columns 
+----------------------
+Using alter command we can add new columns.
+
+syntax:
+------
+	alter table <table_name> ADD (col1 datatype(size),......,colN datatype(size));
+ex:
+	alter table student ADD (pincode number(8));
+	alter table student ADD (state varchar2(10));
+	alter table student ADD (pincode number(8),state varchar2(10));
+
+	update student set pincode=500036 where sno=101;
+
+
+2) Modifying existing columns 
+-----------------------------
+Using alter command we can modify existing columns.
+
+We can change size of a column only when existing values are fit into new size.
+
+syntax:
+------
+	alter table <table_name> MODIFY (col datatype(size));
+
+ex:
+	desc student;
+
+	alter table student MODIFY (pincode number(10));
+
+	desc student;
+
+We can change the datatype of a column only when that column is empty.
+
+ex:
+	alter table student MODIFY (state number(10));	
+		
+	desc student;
+
+3) Dropping columns
+-------------------
+Using alter command we can drop the columns from existing table.
+
+syntax:
+-------
+	alter table <table_name> DROP (col1,col2,....,colN);
+ex:
+	alter table student DROP(pincode,state);
+
+4) Renaming columns 
+----------------------
+Using alter command we can rename the column name.
+
+syntax:
+------
+	alter table <table_name> RENAME column <old_name> to <new_name>;
+ex:
+	alter table student rename column sadd to city;
+	
+	alter table emp rename column esal to dailywages;
+
+	alter table emp rename column job to designation;
+	
+Drop command 
+===========
+A drop command is used to drop the table from database.
+
+syntax:
+-------
+	drop table student;
+	drop table emp;
+	drop table dept; 
+
+
+truncate command
+=================
+A truncate command is used to delete the rows permanently from database.
+
+syntax:
+------
+	truncate table <table_name>;
+ex:
+	truncate table student;
+	truncate table dept;
+	truncate table emp;
+
+Q) What is the difference between delete and truncate command?
+
+delete 					truncate 
+-------------				---------
+It is a DML command.			It is a DDL command.
+
+Records are deleted temperory.		Records are deleted permanently.
+
+We can rollback the data.		We can't rollback the data.
+
+Where clause can be used.		Where clause can't be used.
+
+
+
+
+rename command
+================
+A rename command is used to rename the table name.
+
+syntax:
+------
+	rename <old_name> to <new_name>;
+ex:
+	rename student to students;
+	rename emp to employees;
+	rename dept to deparments;
+
+Functions 
+==========
+Functions are used to manipulate the data items and give result.
+
+We have two types of functions.
+
+1) Group Functions / Multiple Rows Functions 
+
+2) Scalar Functions / Single Row Functions 
+
+
+1) Group Functions
+-------------------
+Group functions are applicable for multiple rows.
+
+We have following list of group functions.
+ex:
+	sum(), avg(), min(), max(), count(*) and count(expression).
+
+
+Q) Write a query to display sum of salary of each employee?
+
+	select sum(esal) from emp;
+
+
+Q) Write a query to display average salary of each employee?
+
+	select avg(esal) from emp;
+
+
+Q) Write a query to display highest salary from emp table?
+
+	select max(esal) from emp;
+
+Q) Write a query to display lowest salary from emp table?
+	
+	select min(esal) from emp;
+
+Q) What is difference between count(*) and count(expression) ? 
+
+count(*)
+---------
+	It returns number of records present in database table.
+	It includes null records.
+	ex:
+		select count(*) from emp; // 6
+		select count(*) from dept; // 4 
+		select count(*) from student; // 5 
+
+count(expression)
+----------------
+	It returns number values present in a column.
+	It does not include null values.
+	ex:
+		select count(eid) from emp;
+		select count(comm) from emp;
+
+userlist table 
+--------------
+drop table userlist;
+create table userlist(uname varchar2(10),pwd varchar2(10));
+insert into userlist values('raja','rani');
+insert into userlist values('king','kingdom');
+commit;
+
+
+Q) Write a query to check given username and password valid or not?
+
+	select count(*) from userlist where uname='raja' and pwd='rani';
+
+
+Dual table 
+===========
+Dual table is a dummy table which is used to perform arithmetic operations and to see the current system date.
+
+It contains one row and one column.
+
+ex:
+	select 10+20 from dual; // 30
+	select 10*4 from dual; // 40
+	select 10-5 from dual; // 5 
+
+	select sysdate from dual;
+	select current_date from dual;
+
+2) Scalar Functions
+--------------------
+Scalar functions are categories into four types.
+
+i) Character Functions 
+
+ii) Number Functions 
+
+iii) Date Functions 
+
+iv) Conversion Functions 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

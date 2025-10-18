@@ -1,0 +1,164 @@
+Q) Write a java program to find out tower of hanoi using recursion?
+
+input:
+	3 
+
+output:
+	A --> C
+	A --> B
+	C --> B
+	A --> C
+	B --> A
+	B --> C
+	A --> C	
+
+
+class TowerOfHanoiProgram 
+{
+	public static void main(String[] args) 
+	{
+		towerOfHanoi(3,'A','B','C');
+	}
+	public static void towerOfHanoi(int n,char src,char aux,char dest)
+	{
+		if(n==1)
+		{
+			System.out.println(src+" --> "+dest);
+			return;
+		}
+		
+		towerOfHanoi(n-1,src,dest,aux);
+		towerOfHanoi(1,src,aux,dest);
+		towerOfHanoi(n-1,aux,src,dest);
+	}
+}
+
+	
+Longest Common Subsequence (LCS)
+================================
+Q)
+
+input:
+	ABCAB
+	AECB 
+
+output:
+	3
+
+Diagram : DSA4.1
+
+
+class LCSProgram 
+{
+	public static void main(String[] args) 
+	{
+		String firstStr="ABCAB";
+		String secondStr="AECB";
+		System.out.println(longestCommonSubsequence(firstStr,secondStr));
+	}
+	public static int longestCommonSubsequence(String s1,String s2)
+	{
+		return solve(s1,s2,0,0);	
+	}
+	public static int solve(String s1,String s2,int i,int j)
+	{
+		if(i==s1.length() || j==s2.length())
+		{
+			return 0;
+		}
+		
+		int ans=0;
+		if(s1.charAt(i) == s2.charAt(j))
+		{
+			ans = 1 + solve(s1,s2,i+1,j+1);
+		}
+		else
+		{
+			ans = Math.max(solve(s1,s2,i+1,j),solve(s1,s2,i,j+1));
+		}
+		
+		return ans;
+	}
+}
+
+
+Q)
+
+input:
+	ABCAB
+	AECB 
+
+output:
+	ACB 
+
+
+class LCSProgram 
+{
+	public static void main(String[] args) 
+	{
+		String firstStr="ABCAB";
+		String secondStr="AECB";
+		System.out.println(longestCommonSubsequence(firstStr,secondStr));
+	}
+	public static String longestCommonSubsequence(String s1,String s2)
+	{
+		return solve(s1,s2,0,0);	
+	}
+	public static String solve(String s1,String s2,int i,int j)
+	{
+		if(i==s1.length() || j==s2.length())
+		{
+			return "";
+		}
+		
+		String ans="";
+		if(s1.charAt(i) == s2.charAt(j))
+		{
+			ans = s1.charAt(i) + solve(s1,s2,i+1,j+1);
+		}
+		else
+		{
+			String option1 = solve(s1,s2,i+1,j);
+			String option2 = solve(s1,s2,i,j+1);
+			ans = (option1.length() > option2.length())?option1:option2;
+		}
+		
+		return ans;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

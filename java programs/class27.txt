@@ -1,0 +1,553 @@
+Q) Write a java program to insert given element on a given index of an array?
+
+input:
+	arr = 7 1 9 4 3 5
+	element = 10
+	index = 3
+
+output:
+	7 1 9 10 4 3 5 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {7,1,9,4,3,5};
+		int element = 10;
+		int index = 3;
+		
+		arr = Arrays.copyOf(arr,arr.length+1);
+	
+		//reverse 
+		for(int i=arr.length-1;i>=index;i--)
+		{
+			arr[i]= arr[i-1];
+		}
+		arr[index]=element;
+		
+		//display
+		for(int i:arr)
+		{
+			System.out.print(i+" ");
+		}
+	}
+}
+
+
+Double Dimensional Array 
+=========================
+Double dimensional array is a combination of rows and columns.
+
+Double dimensional array is implemented based on array of arrays approach but not matrix form.
+
+The main objective of double dimensional array is memory utilization.
+
+It is used to develop business oriented applications, gaming applications and matrix type applications.
+
+We can declare and create double dimensional array as follow.
+
+ex:
+	int[][] arr = new int[3][3]
+			      |  |
+			    rows columns 
+
+	Here we can store total 9 elements.
+
+We can initialize double dimensional array as follow
+ex:
+	int[][] arr = {
+			{1,2,3},
+			{4,5,6},
+			{7,8,9}		
+		      };
+
+	rowSize = arr.length;
+	columnSize = arr[0].length;
+
+
+Q) Write a java program to display array elements in matrix form?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the rows :");
+			int rows = sc.nextInt();//3
+			
+			System.out.println("Enter the columns :");
+			int cols = sc.nextInt();//3
+			
+			int[][] arr = new int[rows][cols];
+			
+			//insert elements 
+			for(int i=0;i<rows;i++)
+			{
+				for(int j=0;j<cols;j++)
+				{
+					System.out.println("Enter the Element :");
+					arr[i][j] = sc.nextInt();
+				}
+			}
+			
+			//display elements
+			for(int i=0;i<rows;i++)
+			{
+				for(int j=0;j<cols;j++)
+				{
+					System.out.print(arr[i][j]+" ");
+				}
+				//new line 
+				System.out.println();
+			}
+			
+	}
+}
+
+Q) Write a java program to display square of a matrix?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9
+
+output:
+	1  4  9
+	16 25 36
+        49 64 81
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		//display 
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.print(arr[i][j] * arr[i][j] +" ");
+			}
+			//new line
+			System.out.println();
+		}
+		
+	}
+}
+
+Q) Write a java program to perform sum of diagonal of a matrix?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9
+
+output:
+	15
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i==j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+Q) Write a java program to perform sum of upper traingle Elements?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9
+
+output:
+
+	11
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i<j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+
+Q) Write a java program to perform sum of lower traingle Elements?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9
+
+output:
+	19
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int sum=0;
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				if(i>j)
+				{
+					sum+=arr[i][j];	
+				}
+			}
+		}
+		System.out.println(sum);
+	}
+}
+
+Q) Write a java program to transpose a matrix ?
+
+input:
+	1 2 3 
+	4 5 6
+	7 8 9
+
+output:
+	1 4 7
+	2 5 8
+	3 6 9	
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		int rows = arr.length;
+		int cols = arr[0].length;
+		
+		int[][] transpose = new int[rows][cols];
+		
+		//transpose a matrix 
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				transpose[j][i] = arr[i][j];
+			}
+		}
+		
+		//display 
+		for(int i=0;i<rows;i++)
+		{
+			for(int j=0;j<cols;j++)
+			{
+				System.out.print(transpose[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+		
+	}
+}
+
+
+Q) Write a java program to display array elements in spiral form?
+
+input:
+	1 2 3
+	4 5 6
+	7 8 9 
+
+output:
+	1 2 3 6 9 8 7 4 5 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
+
+		int left = 0;
+		int right = matrix.length-1; 	
+		int top = 0 ;
+		int bottom = matrix.length-1;
+		
+		while(true)
+		{
+			if(left>right)
+			{
+				break;
+			}
+			for(int i=left;i<=right;i++)
+			{
+				System.out.print(matrix[top][i]+" ");
+			}
+			top++;
+			
+			if(top>bottom)
+			{
+				break;
+			}
+			for(int i=top;i<=bottom;i++)
+			{
+				System.out.print(matrix[i][right]+" ");
+			}
+			right--;
+			
+			
+			if(left>right)
+			{
+				break;
+			}
+			for(int i=right;i>=left;i--)
+			{
+				System.out.print(matrix[bottom][i]+" ");
+			}
+			bottom--;
+			
+			if(top>bottom)
+			{
+				break;
+			}
+			for(int i=bottom;i>=top;i--)
+			{
+				System.out.print(matrix[i][left]+" ");
+			}
+			left++;
+		}
+		
+	}
+}
+
+Jagged Array 
+============
+Jagged array is also known as array of arrays.
+
+It is a multi dimensional array where each row contains different column size.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] arr = {
+						{1,2,3},
+						{4,5},
+						{6,7,8,9}
+					};
+					
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				System.out.print(arr[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Anonymous Array 
+===============
+Sometimes we will declare an array without name such type of nameless array is called anonymous array. 
+
+The main objective of anonymous array is just for instance use.
+
+We can declare anonymous array as follow.
+
+ex:
+	new int[]{10,20,30};
+	new int[][]{{10,20,30},{40,50,60}};
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println(sum(new int[]{10,20,30}));
+	}
+	public static int sum(int[] arr)
+	{
+		int result=0;
+		
+		for(int i : arr)
+		{
+			result+=i;	
+		}
+		
+		return result;
+	}
+}
+
+Multi Dimensional Array 
+=======================
+If array contains more then two dimensions is called multi dimensional array.
+
+We can declare and create multi dimensional array as follow.
+
+ex:
+	int[][][] arr = new int[2][3][3];
+
+	Here we can store 18 elements 
+
+We can initialize multi dimensional array as follow.
+
+ex:
+	int[][][] = {
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				},
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				}
+			};
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][][] arr = {
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				},
+				{
+					{1,2,3},
+					{4,5,6},
+					{7,8,9}
+				}
+			};
+			
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr[i].length;j++)
+			{
+				for(int k=0;k<arr[i][j].length;k++)
+				{
+					System.out.print(arr[i][j][k]+" ");
+				}
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Assignment
+===========
+Q) Write a java program to display special prime number from given array?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

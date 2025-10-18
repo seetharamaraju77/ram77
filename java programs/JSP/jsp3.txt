@@ -1,0 +1,363 @@
+JSP to Database Communication 
+=============================
+
+Deployment Directory Structure 
+------------------------------
+JspApp6
+|
+|---Java Resources
+|
+|---WebContent
+	|
+	|---form.html
+	|---process.jsp 
+	|---WEB-INF
+		|
+		|------web.xml
+		|------lib 
+			|
+			|---ojdbc14.jar
+Note:
+-----
+In above application we need to add "servlet-api.jar" and "ojdbc14.jar" file in project 
+build path.
+
+student table 
+-------------
+drop table student;
+create table student(sno number(3),sname varchar2(10),sadd varchar2(12));
+
+
+form.html 
+--------
+
+<form action="process.jsp">
+	
+	<table align="center">
+	<caption>Enter the Details</caption>
+		<tr>
+			<td>No:</td>
+			<td><input type="text" name="t1" autocomplete="off" required/></td>
+		</tr>
+		<tr>
+			<td>Name:</td>
+			<td><input type="text" name="t2" autocomplete="off" required/></td>
+		</tr>
+		<tr>
+			<td>Address:</td>
+			<td><input type="text" name="t3" autocomplete="off" required/></td>
+		</tr>
+		<tr>
+			<td><input type="reset" value="reset"/></td>
+			<td><input type="submit" value="submit"/></td>
+		</tr>
+	</table>
+	
+</form>
+
+web.xml 
+--------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file>form.html</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+process.jsp
+-----------
+
+<%@page import="java.sql.*"  buffer="8kb"  language="java" %>
+
+<%
+	//reading form data 
+	String sno = request.getParameter("t1");
+	int no = Integer.parseInt(sno);
+	String name = request.getParameter("t2");
+	String add = request.getParameter("t3");
+	
+	//insert data into database 
+	Connection con = null;
+	PreparedStatement ps = null;
+	int result = 0;
+	String qry = null;
+	try
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","admin");
+		qry = "insert into student values(?,?,?)";
+		ps  = con.prepareStatement(qry);
+		
+		//set the values 
+		ps.setInt(1,no);
+		ps.setString(2,name);
+		ps.setString(3,add);
+		
+		//execute 
+		result = ps.executeUpdate();
+		if(result==0)
+		{
+%>
+			<center>
+			<%= "Record Not Inserted" %>
+			</center>
+<% 
+		}
+		else
+		{
+%>
+	
+			<center>
+				<%= "Record Inserted" %>
+			</center>
+<%		
+		}
+		
+		ps.close();
+		con.close();
+	}
+	catch(Exception e)
+	{
+		out.println(e.getMessage());
+	}
+%>
+
+Request url
+------------
+	http://localhost:2525/JspApp6/	
+
+
+JSP Application to display the data in a tabular format
+========================================================
+Diagram: jsp3.1
+
+Deployment Directory Structure 
+------------------------------
+JspApp7
+|
+|---Java Resources
+|
+|---WebContent
+	|
+	|---index.jsp 
+	|---WEB-INF
+		|
+		|------web.xml 
+		|------lib
+			|
+			|---ojdbc14.jar 
+Note:
+-----
+In above application we need to add "servlet-api.jar" file and "ojdbc14.jar" file in project build path.
+
+index.jsp
+---------
+<%@page import="java.sql.*" %>
+<center>
+	<h3>
+		<a href="index.jsp?flag=true" style="text-decoration:none;color:red;"> Fetch Data </a>
+	</h3>
+	
+	<hr/>
+	
+</center>
+
+<%
+	if("true".equals(request.getParameter("flag")))
+	{
+%>		
+		<table align="center" border="1" width="100%">
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Address</th>
+			</tr>
+				
+<%	
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		String qry = null;
+		try
+		{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","admin");
+			st = con.createStatement();
+			qry = "select * from student";
+			rs = st.executeQuery(qry);
+			while(rs.next())
+			{
+%>
+					<tr>
+						<td><%= rs.getInt(1) %></td>
+						<td><%= rs.getString(2) %></td>
+						<td><%= rs.getString(3) %></td>
+					</tr>
+<%
+			}
+			rs.close();
+			st.close();
+			con.close();
+		}
+		catch(Exception e)
+		{
+			out.println(e.getMessage());	
+		}
+%>		
+		</table>		
+<%
+	}
+%>
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+Request url
+----------
+	http://localhost:2525/JspApp7/
+
+
+Include Directive Tag 
+======================
+
+
+Deployment Directory Structure 
+------------------------------
+JspApp8
+|
+|---Java Resources
+|
+|---WebContent
+	|
+	|---header.jsp 
+	|---Home.jsp
+	|---About.jsp
+	|---Service.jsp
+	| 
+	|---WEB-INF
+		|
+		|------web.xml 
+Note:
+-----
+In above application we need to add "servlet-api.jar" file in project build path.
+
+header.jsp
+----------
+
+<center>
+	<h1>
+			<a href="home.jsp" style="text-decoration:none;color:brown;"> Home </a>	 &nbsp;&nbsp;
+			<a href="about.jsp" style="text-decoration:none;color:brown;"> About </a>	  &nbsp;&nbsp;
+			<a href="service.jsp" style="text-decoration:none;color:brown;"> Service </a>  &nbsp;&nbsp;
+	</h1>
+</center>
+
+
+home.jsp 
+---------
+<%@include file="header.jsp" %>
+
+<hr/>
+
+<center>
+	<h1 style="color:orange">
+		 Home Page
+	</h1>
+</center>
+
+
+about.jsp 
+---------
+
+<%@include file="header.jsp" %>
+
+<hr/>
+
+<center>
+	<h1 style="color:orange">
+		 About Page
+	</h1>
+</center>
+
+service.jsp 
+-----------
+
+<%@include file="header.jsp" %>
+
+<hr/>
+
+<center>
+	<h1 style="color:orange">
+		 Service Page
+	</h1>
+</center>
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file> header.jsp </welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+Request url
+---------
+	http://localhost:2525/JspApp8/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,183 @@
+Joins 
+=====
+Joins is used to retrieve the data from one or more then one table.
+
+ex:
+---
+	select * from dept;  -- 4 records 
+	select * from emp;   -- 6 records
+	select * from emp,dept;  -- 6*4=24 records 
+	select eid,ename,esal,deptno,dname,dloc from emp,dept;
+	select emp.eid,emp.ename,emp.esal,dept.deptno,dept.dname,dept.dloc from emp,dept;
+
+Table alias 
+-----------
+A userdefined heading given to a table is called table alias.
+Using table alias length of a query will reduce mean while performance is maintained.
+ex:
+	select e.eid,e.ename,e.esal,d.deptno,d.dname,d.dloc from emp e,dept d;	
+
+We have following list of joins.
+
+1) Equi Join 
+
+2) Non-Equi Join 
+
+3) Self Join 
+
+4) Cartisian Product 
+
+5) Inner Join 
+
+6) Outer Join 
+
+
+1) Equi Join 
+-------------
+When two tables are joined based on common column is called equi join.
+In equi join we will use equality operator(=).
+ex:
+	select e.eid,e.ename,e.esal,d.dname,d.dloc from emp e,dept d
+	where(e.deptno=d.deptno);  -- 6 records 
+
+
+2) Non-Equi Join 
+----------------
+When two tables are joined without using equality operator(=) is called non-equi join.
+ex:
+	select e.eid,e.ename,esal,d.dname,d.dloc from emp e,dept d
+	where e.esal>30000 and e.esal<50000; -- 2 * 4 = 8 records 
+
+3) Self Join 
+----------------
+When table join to itself is called self join.
+
+In self join we need to create two table alias for the same table.
+
+ex:
+---
+	select e1.eid,e1.ename,e1.esal,e2.job,e2.comm from emp e1,emp e2
+	where(e1.deptno=e2.deptno); // 6 + 6 = 12 records
+
+
+4) Cartisian Product 
+---------------------
+Cartisian product does not allow any condition in where clause.
+It returns all the possible combination.
+ex:
+	select e.eid,e.ename,e.esal,d.dname,d.dloc from emp e,dept d; -- 6*4=24 records
+
+5) Inner Join 
+-------------
+It is similar to equi join.
+Inner join given by ANSI people.
+ANSI stands for American National Standard Institute.
+
+ex:
+	select e.eid,e.ename,e.esal,d.dname,d.dloc from emp e INNER JOIN dept d
+	ON(e.deptno=d.deptno); -- 6 records 
+
+	select e.eid,e.ename,e.esal,d.dname,d.dloc from emp e JOIN dept d
+	ON(e.deptno=d.deptno); -- 6 records 
+
+
+Interview Query 
+----------------
+Diagram: oracle11.1
+
+Q) Write a query to display sno,sname,branch and book_name?
+
+select s.sno,s.sname,a.branch,l.book_name from student s JOIN adminstration a
+ON(s.sno=a.sno) JOIN library l
+ON(s.sno=l.roll_no);
+
+6) Outer Join 
+-------------
+It is a extension of equi join.
+
+It returns matching as well as not matching records.
+
+A '+' symbol denoted as outer join operator.
+
+It is classified into three types.
+
+i) Left OUTER Join
+-------------------
+	SQL
+	---
+		select e.eid,e.ename,e.esal,e.deptno,d.deptno,d.dname,d.dloc 
+		from emp e,dept d
+		where(e.deptno=d.deptno(+));
+	ANSI 
+	-----
+		select e.eid,e.ename,e.esal,e.deptno,d.deptno,d.dname,d.dloc 
+		from emp e LEFT OUTER JOIN dept d
+		ON(e.deptno=d.deptno);
+
+
+ii) Right OUTER Join 
+---------------------
+	SQL
+	---
+		select e.eid,e.ename,e.esal,e.deptno,d.deptno,d.dname,d.dloc 
+		from emp e,dept d
+		where(e.deptno(+)=d.deptno);
+	ANSI 
+	-----
+		select e.eid,e.ename,e.esal,e.deptno,d.deptno,d.dname,d.dloc 
+		from emp e RIGHT OUTER JOIN dept d
+		ON(e.deptno=d.deptno);
+
+iii) Full OUTER Join 
+--------------------
+	ANSI 
+	-----
+		select e.eid,e.ename,e.esal,e.deptno,d.deptno,d.dname,d.dloc 
+		from emp e FULL OUTER JOIN dept d
+		ON(e.deptno=d.deptno);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

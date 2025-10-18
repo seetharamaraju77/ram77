@@ -1,0 +1,132 @@
+Insertion sort 
+==============
+Insertion sort is a sorting alogrithm which is used to placed unordered element to it's place in each iteration.
+
+Case		Complexity		Description 
+-----		----------		------------
+Best		O(n) (Linear Time)	when array is sorted order.
+Average Case 	O(n²)(Quadratic Time)	When array elements are in random order
+Worst Case 	O(n²)(Quadratic Time)	When array elements are reversed order.
+
+Diagram: DSA6.1
+
+Note:
+-----
+	In insertion sort we perform shifting instead of swapping.
+
+ex:
+---
+input:
+	6 2 4 0
+
+output:
+	0 2 4 6 
+
+
+class InsertionSortProgram  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {6,2,4,0};
+		
+		System.out.println("Original Array");
+		printArray(arr);
+		
+		insertionSort(arr);
+		
+		System.out.println("Sorted Array");
+		printArray(arr);
+	}
+	public static void insertionSort(int[] arr)
+	{
+		for(int i=1;i<arr.length;i++)
+		{
+			int key = arr[i];
+			int j = i-1;
+			while(j>=0 && arr[j]>key)
+			{
+				arr[j+1]=arr[j];
+				j--;
+			}
+			arr[j+1]=key;
+		}
+	}
+	
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+Divide and Conquer
+==================
+It is a algorthmic paradigm used in data structures and algorithms.
+
+It involves to divide a big problem into small sub-problems, solving them independently(recursively) and combine them to get final result.
+
+We have following list of alogrithms use divide and conquer strategy.
+ex:
+	Quick Sort 
+	Merge Sort 
+
+
+Quick Sort 
+============
+Quick sort is a high efficient, comparision based sorting algorithm which uses divide and conquer strategy to sort an array by partitioning around the pivot element.
+
+Case		Time Complexity		Description
+------		---------------		--------------
+Best		O(n log n)		Happens when the pivot divides the array into two nearly 
+					equal halves every time.
+
+Average		O(n log n)		On average, Quick Sort performs very well, better than 
+					other O(n log n) sorts due to low constant factors.
+
+Worst		O(n²)			Happens when the pivot is always the smallest or largest
+ 					element, leading to unbalanced partitions
+
+Note:
+	O(n log n) - Linearthemic Time 
+	O(n²) - Quadratic Time 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,155 @@
+Queue 
+======
+Queue is an interface which is present in java.util package.
+
+Queue commonly implements by using LinkedList, PriorityQueue or ArrayDequeue.
+
+ex:
+		java.util.Collection(I)
+			|
+		java.util.Queue(I)
+			|
+	|---------------|-----------------|
+LinkedList	PriorityQueue		ArrayDequeue
+
+ex:
+----
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Queue<String> queue = new LinkedList<>();
+		queue.offer("one");
+		queue.offer("two");
+		queue.offer("three");
+		System.out.println(queue); // [one, two, three]
+		
+		System.out.println("Peek Element : "+queue.peek()); // one 
+		
+		System.out.println("Remove Element :"+queue.poll()); // one 
+		
+		System.out.println(queue); //[two,three]
+		
+		System.out.println("Queue is empty? "+queue.isEmpty()); // false
+		
+		
+	}
+}
+
+
+
+BFS 
+=====
+BFS stands for Breadth First Search.
+
+BFS is also known as Level Order Traversal.
+
+It explores all the neighbouring nodes at current depth before moving to next level.
+
+It uses queue data structure to track of nodes to visit.
+
+It works for both Trees and Graphs.
+
+Time Complexity:
+----------------
+		O(V + E) Where V is vertices and E is Edges.		
+
+
+Q) Given a directed graph. The task is to do Breadth First Traversal of this graph starting from 0.
+
+Input:
+	V=5, E=4
+	adj = {{1,2,3},{},{4},{},{}}
+
+Diagram: DSA15.1
+
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int V=5;
+		List<List<Integer>> list = Arrays.asList(
+						new ArrayList<>(List.of(1,2,3)),
+						new ArrayList<>(),
+						new ArrayList<>(List.of(4)),
+						new ArrayList<>(),
+						new ArrayList<>()
+					);
+		
+		List<Integer> newList = bfsOfGraph(V,list);
+		for(int i : newList)
+		{
+			System.out.print(i+" ");
+		}
+	}
+	public static List<Integer> bfsOfGraph(int V,List<List<Integer>> list)
+	{
+		Queue<Integer> queue = new LinkedList<>();
+		
+		boolean[] visited =new boolean[V];
+		
+		List<Integer> res = new ArrayList<>();
+		
+		//connected or disconnected graph 
+		for(int i=0;i<V;i++)
+		{
+			if(!visited[i])
+			{
+				bfs(i,queue,visited,res,list);
+			}
+		}
+		return res;
+	}
+	public static void bfs(int source,Queue<Integer> queue,boolean[] visited,
+				List<Integer> res,List<List<Integer>> list)
+	{
+		visited[source] = true;
+		
+		queue.offer(source);
+		
+		while(!queue.isEmpty())
+		{
+			int node = queue.poll();
+			res.add(node);
+			
+			//check the neighbour nodes 
+			for(int neighbour : list.get(node))
+			{
+				if(!visited[neighbour])
+				{
+					visited[neighbour]=true;
+					queue.offer(neighbour);
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

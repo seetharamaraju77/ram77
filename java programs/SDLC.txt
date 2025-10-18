@@ -1,0 +1,124 @@
+SDLC 
+=====
+SDLC stands for Software Development Life Cycle.
+
+SDLC is a process adopt by IT industries to develop accurate and quality of softwares.
+
+We have six phases in SDLC.
+
+1) Feasibility study 
+
+2) Analysis 
+
+3) Designing 
+
+4) Coding 
+
+5) Testing 
+
+6) Delivery and Maintainence
+
+
+1) Feasibility study 
+---------------------
+Feasibility study completely depends upon TELOS formulea.
+ex:
+	T - Technical Feasibility 
+	E - Economical Feasibility 
+	L - Legal Feasibility 
+	O - Operational Feasibility 
+	S - Schedule Feasibility 
+
+All the above information they will keep in a document called BDD.
+BDD stands for Business Design Document.
+
+
+2) Analysis 
+-----------
+In analysis phase, system analyst or product owner will involved.
+
+They seperates system requirements and software requirements.
+
+They will keep above information in a document called SRS.
+
+SRS stands for Software Requirement Specification.
+
+
+
+3) Designing 
+------------
+We have two types of designing.
+
+1) High level designing (HLD)
+----------------------
+In high level designing we will design main/major modules.
+Manager is responsible to perform high level designing.
+ 
+2) Low level designing (LLD)
+------------------------
+In low level desinging we will design child/sub modules.
+Team lead is responsible to perform low level designing.
+
+All the above information they will keep in a document called TDD/PDD.
+TDD stands for Technical Design Document.
+PDD stands for  Project Design Document.
+
+
+4) Coding 
+----------
+In coding phase, all developers will involved.
+
+They responsible to generate the built and later they perform unit testing.
+
+
+5) Testing 
+-----------
+In testing phase, testing team or QA team will involved.
+They will use one software component called STLC to remove all the bugs from the project.
+They makes our project as bug free.
+
+6) Delivery and Maintainence
+-----------------------
+Before delivery we perform UAT testing.
+
+UAT stands for User Acceptance Testing.
+
+It is classified into two types.
+
+1) Alpha Testing 
+
+2) Beta Testing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

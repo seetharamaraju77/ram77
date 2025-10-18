@@ -1,0 +1,319 @@
+Q) Write a java program to perform sum of two binary numbers?
+
+input:
+	1010
+	0101
+output:
+	1111
+
+ex:
+---
+import java.util.Scanner;
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first binary number :");
+		String binary1 = sc.next(); // "1010"
+		
+		System.out.println("Enter the second binary number :");
+		String binary2 = sc.next(); // 0101
+		
+		//convert binary to decimal 
+		int a = Integer.parseInt(binary1,2);//10
+		int b = Integer.parseInt(binary2,2);//5
+		
+		//logic 
+		int c = a + b;
+		
+		//convert decimal to binary 
+		String result =Integer.toBinaryString(c);
+		System.out.println(result);
+	}
+}
+
+Q) Write a java program to accept one Date of Birth and find out current age of a person?
+
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.Period;
+class  Test
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the Date of Birth (yyyy-MM-dd) :");
+		String dob = sc.next();
+		
+		//convert string date to LocalDate
+		LocalDate date1 = LocalDate.parse(dob);
+		
+		//current date 
+		LocalDate date2 = LocalDate.now();
+		
+		//check the difference 
+		Period p = Period.between(date1,date2);
+		System.out.println("Your Age is :"+p.getYears());
+		
+	}
+}
+ 
+
+Cloning in Java 
+===============
+The process of creating exact duplicate object is called cloning.
+
+The purpose of cloning is to maintain the backup.
+
+We can perform cloning only for Cloneable object.
+
+To create a Cloneable object our class must implements Cloneable interface.
+
+Cloneable is a marker interface which does not have any methods.
+
+By using Cloneable interface we get some ability from JVM. 
+
+To cloning we need to use clone() method of Object class.
+
+ex:
+	protected native Object clone()throws CloneNotSupportedException
+
+ex:
+----
+class Test implements Cloneable 
+{
+	//instance variables 
+	int i=10,j=20;
+	
+	public static void main(String[] args)throws CloneNotSupportedException
+	{
+		Test t1 = new Test();
+		System.out.println(t1.i+" "+t1.j); // 10   20
+		System.out.println(t1.hashCode()); // 1933863327
+		
+		Test t2 = (Test) t1.clone();
+		System.out.println(t2.i+" "+t2.j); // 10  20
+		System.out.println(t2.hashCode()); // 112810359
+	}
+}
+
+
+Q) What is the difference between shallow cloning and deep cloning?
+
+Shallow cloning 
+---------------
+The process of creating exact duplicate reference but not object is called shallow cloning.
+ex:
+	Test t1 = new Test();
+	Test t2 = t1;
+
+Diagram: class35.1
+
+ex:
+---
+class Test
+{
+	int i=10;
+	public static void main(String[] args)
+	{
+		Test t1 = new Test();
+		System.out.println(t1.i); // 10 
+		System.out.println(t1.hashCode()); // 2060468723
+		
+		Test t2 = t1;
+		System.out.println(t2.i); // 10
+		System.out.println(t2.hashCode()); // 2060468723
+	}
+}
+
+Deep cloning 
+---------------
+The process of creating exact duplicate object is called deep cloning.
+ex:
+	Test t1 = new Test();
+	Test t2 = (Test)t1.clone();
+
+Diagram: class35.2
+
+ex:
+
+class Test implements Cloneable 
+{
+	//instance variables 
+	int i=10;
+	
+	public static void main(String[] args)throws CloneNotSupportedException
+	{
+		Test t1 = new Test();
+		System.out.println(t1.i); // 10 
+		System.out.println(t1.hashCode()); // 1933863327
+		
+		Test t2 = (Test) t1.clone();
+		System.out.println(t2.i); // 10 
+		System.out.println(t2.hashCode()); // 112810359
+	}
+}
+
+Inner classes 
+=============
+Sometimes we will declare a class inside another class such concept is called inner class.
+
+Inner classes introduced in 1.1 version as a part of event handling to remove GUI bugs.
+
+But due to powerful features and benefits of inner classes, programmers started to use inner classes in our regular programming.
+
+There are four ways to declare inner classes in java.
+
+1) Normal and Regular Inner classes 
+
+2) Static Nested classes 
+
+3) Anonymous Inner classes
+
+4) Method Local Inner classes
+
+1) Normal and Regular Inner classes 
+----------------------------------
+If we are declaring any named class inside another class without using static modifier such type of inner classes are called normal or regular inner classes.
+
+In normal or regular class we can't declare static members.
+
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			 System.out.println("M1-Method");
+		}
+	}
+	 
+	public static void main(String[] args)
+	{
+		Outer.Inner i = new Outer().new Inner();
+		i.m1();
+		
+		//or
+		
+		new Outer().new Inner().m1();
+	}
+}
+We have compile above program we will get two .class files 
+i.e Outer.class and Outer$Inner.class.
+
+ex:
+---
+class Outer 
+{
+	class Inner 
+	{
+		public void m1()
+		{
+			 System.out.println("M1-Method");
+		}
+	}	
+	public void m2()
+	{
+		Inner i = new Inner();
+		i.m1();
+	}
+	 
+	public static void main(String[] args)
+	{
+		Outer o = new Outer();
+		o.m2();
+	}
+}
+
+2) Static Nested classes 
+-----------------------
+Sometimes we will declare a class inside another class using static modifier such type of classes are called static nested classes.
+
+In normal or regular inner class without existing Outer class object there is no chance of existing inner class object.
+
+
+ex:
+---
+class Outer 
+{
+	static class Inner 
+	{
+		public void m1()
+		{
+			 System.out.println("M1-Method");
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		Outer.Inner i = new Outer.Inner();
+		i.m1();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

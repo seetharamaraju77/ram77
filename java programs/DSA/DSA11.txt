@@ -1,0 +1,160 @@
+Deleting the nodes from BST
+===========================
+Diagram: DSA11.1
+
+
+class BST 
+{
+	class Node
+	{
+		int data;
+		Node left;
+		Node right;
+		public Node(int data)
+		{
+			this.data=data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	public void inOrder()
+	{
+		inOrderRec(root);
+	}
+	public void inOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			inOrderRec(root.left);
+			System.out.print(root.data+" ");
+			inOrderRec(root.right);
+		}
+	}
+	public void delete(int key)
+	{
+		root = deleteRec(root,key);
+	}
+	public Node deleteRec(Node root,int key)
+	{
+		if(root==null)
+			return null;
+	
+		if(root.data < key)
+			root.right = deleteRec(root.right,key);
+		else if(root.data>key)
+			root.left = deleteRec(root.left,key);
+		else
+		{
+			if(root.left!=null && root.right!=null)
+			{
+				int val = findMax(root.left,Integer.MIN_VALUE);
+				root.data = val;
+				root.left = deleteRec(root.left,val);
+				return root;
+			}
+			else if(root.left!=null)
+				return root.left;
+			else if(root.right!=null)
+				return root.right;
+			else
+				return null;
+		}
+		
+		return root;
+	}
+	public int findMax(Node root,int max)
+	{
+		if(root!=null)
+		{
+			max = Math.max(root.data,max);
+			root = root.right;
+		}
+		return max;
+	}
+	
+}
+class BinarySearchTree
+{
+	public static void main(String[] args) 
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.inOrder();
+		
+		System.out.println();
+		bst.delete(7);
+		
+		bst.inOrder();
+	}
+}
+
+
+
+Program:
+-------
+Q) You have to find the sum of reverse of two given number and print the reverse of it.
+
+https://www.hackerrank.com/contests/hack-the-code/challenges/reverse-number
+
+
+import java.util.Scanner;
+class ReverseNumber
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();
+		sc.nextLine();
+		for(int i=1;i<=size;i++)
+		{
+			String[] sarr = sc.nextLine().split(" ");
+			int a = Integer.parseInt(sarr[0]);
+			int b = Integer.parseInt(sarr[1]);
+			a = reverse(a);
+			b = reverse(b); 
+			int sum = a+b;
+			sum = reverse(sum);
+			System.out.println(sum);
+		}
+	}
+	public static int reverse(int n)
+	{
+		int rem, rev=0;
+		while(n>0)
+		{
+			rem = n %10;
+			rev = rev * 10 + rem;
+			n = n /10;
+		}
+		return rev;
+	}
+}
+
+
+
+
+
+
+
+
+

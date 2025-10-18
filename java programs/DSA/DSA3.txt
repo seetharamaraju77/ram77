@@ -1,0 +1,262 @@
+Binary Search 
+==============
+Binary search in java is more efficient algorithm which is used to find out the position of target value with in the sorted array or list. It operates on principle of repeatedly dividing search interval in half.
+
+Binary search works on sorted array.
+
+Time complexity : 
+			Best Case :  O(1)     - Constant Time 
+			Worst Case : O(log n) - Logarithmetic Time 
+
+Diagram: DSA3.1
+
+input:
+	arr = 1 2 3 4 5 6 7 8 9 10
+	target = 8 
+
+output:
+	7
+
+Diagram: DSA3.2
+
+ex:
+---
+class BinarySearchProgram 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {1,2,3,4,5,6,7,8,9,10};
+		int target = 8;
+		
+		int index = binarySearch(arr,target);
+		if(index!=-1)
+			System.out.println("Element found in "+index+" index");
+		else
+			System.out.println("Element Not Found");
+			
+	}
+	public static int binarySearch(int[] arr,int target)
+	{
+		int start = 0;
+		int end = arr.length-1;
+		
+		while(start<end)
+		{
+			int mid = (start+end)/2;
+			
+			if(arr[mid]==target)
+			{
+				return mid;
+			}
+			if(arr[mid]>target)
+			{
+				end = mid-1;
+			}
+			else
+			{
+				start = mid+1;
+			}
+		}
+		
+		return -1;
+	}
+}
+
+
+Dynamic Programming 
+===================
+It is a method of solving complex problem by breaking down to simpler sub-problems.
+
+It is a programming principle to solve complex problem by dividing into sub-problems.
+
+ex:
+	Recursion 
+	Largest Common Subsequence (LCS) 
+
+Recursion 
+----------
+A method which call itself for many number of times is called recursion.
+
+
+
+1) Write a java program to find out fibonacci series of a given number using recursion?
+
+input:
+	5
+
+output:
+	0 1 1 2 3 
+
+
+class FibonacciProgram 
+{
+	public static void main(String[] args) 
+	{
+		int n=5;
+		
+		for(int i=0;i<n;i++)
+		{
+			System.out.print(fibonacci(i)+" ");
+		}
+	}
+	public static int fibonacci(int n)
+	{
+		if(n<=1)
+		{
+			return n;
+		}
+		
+		return fibonacci(n-1)+fibonacci(n-2);
+	}
+}
+
+Q) Write a java program to find out factorial of a given number using recursion?
+
+input:
+	n = 5
+
+output:
+	120 
+
+
+class FactorialProgram 
+{
+	public static void main(String[] args) 
+	{
+		int n=5;
+		
+		System.out.println(factorial(n));
+	}
+	public static int factorial(int n)
+	{
+		if (n<0)
+			return -1;
+		
+		if(n==0)
+			return  1;
+		
+		return n * factorial(n-1);
+	}
+}
+
+Q) Write a java program to find out power of a number using recursion?
+
+input:
+	base = 5 , power = 3
+
+output:
+	125
+
+class FactorialProgram 
+{
+	public static void main(String[] args) 
+	{
+		int base=5,power=3;
+		
+		System.out.println(find(base,power));
+	}
+	public static int find(int base,int power)
+	{
+		if(power==0)
+		{
+			return 1;
+		}
+		
+		return base * find(base,power-1);
+			
+	}
+}
+
+Q) Write a java program to display reserve of a string using recursion?
+
+input:
+	hello
+
+output:
+	olleh 
+
+
+class ReverseString
+{
+	public static void main(String[] args) 
+	{
+		String str="hello";
+		
+		System.out.println(reverse(str,"",str.length()-1));
+		
+	}
+	public static String reverse(String str,String rev,int i)
+	{
+		if(i<0)
+		{
+			return rev;
+		}
+		
+		return reverse(str,rev+str.charAt(i),i-1);
+			
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

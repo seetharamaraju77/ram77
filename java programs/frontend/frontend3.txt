@@ -1,0 +1,602 @@
+HTML hyperlink
+==============
+A <a> anchor tag is used to display the hyperlink in a web page.
+
+Hyperlink is used to route from one page to another page.
+
+A "href" attribute is used to navigate from one page to another page. 
+
+ex:
+	<a href=""> click me </a>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+				<a href="http://www.google.com"> click Me </a>
+			</h1>
+		</center>		
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+				<a href="http://www.google.com"> 
+					<button>IHUB</button>
+				 </a>
+			</h1>
+		</center>		
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+			<a href="https://en.wikipedia.org/wiki/Dwayne_Johnson"> 
+				<img src="images/rock.jpg"
+					   width="200px" 
+						height="200px" 
+							alt="No image Found"/>
+			 </a>
+			</h1>
+		</center>		
+	</body>
+</html>
+
+A linked document opened in a same window or current window.
+
+In order to change the behaviour we need to use "target" attribute.
+
+a "target" describes a linked document must be open in a same window or a new window.
+
+A "target" attribute contains following two values.
+
+ex:
+	Attribute		Description 
+	---------		-----------	
+	_self			It is used to open a linked document in a same window.
+	_blank 			It is used to open a linked document in a new window.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+			<a href="https://en.wikipedia.org/wiki/Dwayne_Johnson" 
+					target="_self">
+ 
+				<img src="images/rock.jpg"
+					   width="200px" 
+						height="200px" 
+							alt="No image Found"/>
+			 </a>
+			</h1>
+		</center>		
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+			<a href="https://en.wikipedia.org/wiki/Dwayne_Johnson" 
+					target="_blank">
+ 
+				<img src="images/rock.jpg"
+					   width="200px" 
+						height="200px" 
+							alt="No image Found"/>
+			 </a>
+			</h1>
+		</center>		
+	</body>
+</html>
+
+Interview Questions 
+===================
+
+Q) What is HTML Entity?
+
+HTML entity starts with '&' symbol and ends with semicolon(;).
+
+HTML entity is used to display reserved characters or hidden characters.
+
+We have following list of HTML entities.
+ex:
+	HTML Entity	Symbol 
+	-----------	--------
+	&gt;		>
+	&lt;		<
+	&laquo;		<<
+	&raquo;		>>
+	&nbsp;		(space)
+	&copy;
+	and etc.
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1> &gt; </h1>
+			<h1> &lt; </h1>
+			<h1> &laquo; </h1>
+			<h1> &raquo; </h1>
+			<h1> &nbsp; </h1>
+			<h1> &copy; </h1>
+		</center>		
+	</body>
+</html>
+
+
+Q) What is the difference between HTML tag and HTML Element?
+
+HTML tag 
+---------
+HTML tag contains '<' symbol and '>' symbol.
+We have following list of HTML tags.
+ex:
+	<h1>, <p>, <body>, <i>, <b> and etc.
+
+HTML element
+-------------
+HTML element contains opening tag, some content and closing tag.
+We have following list of HTML elements.
+ex:
+	<h1> Heading Tag </h1>
+	<p> Paragraph Tag </p>
+	<b> Bold Tag </b>
+	and etc.
+
+
+
+Q) Types of Tags in HTML?
+
+We have two type of tags in HTML.
+
+1) Paired Tags 
+--------------
+Paired tags contain opening tag and closing tag.
+Paired tags are also known as container tags.
+We have following list of paired tags.
+ex:
+	<h1>, <p>, <body>, <head>, <title>, <b>, <i> and etc.
+
+
+2) Unpaired Tags 
+----------------
+Unpaired tags contain only opening tag and do not have any closing tag.
+Unpaired tags are also known as empty tags.
+We have following list of unpaired tags.
+ex:
+	<meta>, <link>, <br>, <img>, <hr> and etc.
+
+
+Q) Types of elements in HTML?
+
+We have two types of elements.
+
+1) Block Elements 
+------------------
+Block elements always start with new line.
+Block elements takes 100% of width.
+We have following list of block elements.
+ex:
+	<h1>, <p>, <div> and etc.
+
+ex:
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<h1> Heading Tag </h1>
+		<p> Paragraph Tag </p>
+		<div> Division Tag </div>	
+	</body>
+</html>
+
+2) Inline Elements 
+-------------------
+Inline elements always start with same line.
+Inline elements take width as much as required.
+We have following list of inline elements.
+ex:
+	<b>, <i>, <span>, <u> and etc.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<b>Bold Tag</b>
+		<i>Italic Tag</i>
+		<u>Underline Tag</u>
+		<span>Span Tag</span>	
+	</body>
+</html>
+
+Q) Types of list in HTML ?
+
+We have three types of list in HTML.
+
+1) Unordered list 
+
+2) Ordered list 
+
+3) Description list 
+
+1) Unordered list
+-----------------
+Unordered list is for bullets.
+
+A <ul> tag is used to represent unordered list.
+
+Unordered list contains list of items.  
+
+Each list of item we need to represent by using <li> tag.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ul>
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ul type="circle">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ul type="square">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ul type="disc">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ul type="none">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+2) Ordered list
+----------------
+Ordered list is for numerics and alphabets.
+A <ol> tag is used to represent ordered list.
+Ordered list contains list of items.
+Each list of item we need to represent by using <li> tag.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol>
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol start="101">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol reversed="101">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol type="a">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol type="A">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol type="i">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Course:
+		<ol type="I">
+			<li> HTML5 </li>
+			<li> CSS3 </li>
+			<li> JavaScript </li>
+			<li> Bootstrap5 </li>
+		</ul>	
+	</body>
+</html>
+
+
+3) Description list 
+----------------------
+Description list contains description term and description definition.
+
+A <dl> tag is used to represent description list.
+
+A <dt> tag is used to represent description term.
+
+A <dd> tag is used to represent description definition.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<dl>
+			<dt>HTML5</dt>
+			<dd>
+				It is also known as advanced hypertext markup language.
+				It is developed to create leight weight components.	
+			</dd>
+		</dl>	
+	</body>
+</html>
+
+Assignment
+==========
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Services:
+		<ul>
+			<li>BPO</li>
+			<li>
+				IT
+				<ol>
+					<li>Development</li>
+					<li>Testing</li>
+					<li>Maintainence</li>
+				</ol>
+			</li>
+			<li>Banking</li>
+		</ul>
+	</body>
+</html>
+
+HTML colors
+===========
+HTML supports only two color values.
+
+1) Valid Color Name 
+
+2) Hexa Value 
+
+1) Valid Color Name 
+-------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body bgcolor="lavendar">
+		<font color="tomato">
+		<h1> HTML Valid Color </h1>
+		</font>
+	</body>
+</html>
+
+2) Hexa Value 
+-------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body bgcolor="#FFFF00">
+		<font color="#C3C3C3">
+		<h1> HTML Valid Color </h1>
+		</font>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

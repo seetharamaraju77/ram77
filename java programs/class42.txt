@@ -1,0 +1,482 @@
+FileWriter 
+==========
+It is used to insert character oriented data into a file.
+
+syntax:
+------
+	FileWriter fw = new FileWriter(file f);
+
+If file does not exist then FileWriter will create a physical file.
+
+Methods 
+-------
+1) write(int ch)
+-------------
+	It is used to insert single character into a file.
+
+2) write(char[] ch)
+------------------
+	It is used to insert collection of characters in a file.
+
+3) write(String s)
+-------------
+	It is used to insert string in a file.
+
+4) flush()
+---------
+	It gives guarantee that last character of a file is also inserted.
+
+5) close()
+---------
+	It is used to close FileWriter object.
+
+ex:
+----
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try(FileWriter fw = new FileWriter("aaa.txt");)
+		{
+			fw.write(98);//b
+		
+			fw.write("\n");
+		
+			char[] ch={'a','b','c'};
+			fw.write(ch); 
+		
+			fw.write("\n");
+		
+			fw.write("ihub\ntalent");
+		
+			fw.flush();
+			
+			System.out.println("Please check the location");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+FileReader 
+==========
+It is used to read character oriented data from a file.
+
+constructor
+----------
+	FileReader fr = new FileReader(File f);
+
+Methods 
+-------
+1) read()
+--------
+	It is used to read next character from a file and returns unicode value.
+	If next character is not available then it will return -1.
+
+2) read(char[] ch)
+-----------------
+	It is used to read collection of characters from a file.
+
+3) close() 
+---------
+	It is used to close FileReader object.
+
+ex:1
+----
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try(FileReader fr = new FileReader("aaa.txt");)
+		{
+			int i = fr.read();
+			while(i!=-1)
+			{
+				System.out.print((char)i);
+				i= fr.read();
+			}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+ex:2
+-----
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			File f = new File("aaa.txt");
+			FileReader fr = new FileReader(f);
+			
+			char[] ch=new char[(int)f.length()];
+			
+			fr.read(ch);
+			
+			for(char c : ch)
+			{
+				System.out.print(c);
+			}
+			
+			fr.close();
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+Limitations with FileWriter and FileReader
+==========================================
+While inserting the data using FileWriter we need to insert line seperators(\n) which is very headache for the programmer.
+
+While reading the data using FileReader we need to read character by character which is not convenient to the programmer.
+
+To overcome this limitation Sun Micro System introduced BufferedWriter and BufferedReader.
+
+
+BufferedWriter 
+==============
+It is used to insert character oriented data into a file.
+
+constructor 
+-----------
+	BufferedWriter bw = new BufferedWriter(Writer w);
+
+BufferedWriter can't communicate with files directly. It takes the support of Writer object.
+ex:
+	BufferedWriter bw = new BufferedWriter(new FileWriter("bbb.txt"));
+
+If that file is not available then it creates a physical file.
+
+Methods 
+-------
+
+1) write(int ch)
+-------------
+	It is used to insert single character into a file.
+
+2) write(char[] ch)
+------------------
+	It is used to insert collection of characters in a file.
+
+3) write(String s)
+-------------
+	It is used to insert string in a file.
+
+4) flush()
+---------
+	It gives guarantee that last character of a file is also inserted.
+
+5) close()
+---------
+	It is used to close BufferedWriter object.
+
+6) newLine()
+-----------
+	It is used to insert a new line in a file.
+
+
+ex:
+---
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter("bbb.txt"));)
+		{
+			bw.write(98);// b 
+			bw.newLine();
+			char[] ch={'a','b','c'};
+			bw.write(ch); 
+			bw.newLine();
+			bw.write("ihubtalent");
+			bw.flush();
+			System.out.println("Please check the location");
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+BufferedReader
+==============
+It is enhanced reader to read character oriented data from a file.
+
+constructor
+---------
+	BufferedReader br = new BufferedReader(Reader r);
+
+BufferedReader can't communicate with file directly. It takes the support of Reader object.
+ex:
+	BufferedReader br = new BufferedReader(new FileReader("bbb.txt"));
+
+The main advanced of BufferedReader over FileReader is we can read line by line instead of 
+character by character.
+
+Methods 
+-------
+1) read()
+--------
+	It is used to read next character from a file and returns unicode value.
+	If next character is not available then it will return -1.
+
+2) read(char[] ch)
+-----------------
+	It is used to read collection of characters from a file.
+
+3) close() 
+---------
+	It is used to close BufferedReader object.
+
+4) readLine()
+------------
+	It is used to read next line from a file. If next line is not available then 
+	it will return null.
+
+ex:
+---
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try(BufferedReader br = new BufferedReader(new FileReader("bbb.txt"));)
+		{
+			String line = br.readLine();
+			while(line!=null)
+			{
+				System.out.println(line);
+				line = br.readLine();
+			}
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+PrintWriter 
+===========
+It is a enhanced writer to write character oriented data into a file.
+
+constructor
+---------
+	PrintWriter pw = new PrintWriter(File f);
+	PrintWriter pw = new PrintWriter(Writer w);
+
+PrintWriter can communicate with file directly and it will take the support of writer object.
+ex:
+	PrintWriter pw = new PrintWriter("ccc.txt");
+	PrintWriter pw = new PrintWriter(new FileWriter("ccc.txt"));
+
+The main advanced of PrintWriter over FileWriter and BufferedWriter is using PrintWriter we can insert any type of data. If you have primitive values then PrintWriter is recommanded to use.
+
+
+Methods 
+-------
+
+1) write(int ch)
+2) write(char[] ch)
+3) write(String s)
+4) flush()
+5) close()
+
+or 
+
+1) println(int i)
+2) println(char ch)
+3) println(double d);
+4) println(String s);
+5) println(boolean b);
+
+or
+
+1) print(int i)
+2) print(char ch)
+3) print(double d);
+4) print(String s);
+5) print(boolean b);
+
+ex:
+---
+
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		try(PrintWriter pw = new PrintWriter("ccc.txt");)
+		{
+			pw.write(98); // b
+			pw.println(98);//98
+			pw.println('a');
+			pw.println(true);
+			pw.println(10.5d);
+			pw.println("java");
+			pw.flush();
+			System.out.println("Please check the location");
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+Various ways to provide inputs in java
+=======================================
+There are four ways to provide inputs in java.
+
+1) Command line argument 
+
+2) BufferedReader class 
+
+3) Console class 
+
+4) Scanner class 
+
+
+1) Command line argument 
+------------------------
+class Test  
+{
+	public static void main(String[] args)
+	{
+		String name = args[0];
+		System.out.println("Welcome :"+name);
+	}
+}
+o/p:
+	javac  Test.java
+	java   Test  LinusTorvalds
+
+
+2) BufferedReader class 
+-----------------------
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)throws IOException 
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the name :");
+		String name = br.readLine();
+		System.out.println("Welcome :"+name);
+	}
+}
+
+3) Console class 
+----------------
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args)throws IOException 
+	{
+		Console c = System.console();
+		System.out.println("Enter the name :");
+		String name = c.readLine();
+		System.out.println("Welcome :"+name);
+	}
+}
+
+4) Scanner class 
+----------------
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int no = sc.nextInt();
+		
+		System.out.println("Enter the name :");
+		String name = sc.next();
+		
+		System.out.println("Enter the fee :");
+		double fee = sc.nextDouble();
+		
+		System.out.println(no+" "+name+" "+fee);
+	}
+}
+
+Assignment 
+===========
+Q) Write a java program to copy the data from one file to another file?
+
+input:
+	my.txt 
+	-----
+	a
+	bc
+	def
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

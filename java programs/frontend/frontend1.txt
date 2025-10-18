@@ -1,0 +1,341 @@
+HTML5
+======
+HTML stands for Hypertext Markup Language.
+
+It is widely used language on web to develop web pages and web applications.
+
+It is developed by Burner's Lee in late 1991.
+
+It is a tag based language.
+ex:
+	<>
+
+It is a case insensitive language.
+ex:
+	<html>
+	<HTML> 
+
+HTML tag contains opening tag and closing tag.
+ex:
+	<html> -- opening tag 
+	</html> -- closing tag 
+
+HTML tag may contains attributes which consist attribute name and value.
+ex:
+	<body bgcolor="red">
+
+If HTML tag contains multiple attributes then each attribute must be seperated with space.
+ex:
+	<body bgcolor="red" background="image">
+
+All HTML documents we need to save with ".html" or ".htm" extension.
+
+HTML documents executed in a browser.
+ex:
+	Chrome 
+	Mozilla 
+	Edge
+	Opera 
+	Chormium
+	Safari
+	and etc.
+
+HTML is used to develop client side components.
+
+HTML2.0 specification was released in the year of 1995.
+
+HTML4.0 specification was released in the year of 1995.
+
+HTML5 which is a extension of HTML4.0 was released in the year of 2005.
+
+The main objective of HTML5 is used to develop leight weight components.
+
+HTML5 is also known as Advanced Hypertext Markup Language.
+
+
+HTML Skeleton 
+==============
+<!DOCTYPE html>
+<html>
+	<head>
+		- // head related tags 
+	</head>
+	<body>
+		- // body related tags 
+	</body>
+</html>
+
+<!DOCTYPE html>
+----------------
+	It indicates that a document belongs to HTML5.
+
+<html>
+-------
+	It is a root tag for entire HTML document.
+	It contains two child tags.
+	1) <head> tag 
+	2) <body> tag 
+
+<head> tag
+----------
+	It is used to declare following things.
+	ex:
+		Title of a page
+		Favourite Icon 
+		MetaData 
+		Styles
+		Scripts
+
+<body> tag 
+-----------
+	It contains actual content of a web page. 
+
+ex:1
+-----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!!</title>
+	</head>
+	<body>
+
+	</body>
+</html>
+
+ex:2
+-----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!!</title>
+		<link rel="icon" href="insta.jpg">
+	</head>
+	<body>
+
+	</body>
+</html>
+
+ex:3
+-----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!!</title>
+		<link rel="icon" href="insta.jpg">
+	</head>
+	<body>
+		Welcome to HTML class
+	</body>
+</html>
+
+ex:4
+-----
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- page title -->
+		<title>MyPage!!</title>
+
+		<!-- favicon -->
+		<link rel="icon" href="insta.jpg">
+	</head>
+	<body>
+		<!-- custom msg -->
+		Welcome to HTML class
+	</body>
+</html>
+
+ex:5
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- page title -->
+		<title>MyPage!!</title>
+
+		<!-- favicon -->
+		<link rel="icon" href="insta.jpg">
+	</head>
+	<body bgcolor="cyan">
+		<!-- custom msg -->
+		Welcome to HTML class
+	</body>
+</html>
+
+ex:6
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- page title -->
+		<title>MyPage!!</title>
+
+		<!-- favicon -->
+		<link rel="icon" href="insta.jpg"> 
+	</head>
+	<body bgcolor="white" background="bg.png">
+		<!-- custom msg -->
+		Welcome to HTML class
+	</body>
+</html>
+
+
+
+HTML Meta Tag 
+=============
+HTML meta tag is used to declare metadata of a document.
+
+Metadata is used by search engine, browser window and client.
+
+To declare metadata in document we need to use <meta> tag.
+
+A <meta> tag must be declared inside <head> tag.
+
+A <meta> tag is used to declare following things.
+
+1) Description 
+
+2) Author 
+
+3) Keyword 
+
+4) Copyright 
+
+5) Viewport 
+
+6) Refresh 
+
+and etc.
+
+UTF-8
+------
+UTF stands Unicode Transformation Format.
+It is a encoding method to describe what character set a website is written with.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!!</title>
+		<link rel="icon" href="insta.jpg">
+
+		<meta charset="UTF-8">
+		<meta name="description" content="My First Page">
+		<meta name="author" content="Niyaz Sir">
+		<meta name="keyword" content="HTML CSS JS Bootstrap">
+		<meta name="copyright" content="copy right by niyaz sir">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta http-equiv="refresh" content="05">
+		
+	</head>
+	<body>
+		Welcome To HTML
+	</body>
+</html>
+
+
+Basic HTML Tags 
+===============
+
+Heading Tags 
+-------------
+Heading tags are used to declare heading in a web page.
+
+We have six heading tags from h1 to h6.
+
+The size of heading tag is depend upon number of heading tags.
+
+It is used to display the text in bold.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!!</title>		
+	</head>
+	<body>
+		<h1>Heading Tag1</h1>
+		<h2>Heading Tag2</h2>
+		<h3>Heading Tag3</h3>
+		<h4>Heading Tag4</h4>
+		<h5>Heading Tag5</h5>
+		<h6>Heading Tag6</h6>		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,305 @@
+Encapsulation 
+=============
+The process of encapsulating or grouping variables and it's associate methods in a single entity is called encapsulation.
+
+The best of encapsulation is capsule.
+
+Diagram: class29.1
+
+Abstraction is used to hide the data and encapsulation is used to protect the data.
+
+A class is said to be encapsulated class if it supports data hiding and abstraction.
+
+Diagram: class29.2
+
+In encapsulation for every variable we need to write setter and getter methods.
+
+The main advantages of encapsulation are
+
+1) It gives security.
+
+2) Enhancement becomes more easy.
+
+3) It provides flexibility to the enduser.
+
+4) It improves maintainability of an application.
+
+The main disadvantage of encepsulation is , it will increase the length of our code and slow down the execution process.
+
+ex:
+---
+
+class Student 
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods 
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName = studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee = studFee;
+	}
+	
+	//getter methods 
+	public int getStudId()
+	{
+		return studId;
+	}
+	public String getStudName()
+	{
+		return studName;
+	}
+	public double getStudFee()
+	{
+		return studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(1000d);
+		
+		System.out.println("Student Id :"+s.getStudId());
+		System.out.println("Student Name :"+s.getStudName());
+		System.out.println("Student Fee :"+s.getStudFee());
+	}
+}
+
+example2
+---------
+class Student 
+{
+	//current class variables 
+	private int studId;
+	private String studName;
+	private double studFee;
+	
+	//setter methods 
+	public void setStudId(int studId)
+	{
+		this.studId=studId;
+	}
+	public void setStudName(String studName)
+	{
+		this.studName = studName;
+	}
+	public void setStudFee(double studFee)
+	{
+		this.studFee = studFee;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Student Id : "+studId+"\nStudent Name : "+studName+"\nStudent Fee : "+studFee;
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.setStudId(101);
+		s.setStudName("Alan");
+		s.setStudFee(1000d);
+		
+		System.out.println(s);
+	}
+}
+
+
+Q) What is difference between Abstraction and Encapsulation?
+
+Abstraction					Encapsulation
+--------------					--------------
+Hiding internal implementation and highlighting	The process of encapsulating or grouping 
+the set of services is called abstraction.	variables and it's associate methods in 
+						a single entity is called encapsulation.
+
+Best example of abstraction is ATM machine.	Best example of encapsulation is capsule.
+
+Using abstract classes and interfaces we	Using access modifiers we can achieve  
+can achieve abstraction.			encapsulation.
+
+It is used to hide the data.			It is used to protect the data.
+
+It is a process of giving the information.	It is a process of containing the information.
+
+It solves the issue at design level.		It solves the issue at implementation level.
+
+
+Q) What is the difference between POJO class and Java Bean class?
+
+POJO class					Java Bean class
+-----------					----------------
+It can't be serialized.				It can be serialized.
+
+Fields can have any visibility.			Fields can have only private visibility.
+
+It may or may not have constructor.		It must have atleast zero-argument constructor.
+
+It can't extend outside classes.		It can extends outside classes.
+
+It can't implements outside interfacees.	It can implements outside interfaces.
+
+It can't use outside annotations.		It can use outside annotations.
+
+Note:
+-----
+	Every java bean class is a pojo class.
+	But every pojo class is not a java bean class.
+
+
+Q) What is tightly encapsulated class?
+
+A class is said to be tightly encapsulated class if all the variables of that class declared as private.Here we don't need to check those variables having setter and getter methods.
+
+ex:
+	class A
+	{
+		int i = 10;	
+	}
+	// It is not a tightly encapsulated class 
+
+ex:
+	class A 
+	{
+		int i=10;
+		private int j=20;	
+	}	
+	// It is not a tightly encapsulated class 
+
+ex:
+---
+	class A 
+	{
+		int i=10;	
+	}
+	class B extends A 	
+	{
+		private int j=20;	
+	}
+	//It is not a tightly encapsulated class 
+
+ex:
+---
+	class A 
+	{
+		private int i=10;
+		private int j=20;
+	}
+	// tightly encapsulated class
+
+
+
+Is-A relationship
+=================
+Is-A relationship is also known as inheritance.
+
+Using extends keyword we can implements Is-A relationship.
+
+The main objective of Is-A relationship is to provide reusability.
+
+ex:
+---
+class Parent 
+{
+	public void methodOne()
+	{
+		System.out.println("Parent-MethodOne");
+	}
+}
+class Child extends Parent 
+{
+	public void methodTwo()
+	{
+		System.out.println("Child-MethodTwo");
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Parent p = new Parent();
+		p.methodOne(); 
+		
+		Child c = new Child();
+		c.methodOne();
+		c.methodTwo();
+		
+		Parent p1 = new Child();
+		p1.methodOne();
+		
+		// Child c1 = new Parent(); // invalid 
+	}
+}
+
+conclusion:
+----------
+Whatever our parent class having properties by default go to child class.But whatever child class having properties never go back to parent class.
+
+A parent reference can hold child object but child reference can't hold parent object.
+
+	
+Inheritance 
+===========
+It is a mechanism in which one class will inherit the properties of another class.
+
+It is a mechanism where one class is derived in the presence of existing class.
+
+The main objective of inheritance is to achieve reusability.
+
+Diagram: class29.3
+
+We have five types of inheritance.
+
+1) Single Level inheritance 
+
+2) Multi Level inheritance 
+
+3) Multiple inheritance 
+
+4) Hierarchical inheritance 
+
+5) Hybrid inheritance 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

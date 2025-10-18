@@ -1,0 +1,363 @@
+OOPS 
+=====
+OOPS stands for Object Oriented Programming System/Structure.
+
+OOPS concept introduced to deal with real world entities using programming language.
+
+A language is said to be object oriented if it supports following features.
+ex:
+	class
+	object 
+	abstraction 
+	encapsulation 
+	inheritance  
+	polymorphism
+
+
+
+class
+=======
+A class is a blue print of an object.
+ex:
+	Design or Template
+
+A class is a logical entity.
+
+A class is a collection of objects.
+
+A class will accept following modifiers.
+ex:
+	default 
+	public
+	final 
+	abstract 
+
+We can declare a class as follow.
+
+syntax:
+-------
+	optional 
+	|
+	Modifier class class_name <extends> Parent_classname 
+				  <implements> Interface_name
+	{
+		-
+		- //code to be execute 
+		-
+	}
+
+
+Q) What is the difference between default class and public class?
+
+default class					public class
+---------------					-------------
+To declare default class we should not use	To declare public class we should use  
+any keyword.					public keyword.
+ex:						ex:	
+	class  A					public class A 
+	{						{
+	}						}
+
+If we declare any class as default then we can 	If we declare any class as public then we can
+access that within the package.			access that within the package and outside the
+						package.
+
+
+Q) What is the difference between final class and abstract class?
+
+final class					abstract class
+-------------					---------------
+To declare final class we should use 		To declare abstract class we should use 
+final keyword.					abstract keyword.
+ex:						ex:
+	final class A 					abstract class A 
+	{						{
+	}						}
+
+Child creation is not possible.			Child creation is possible.
+
+Object creation is possible.			Object creation is not possible.
+
+
+object 
+========
+It is a outcome of a blue print.
+
+It is a instance of a class. Here instance means allocating memory for our data members.
+
+It is a physical entity.
+
+It is a collection of properties and behaviours.
+
+ex:
+		 		Dog 
+		  		|
+		|----------------------------------|
+	Properties 				Behaviours 
+	
+	> Name 					> Eating 
+	> Color					> Barking 
+	> Breed 				> Sleeping 
+	> Height 				> Running 
+	> Gender 				and etc.
+	and etc.
+
+It is possible to create more then one object in a single class.
+
+We can declare an object as follow.
+
+syntax:
+-------
+	<class_name>  <reference_variable> = new  <constructor>();
+
+ex:
+----
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t1 = new Test();
+		Test t2 = new Test();
+		Test t3 = new Test();
+		
+		System.out.println(t1.hashCode());
+		System.out.println(t2.hashCode());
+		System.out.println(t3.hashCode());
+		
+		System.out.println(t1); //Test@Hexavalue
+		System.out.println(t2.toString());
+		System.out.println(t3.toString());
+	}
+}
+
+
+Q) What is the difference between class and object?
+
+class						object
+--------					----------
+To declare a class we will use class keyword.	To declare an object we will use new keyword.
+
+It is a blue print of an object.		It is a outcome of a blue print.
+
+It is a logical entity.				It is a physical entity.
+
+It is a collection of objects.			It is a collection of properties & behaviours.
+
+It can't be modified.				It can be modified.
+
+It can be declared only once.			It can be declared multiple times.
+
+
+Hashcode in Java
+================
+For every object JVM will create a unique identification number i.e hash code.
+
+In order to read hashcode of an object we need to use hashCode() method of Object class.
+
+Diagram: class28.1
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t.hashCode());//2060468723
+	}
+}
+
+
+toString() Method 
+==================
+A toString() method present in Object class.
+
+Whenever we are trying to display any object reference directly or indirectly toString() method will be executed.
+
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {10,20,30};
+		System.out.println(arr); //[I@7ad041f3
+		System.out.println(arr.toString()); //[I@7ad041f3
+	}
+}
+	
+ex:
+---
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t); // Test@7ad041f3
+		System.out.println(t.toString()); // Test@7ad041f3
+	}
+}
+
+ex:
+----
+class  Test 
+{
+	public static void main(String[] args) 
+	{
+		Test t = new Test();
+		System.out.println(t);
+	}
+	@Override
+	public String toString()
+	{
+		return "Hello World";
+	}
+}
+
+
+Data Hiding 
+============
+The process of hiding object data from unauthorized access.
+
+Using "private" modifier we can achieve data hiding concept.
+
+The main objective of data hiding is to provide security.
+
+ex:
+---
+class Account 
+{
+	private double balance=10000d;
+}
+class Student 
+{
+	public static void main(String[] args)
+	{
+		Account account = new Account();
+		System.out.println(account.balance);
+	}
+}
+o/p:
+	C.T.E : balance has private access in Account
+
+
+Abstraction 
+===========
+Hiding internal implementation and highlighting the set of services is called abstraction.
+
+Using abstract classes and interfaces we can implements abstraction.
+
+The best example of abstraction is GUI ATM machine where bank people will hide internal implementation and highlights the set of services like banking, withdrawl, mini statement and etc.
+
+The main advantages of abstraction are 
+
+1) It gives security because it hides internal implementation.
+
+2) Enhancement becomes more easy without effecting enduser they can perform any changes in 
+   our internal system.
+
+3) It provides flexibility to the enduser to use the system.
+
+4) It improves maintainability of an application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,441 @@
+StringBuffer 
+=============
+If our content change frequently then it is never recommanded to use String because for every change a new object will be created.
+
+To overcome this limitation Sun Micro System introduced StringBuffer.
+
+In StringBuffer all the required changes will be done in a same object.
+
+constructor 
+-----------
+
+1) StringBuffer sb = new StringBuffer()
+---------------------------------------
+It creates empty StringBuffer object with default initial capacity of 16.
+
+If capacity reaches to maximum capacity then new capacity will be created with below formulea.
+
+ex:
+	new_capacity = current_capacity+1*2;
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringBuffer sb = new StringBuffer();
+		
+		System.out.println(sb.capacity()); // 16
+		
+		sb.append("abcdefghijklmnop");
+		
+		System.out.println(sb.capacity()); // 16
+		
+		sb.append("qr");
+		
+		System.out.println(sb.capacity()); // 16+1*2=34
+	}
+}
+
+2) StringBuffer sb = new StringBuffer(int initialCapacity)
+---------------------------------------------------
+It is used to create a StringBuffer object with specified initial capacity.
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringBuffer sb = new StringBuffer(19);
+		
+		System.out.println(sb.capacity()); // 19
+	
+	}
+}
+
+3) StringBuffer sb = new StringBuffer(String s)
+----------------------------------------------
+It creates StringBuffer object equivalent to String. 
+
+Here capacity will be created with below formulea.
+
+ex:
+	capacity = s.length()+16;
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringBuffer sb = new StringBuffer("ihubtalent");
+		
+		System.out.println(sb.capacity()); // 10+16=26
+	
+	}
+}
+
+Q) Write a java program to display reverse of a string?
+
+input:
+	hello
+
+output:
+	olleh 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="hello";
+		
+		StringBuffer sb = new StringBuffer(str);
+		
+		String rev = sb.reverse().toString();
+		
+		System.out.println(rev);
+	}
+}
+
+
+Q) Write a java program to check given string is palindrome or not?
+
+input:
+	racar 
+
+output:
+	It is a palindrome string 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="racar";
+		
+		StringBuffer sb = new StringBuffer(str);
+		
+		String rev = sb.reverse().toString();
+		
+		if(str.equals(rev))
+			System.out.println("It is a palindrome string");
+		else
+			System.out.println("It is not a palindrome string");
+	}
+}
+
+Q) Write a java program to multiply two arrays?
+
+input:
+	6 3 2
+	1 4 
+
+output:
+	8848 (632*14)
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr1={6,3,2};
+		int[] arr2={1,4}; 
+		
+		int a = Integer.parseInt(arrayToString(arr1));
+		int b = Integer.parseInt(arrayToString(arr2));
+		System.out.println(a*b);
+	}
+	public static String arrayToString(int[] arr) // 6 3 2 
+	{
+		StringBuffer sb = new StringBuffer();
+		for(int i: arr)
+		{
+			sb.append(i);
+		}
+		
+		return sb.toString();
+	}
+}
+
+Q) Write a java program to display the string in a given format?
+
+input:
+	ABBCCCDDDD
+
+output:
+	A1B2C3D4
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ABBCCCDDDD";
+		
+		StringBuffer sb = new StringBuffer();
+	
+		int cnt=1;
+		
+		for(int i=0;i<str.length();i++)
+		{
+			if(i<str.length()-1 && str.charAt(i)==str.charAt(i+1))
+			{
+				cnt++;
+			}
+			else
+			{
+				sb.append(str.charAt(i)).append(cnt);
+				cnt=1;
+			}
+		}
+		System.out.println(sb.toString());
+	}
+}
+
+
+Q) Write a java program to display number of 2's ?
+
+input:
+	22
+
+output:
+	6 (2,12,20,21,22)
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int n=22;
+		
+		StringBuffer sb = new StringBuffer();
+		
+		for(int i=1;i<=n;i++)
+		{
+			sb.append(i);	
+		}
+		
+		//count number of 2's
+		int cnt=0;
+		for(int i=0;i<sb.length();i++)
+		{
+			if(sb.charAt(i)=='2')
+			{
+				cnt++;
+			}
+		}
+		System.out.println(cnt);
+	}
+}
+
+
+StringBuilder 
+============
+StringBuilder is exactly same as StringBuffer with following differences.
+
+StringBuffer					StringBuilder 
+--------------					-------------
+Methods are synchronized.			Methods are not synchronized.
+
+At a time only one thread is allowed to		At a time multiple threads are allowed to 
+operate on StringBuffer object. Hence 		operator on StringBuilder object. Hence 
+StringBuffer is thread safe.			StringBuilder is not thread safe.
+
+Effectively performance is low because threads 	Effectively performance is high because 
+have to wait.					there is no waiting threads.
+
+It is introduced in 1.0 version.		It is introduced in 1.5 version.
+
+
+Q) Write a java program to display reverse of a given number?
+
+input:
+	123
+
+output:
+	321
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int n=123;
+		
+		//convert int to string 
+		String str = Integer.toString(n);
+		
+		StringBuilder sb = new StringBuilder(str);
+		str = sb.reverse().toString();
+		
+		//convert string to int 
+		n = Integer.parseInt(str);
+		System.out.println(n); 
+	}
+}
+
+Note:
+-----
+If our content fixed then we need to use String.
+
+If our content change frequently where thread safety is required then we need to use StringBuffer.
+
+If our content change frequently where thread safety is not required then we need to use 
+StringBuilder.
+
+
+
+StringTokenizer 
+===============
+StringTokenizer is a class which is present in java.util package.
+
+StringTokenizer class is used to tokenize the string irrespective of regular expression.
+
+We can create StringTokenizer object as follow.
+
+ex:
+	StringTokenizer st = new StringTokenizer(String s,RegularExpression regex);
+
+StringTokenizer class contains following methods.
+ex:
+	public boolean hasMoreTokens()
+	public String nextToken()
+	public boolean hasMoreElements()
+	public Object nextElement()
+	public void countTokens()
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st = new StringTokenizer("this is java class"," ");
+		System.out.println(st.countTokens());
+	}
+}
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st = new StringTokenizer("this is java class"," ");
+		while(st.hasMoreTokens())
+		{
+			String str = st.nextToken();
+			System.out.println(str);
+		}
+	}
+}
+
+ex:
+---
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st = new StringTokenizer("this is java class"," ");
+		while(st.hasMoreElements())
+		{
+			String str = (String)st.nextElement();
+			System.out.println(str);
+		}
+	}
+}
+
+ex:
+--
+import java.util.StringTokenizer;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		StringTokenizer st = new StringTokenizer("9,99,999",",");
+		while(st.hasMoreElements())
+		{
+			String str = (String)st.nextElement();
+			System.out.println(str);
+		}
+	}
+}
+
+Random class
+============
+Random class present in java.util package.
+
+It is used to generate pseudo random numbers.
+
+ex:
+---
+import java.util.Random;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Random r = new Random();
+		int n = r.nextInt();
+		System.out.println(n); 
+	}
+}
+
+ex:
+---
+import java.util.Random;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Random r = new Random();
+		int n = r.nextInt(100);
+		System.out.println(n); 
+	}
+}
+
+ex:
+---
+import java.util.Random;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Random r = new Random();
+		int n = r.nextInt(30,60);
+		System.out.println(n); 
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

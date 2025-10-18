@@ -1,0 +1,542 @@
+Paragraph Tag 
+=============
+It is used to specify paragraph in HTML.
+ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<p>
+		HTML is widely used language on web to develop web pages and 
+		web applications and it is developed by burner's lee in late 1991
+		</p>	
+	</body>
+</html>
+
+
+Q) What is the difference between <b> tag and <strong> tag?
+
+<b> tag 
+-------
+It is used to display the text in bold without importance.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<b>Bold Tag</b>
+	</body>
+</html>
+
+<strong>
+--------
+It is used to display the text in bold with importance.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<strong>Strong Tag</strong>
+	</body>
+</html>
+
+
+Q) What is the difference between <i> tag and <em> tag?
+
+<i> tag 
+-------
+It is used to display the text in italic without force.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<i>Italic Tag</i>
+	</body>
+</html>
+
+
+<em> tag (Emphasize Tag)
+----------------------
+It is used to display the text in italic with force.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<em>Emphasize Tag</em>
+	</body>
+</html>
+
+
+underline tag 
+=================
+A <u> tag is used to display the text in underline.
+
+HTML5 does not support <u> tag.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<u>Underline Tag</u> 
+	</body>
+</html>
+
+center Tag 
+============
+It is used to display text in center.
+
+HTML5 does not support center tag.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>Center Tag</center>
+	</body>
+</html>
+
+
+font tag
+========
+It is used to specify text color, size and font family.
+
+HTML5 does not support font tag.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<font color="red" size="6" face="monospace">
+			This is HTML class
+		</font>
+	</body>
+</html>
+
+ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<font color="red" size="6" face="serif">
+			This is HTML class
+		</font>
+	</body>
+</html>
+
+ex:
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<font color="red" size="6" face="cursive">
+			This is HTML class
+		</font>
+	</body>
+</html>
+
+Marquee Tag 
+==========
+It is used to scroll the text.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<marquee direction="left">
+			This is HTML class for Beginners
+		</marquee>
+	</body>
+</html>
+
+ex:
+--
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<marquee direction="right">
+			This is HTML class for Beginners
+		</marquee>
+	</body>
+</html>
+
+Nested Tags in HTML 
+===================
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<center>
+			<h1>
+				<font color="blue">
+					This is HTML class
+				</font>
+			</h1>
+		</center>
+	</body>
+</html>
+
+
+Phrase Tags 
+==============
+Phrase tags are special purpose tags they defined special meaning to the text or block of text.
+
+We have following list of phrase tags in HTML.
+
+1) Abbreviation - <abbr>
+2) Keyboard     - <kbd>
+3) address      - <address>
+4) short quote  - <q> 
+5) Strike       - <s> 
+6) variable     - <var>
+7) sample       - <samp>
+8) blockquote   - <blockquote> 
+9) cite		- <cite>
+10) mark	- <mark> 
+11) subscript   - <sub>
+12) superscript   - <sup> 
+13) bi directional order - <bdo> 
+14) code        - <code>
+15) Preformatted tag - <pre> 
+and etc.
+ 
+1) Abbreviation - <abbr>
+-------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<abbr title="HyperText Markup Language">HTML</abbr> is widely used language on web.
+	</body>
+</html>
+
+2) Keyboard     - <kbd>
+-----------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<p>To copy press CTRL + C </p>	
+
+		<p>To copy press <kbd>CTRL + C</kbd> </p>		
+	</body>
+</html>
+
+
+3) address      - <address>
+---------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<address>
+			1-6-78/1/A, Nilgiri Block, Ameerpet, Hyderabad-36
+		</address>		
+	</body>
+</html>
+
+4) short quote  - <q> 
+---------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<q>This is HTML class for beginners</q>		
+	</body>
+</html>
+
+5) Strike       - <s>
+----------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		This is <s>Java</s> Class	
+	</body>
+</html>
+
+6) variable     - <var>
+-----------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		int <var>a</var> = 10;	
+	</body>
+</html>
+
+7) sample       - <samp>
+--------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<var>a=10;</var>
+		<var>b=20;</var>
+		<samp>30</samp>
+	</body>
+</html>
+
+8) blockquote   - <blockquote> 
+--------------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<blockquote>
+			This is HTML class for beginners.
+			HTML is widely used language to develop static web pages.
+		</blockquote>
+	</body>
+</html>
+
+9) cite		- <cite>
+-------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		Movie Name : <cite> OG </cite>
+	</body>
+</html>
+
+10) mark	- <mark>
+-------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		I am planning to <mark>quit</mark> the job
+	</body>
+</html>
+
+11) subscript   - <sub>
+-------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<h1> H<sub>2</sub>O </h1>
+	</body>
+</html>	
+
+12) superscript   - <sup>
+--------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<h1> X<sup>2</sup>+Y<sup>2</sup> </h1>
+	</body>
+</html>
+
+13) bi directional order - <bdo>
+---------------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<bdo dir="rtl">Hello</bdo>
+	</body>
+</html>
+
+14) code        - <code>
+--------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<code>
+			void main()
+			{	
+				clrscr();
+				printf("Hello World");
+				getch();
+			}	
+		</code>		
+	</body>
+</html>
+
+15) Preformatted tag - <pre>
+---------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<code>
+			<pre>
+			void main()
+			{	
+				clrscr();
+				printf("Hello World");
+				getch();
+			}
+			</pre>	
+		</code>		
+	</body>
+</html>
+
+HTML image Tag 
+===============
+A <img> tag is used to display the images in a web page.
+
+It it is a opening tag and does not have any closing tag.
+
+It contains only attributes as given below.
+
+ex:
+	Attribute		Description 
+	----------		-----------
+	src			It is used to locate an image
+	width 			It is used to adjust the width of an image
+	height 			It is used to adjust the height of an image 
+	alt 			It is used to display alternate msg if image is not found
+
+We have following list of images.
+ex:
+	File Format	Abbreviation 
+	----------	-------------
+	JPEG		Joint Photographic Expert Group
+	PNG 		Portable Network Graphics	
+	SVG		Scalable Vector Graphics
+	GIF		Graphical Interchange Format.
+	and etc.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<img src="images/rock.jpg" width="200px" height="200px"/>	
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<img src="images/rock.png" width="200px" height="200px" alt="No Image"/>	
+	</body>
+</html>
+
+ex:
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1WThIselRFXoN9ak9fviFm_GL6pQWIOciWw&s" width="400px" height="200px" alt="No Image"/>	
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

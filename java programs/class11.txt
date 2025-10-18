@@ -1,0 +1,258 @@
+Q) Write a java program to display range of byte datatype?
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		System.out.println(Byte.MIN_VALUE);
+		System.out.println(Byte.MAX_VALUE);
+	}
+}
+
+Q) Write a java program to display range of short datatype?
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		System.out.println(Short.MIN_VALUE);
+		System.out.println(Short.MAX_VALUE);
+	}
+}
+
+
+Q) Write a java program to display range of int datatype?
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		System.out.println(Integer.MIN_VALUE);
+		System.out.println(Integer.MAX_VALUE);
+	}
+}
+
+Q) Write a java program to display range of char datatype?
+
+class Test
+{
+	public static void main(String[] args)
+	{
+		System.out.println((int) Character.MIN_VALUE);
+		System.out.println((int) Character.MAX_VALUE);
+	}
+}
+
+
+Interview Question 
+===================
+
+Q) Is Java purly object oriented or not?
+
+No, java will not consider as purely object oriented programming language because it does not support many OOPS cocepts like multiple inheritance, operator overloading and more ever we depends upon primitive datatypes which are non-objects.
+
+
+Types of variables
+===================
+A name which is given to a memory location is called variable.
+
+Purpose of variable is used to store the data.
+
+In java, variables are divided into two types.
+
+1) Primitive variables 
+---------------------
+	Primitive variables are used to represent primitive values.
+
+2) Reference variables 
+----------------------
+	Reference variables are used to represent object.
+	ex:
+		Student s = new Student();
+			|
+		reference variable 
+
+Based on the position and execution above variables are categories into three types.
+
+1) Instance variables / Non-static variables 
+
+2) Static variables / Global variables 
+
+3) Local variables / Temperory variables 
+
+
+1) Instance variables
+-----------------------
+A value of a variable which is varied(changes) from object to object is called instance variable.
+
+Instance variable will be created at the time of object creation and it will destroy at the time of object destruction. Hence scope of instance variable is same as scope of an object.
+
+Instance variables stored in heap area as a part of an object.
+
+Instance variable must and should declare immediately after the class but not inside methods, blocks and constructors.
+
+Instance variable we can access directly from instance area but we can't access from static area.
+
+To access instance variable from static area we need to create object reference.
+
+ex:1
+-----
+class Test
+{
+	//instance variable 
+	int i=10;
+
+	public static void main(String[] args)
+	{
+		System.out.println(i); // C.T.E 		
+	}
+}
+
+ex:2
+-----
+class Test
+{
+	//instance variable 
+	int i=10;
+
+	public static void main(String[] args)
+	{
+		Test t = new Test();
+		System.out.println(t.i); // 10		
+	}
+}
+
+Note:
+-----
+If we wont't initialize any value to instance variable then JVM will initialized default values.
+
+ex:3
+----
+class Test
+{
+	//instance variable 
+	boolean b;
+
+	public static void main(String[] args)
+	{
+		Test t = new Test();
+		System.out.println(t.b); // false	
+	}
+}
+
+In instance variables , for every object a seperate copy of instance variable will be created.
+
+ex:4
+----
+class Test
+{
+	//instance variable 
+	int i=10;
+
+	public static void main(String[] args)
+	{
+		Test t1=new Test();
+		Test t2=new Test();
+
+		System.out.println(t1.i); // 10
+		System.out.println(t2.i); // 10	
+
+		t1.i=100;
+		
+		System.out.println(t1.i); // 100
+		System.out.println(t2.i); // 10	
+	}
+}
+
+ex:5
+----
+class Test
+{
+	public static void main(String[] args)
+	{
+		Test t=new Test();
+		t.methodOne();
+	}
+
+	//non-static method 
+	public void methodOne()
+	{	
+		System.out.println("instance-method");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

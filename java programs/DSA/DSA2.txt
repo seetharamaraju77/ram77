@@ -1,0 +1,350 @@
+Data Structures 
+===============
+It is a specialized format to organizing, managing and storing the data in a computer so that we can access and modify efficiently.
+
+Data structures describe how can we store the data efficiently and save some memory.
+
+We have two types of data structures.
+
+Diagram: DSA2.1
+
+Primitive data structures are used to store single values i.e integer,float,boolean and char.
+
+Primitive data structures are not designed for bunch of data.
+
+Non-Primitive data structures are designed for large amount of data.
+
+There are four ways to learn data structures.
+
+1) Learn at least one programming language.
+   ex:
+	C, C++, Java, Python 
+
+2) Learn complexities.
+   ex:
+	Time complexity 
+	Space complexity 	 
+
+3) Learn Data Structures and Algorithms 
+   ex:
+	Data Structure		Algorithm 
+	--------------		----------
+	String			Searching 			 
+	Array 			Sorting 
+	LinkedList 		Divide and Conquer
+	Stack 			Hashing 
+	Queue 			Recursion 
+	Trees			Dynamic programming 
+	Graphs 			Tree and Graph Traversal
+	
+4) Practive all programs on DSA platforms.
+   ex:
+	HackerRank 
+	LeetCode 
+	CodeChef 
+	and etc. 
+   
+
+Pseudo Code 
+===========
+It is a simplified , humand readable describtion of a algorithm which is used to outline the logic of algorithm or a program.
+
+It is a not a actual programming language but makes programmers to understand and design algorithms before coding them in a perticular language.
+
+Diagram: DSA2.2
+
+
+Q) Write a pseudo code to perform sum of two numbers?
+
+
+	BEGIN 
+		DECLARE a,b;
+
+		PRINT "Enter the First number"
+		INPUT a 
+
+		PRINT "Enter the Second number"
+		INPUT b
+
+		sum = a+b;
+
+		PRINT sum
+	END 
+
+Flowchart : DSA2.3
+
+
+Java program 
+-------------
+import java.util.Scanner;
+class Test
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();
+
+		int c = a + b;
+		
+		System.out.println(c); 
+	}
+}
+
+.Net Program 
+-------------
+using System;
+class Test
+{
+	static void Main()
+	{
+		Console.WriteLine("Enter the first number");
+		int a = int.Parse(Console.ReadLine());
+
+		Console.WriteLine("Enter the second number");
+		int b = int.Parse(Console.ReadLine());
+
+		int c = a + b;
+
+		Console.WriteLine($"sum of two numbers is = {c}");
+	}
+}
+
+Python program 
+---------------
+a = int(input("Enter the first number"));
+b = int(input("Enter the second number"));
+
+c = a + b;
+
+print(f"sum of two numbers is = {c}");
+
+
+Time complexity 
+=================
+Time complexity measures execution time of an algorithm based on input size.
+
+It is expressed by big 'O' notation and provides upper bond on the growth rate.
+
+ex:
+	O(1) 
+	O(n) 
+	and etc.
+
+
+
+Linear Search 
+=============
+In linear search we sequentially visit each element of an array untill that target element is found.
+
+Linear search can be used for sorted array and unsorted array.
+
+Sample Example:
+	input:
+			arr = 6 9 1 5 2 8 4	
+			target = 4
+	output:
+			6
+Time complexity :
+
+	Best Case  :	O(1)
+	Worst Case :    O(n) 
+
+Diagram: DSA2.4	
+
+Space complexity :  O(1) 
+			
+	
+Program1
+---------
+input:
+	arr = 6 9 1 5 2 8 4	
+	target = 5
+output:
+	3
+
+
+class LinearSearchProgram 
+{
+	public static void main(String[] args)
+	{
+		int[] arr = {6,9,1,5,2,8,4};	
+		int target = 5;
+		
+		//caller method 
+		int index=linearSearch(arr,target);
+		if(index!=-1)
+			System.out.println("Element found in "+index+" index");
+		else
+			System.out.println("Element Not Found");
+	}
+	//callie method 
+	public static int linearSearch(int[] arr,int target)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==target)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+
+program2
+--------
+class LinearSearchProgram 
+{
+	public static void main(String[] args)
+	{
+		String[] fruits = {"apple","banana","graphs","mango","orange"};
+		String target = "orange";
+		
+		//caller method 
+		int index=linearSearch(fruits,target);
+		if(index!=-1)
+			System.out.println("Element found in "+index+" index");
+		else
+			System.out.println("Element Not Found");
+	}
+	//callie method 
+	public static int linearSearch(String[] fruits,String target)
+	{
+		for(int i=0;i<fruits.length;i++)
+		{
+			if(fruits[i].equals(target))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+}
+
+Program:3
+----------
+Q) Write a java program to find out number of occurance of a given number?
+
+input:
+	arr = 6 9 2 3 2 4 7 2 1 
+	target = 2
+
+output:
+	3	
+
+
+class LinearSearchProgram 
+{
+	public static void main(String[] args)
+	{
+		int[] arr = {6,9,2,3,2,4,7,2,1};
+		int target = 2;
+		
+		//caller method 
+		int result=linearSearch(arr,target);
+		
+		if(result>0)
+			System.out.println("Element present for "+result+" times");
+		else
+			System.out.println("Element Not Found");
+	}
+	//callie method 
+	public static int linearSearch(int[] arr,int target)
+	{
+		int cnt=0;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==target)
+			{
+				cnt++;
+			}
+		}
+		return cnt;
+	}
+}
+
+Program :4
+-----------
+Write a java program to find out last occurance of a given element?
+
+input:
+	arr = 6 9 2 3 2 4 7 2 1 
+	target = 2
+
+output:
+	7	
+
+class LinearSearchProgram 
+{
+	public static void main(String[] args)
+	{
+		int[] arr = {6,9,2,3,2,4,7,2,1};
+		int target = 2;
+		
+		//caller method 
+		int index=linearSearch(arr,target);
+		
+		if(index!=-1)
+			System.out.println("Element present in "+index+" index");
+		else
+			System.out.println("Element Not Found");
+	}
+	//callie method 
+	public static int linearSearch(int[] arr,int target)
+	{
+		int index=-1;
+		for(int i=0;i<arr.length;i++)
+		{
+			if(arr[i]==target)
+			{
+				index=i;
+			}
+		}
+		return index;
+	}
+}
+	
+
+
+Assignment 
+==========
+Q) Write a pseudo code to check given number is even or odd and draw flow chart?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

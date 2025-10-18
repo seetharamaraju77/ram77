@@ -1,0 +1,92 @@
+Institute Name 	: QualityThought / Ihub Talent Management 
+
+Websites	: www.qualitythought.in / www.ihubtalent.com 
+
+Location	: Ameerpet, Hyderabad.
+
+Trainer Name	: Niyaz Sir 
+
+Experience	: 15+ years of experience in development and training.
+
+Course Name	: Full Stack Java Development 
+
+Duration	: 5 Months 
+
+Mode		: Online/Offline 
+
+Batch No	: IH-JAVA-051
+
+Recordings	: Free 
+
+Project		: Employee Management System (ReactJS + Spring Boot + MySQL)
+
+Addition classes: Aptitute classes, Soft skills classes, Practical classes.
+
+Cloud		: AWS 
+
+Coding Skills	: DSA 
+
+Placement 	: Placement Officer
+
+
+				Full Stack Java Development  
+					|
+		|--------------------------------------------|
+	Frontend Technologies				Backend Technologies 
+
+	> HTML5						> Core Java
+	> CSS3						> Advanced Java 
+	> JavaScript 					> Oracle DB 
+	> Bootstrap5					> Frameworks
+	> ReactJS 						> Spring Boot 
+								> Microservices
+								> Spring AI
+ 
+Java
+=====
+Object oriented programming language.
+Platform independent programming language.
+Case sensitive programming language.
+Strongly typed checking language.
+High level language.
+Open source programming language.
+
+1995 --> James Gosling  --> Sun Micro System (Oracle Corporation)
+Java software --> JDK software
+	
+C 
+===
+Procedure oriented programming language. 
+Platform dependent programming language.
+Case sensitive programming language.
+Loosely typed checking language.
+Middle level language (Low + High).
+
+Interview Question 
+=================
+
+Q) What is Java?
+
+Java is a object oriented, platform independent, case sensitive, strongly typed checking, high level, open source programming language developed by James Gosling in the year of 1995.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

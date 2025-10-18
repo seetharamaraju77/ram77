@@ -1,0 +1,240 @@
+What is Servlet
+===============
+It is a dynamic web resource program which is used to enhance the functionality of web server, application server or IDE's server.
+
+or
+
+It is a server side java based web resource program that is used to generate dynamic web pages.
+
+or
+
+It is a single instance multithread java based web resource program which is used to develop web applications.
+
+Diagram: servlet2.1
+
+
+Servlet API
+===========
+API is a collection of packages.
+ex:
+	javax.servlet.*;
+	javax.servlet.http.*;
+
+
+First web application development having servlet program as web resource program
+================================================================================
+Diagram: servlet2.2
+
+Deployment Directory Structure 
+------------------------------
+DateApp
+|
+|---Java Resources
+|	|
+	|-----src
+		|
+		|---com.ihub.www
+			|
+			|---DateSrv.java
+|---WebContent 
+	|
+	|---WEB-INF
+		|
+		|---web.xml 
+Note:
+-----
+In above application we need to add "servlet-api.jar" file in project build path.
+
+step1:
+-----
+	Launch eclipse IDE by choosing workspace location.
+
+step2:
+-----
+	Create a dynamic web project i.e DateApp.
+	ex:
+		File --> New --> Dynamic web project --> 
+		Project Name : DateApp --> Next --> Next --> 
+		click to Generate web.xml file (checkbox) --> Finish.  
+
+step3:
+------
+	Add "servlet-api.jar" file in project build path.
+	ex:
+		Right click to DateApp project --> Build Path --> Configure Build Path
+		--> Libraries --> add external jars --> select servlet-api.jar file 
+		--> Apply and close.
+
+step4:
+------
+	Create a "com.ihub.www" package inside "Java Resources/src" folder.
+ 
+
+step5:
+------
+	Create a "DateSrv.java" file inside "com.ihub.www" package.
+
+DateSrv.java
+------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+public class DateSrv extends GenericServlet 
+{
+	public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException 
+	{
+		PrintWriter pw = res.getWriter();
+		res.setContentType("text/html");
+		
+		Date d = new Date();
+		pw.println("<center><h1>Current Date and Time <br> "+d+" </h1></center>");
+		
+		pw.close();
+	}
+}
+
+step6:
+-----	
+	Configure servlet program in web.xml file.
+
+web.xml 
+--------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <servlet>
+  		<servlet-name>DateSrv</servlet-name>
+  		<servlet-class>com.ihub.www.DateSrv</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>DateSrv</servlet-name>
+  		<url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
+
+
+step7:
+-----
+	Add Tomcat 9.0 server to eclipse IDE.
+	ex:
+		window --> preferences ---> server --> Runtime Environment -->
+		click to add button --> Select Apache Tomcat 9.0 ---> Next --->
+		select Tomcat installation directory --> Finish --> Apply and Close.
+
+step8:
+------
+	Run dynamic web project.
+	ex:
+		Right click to DateApp project --> run as --> run on server -->
+		select Apache Tomcat 9.0  ---> Next --> Finish.
+
+step9:
+-----
+	Test the application by using below request url.
+	ex:
+		http://localhost:2525/DateApp/test
+
+
+
+Interview Question 
+==================
+Q) Write a java program to display below loop pattern?
+
+1
+1 # 2 
+1 # 2 # 3 
+1 # 2 # 3 # 4
+
+package com.ihub.www;
+
+public class LoopPattern1 
+{
+	public static void main(String[] args) 
+	{
+		//rows
+		for(int i=1;i<=4;i++)
+		{
+			//cols
+			for(int j=1;j<=i;j++)
+			{
+				if(j==1)
+					System.out.print(j);
+				else
+					System.out.print(" # "+j);
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

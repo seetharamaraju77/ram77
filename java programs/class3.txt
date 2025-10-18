@@ -1,0 +1,152 @@
+Comments in Java
+================
+Comments are created for documentation purpose.
+
+Comments are used to improve readability of our code.
+
+It is highly recommanded to use comments in our regular programming.
+
+Diagram : class3.1
+
+Comments will not display in output because they won't compiled by the compiler.
+
+In java, we have two types of comments.
+
+1) Single Line Comment 
+---------------------
+	It is used to comment a single line.
+	ex:
+		// comment here 
+
+2) Multiple Line Comment 
+------------------------
+	It is used to comment multiple lines.
+	ex:
+		/*
+			-
+			- comment here 
+			-
+		*/
+
+ex:
+---
+//class declaration 
+class Test
+{
+
+	//main method 
+	public static void main(String[] args)
+	{
+
+		//variable declaration 
+		int x = 10;
+
+		//output stmt
+		System.out.println(x); 
+	}
+}
+
+
+Project 
+========
+It is an individual or collaborative enterprise that is carefully planned to achieve a particular aim/goal.
+
+Technically, a project is a collection of modules.
+
+We have following list of modules.
+
+ex:
+	registration module 
+	login module 
+	admin module 
+	payment module 
+	report generation module 
+	and etc.	
+
+Every project contains two domains.
+
+1) Technical Domain 
+------------------
+	Technical domain describes using which technology we developed our project.
+	ex:
+		Java
+
+2) Functional Domain 
+------------------
+	Functional domain describes state of a project.
+	ex:
+		Healthcare domain 
+		Banking domain 
+		ERP domain 
+		Insaurance domain 
+		and etc.
+
+Interview Questions
+===================
+
+Q) What is the difference between JDK, JRE and JVM?
+
+JDK 
+-----
+JDK stands for Java Development Kit.
+
+JDK is a installable software which consist Java Runtime Environment (JRE), Java Virtual Machine (JVM), compiler (javac), interpreter (java), an archiever (.jar) , document generator (javadoc) and other tools needed for java application development.
+
+JRE 
+----
+JRE stands for Java Runtime Environment.
+It is a part of a JDK that provides very good environment to run java applications only.
+
+JVM
+---
+JVM stands for Java Virtual Machine.
+It is a part of a JRE that is used to execute our program line by line procedure.
+
+Diagram: class3.2
+
+
+Q) Is java platform dependent or independent?
+
+Java consider as platform independent at byte code level.
+Java is also known as WORA i.e Write Once Run Anywhere.
+
+Diagram: class3.3
+
+
+
+Q) Is JVM platform dependent or independent?
+
+JVM consider as platform dependent.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

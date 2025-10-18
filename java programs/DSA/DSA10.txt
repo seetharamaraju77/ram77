@@ -1,0 +1,351 @@
+Binary Tree 
+===========
+Binary tree is a data structure where each node has at most two child. 
+Commenly refers as left child and right child.
+
+Diagram: DSA10.1
+
+Binary Search Tree 
+==================
+In binary search tree our left node must be less then parent and right node must be greater then parent.
+
+Time Complexity : O(n long n)
+
+Inputs : 
+		8 7 12 15 2 5
+
+Diagram: DSA10.2
+
+ex:
+----
+class BST 
+{
+	class Node
+	{
+		int data;
+		Node left;
+		Node right;
+		public Node(int data)
+		{
+			this.data=data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	public void inOrder()
+	{
+		inOrderRec(root);
+	}
+	public void inOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			inOrderRec(root.left);
+			System.out.print(root.data+" ");
+			inOrderRec(root.right);
+		}
+	}
+	
+}
+class BinarySearchTree
+{
+	public static void main(String[] args) 
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.inOrder();
+	}
+}
+
+
+Note:
+----
+	We have three types of Tree traverser's.
+	ex:
+		1) In Order  - left , parent , right 
+
+		2) Pre Order - parent ,left, right
+
+		3) Post Order - left , right , parent 		
+
+ex:
+---
+class BST 
+{
+	class Node
+	{
+		int data;
+		Node left;
+		Node right;
+		public Node(int data)
+		{
+			this.data=data;
+		}
+	}
+	Node root;
+	public void insert(int data)
+	{
+		root = insertRec(root,data);
+	}
+	public Node insertRec(Node root,int data)
+	{
+		if(root==null)
+			root = new Node(data);
+		else if(data < root.data)
+			root.left = insertRec(root.left,data);
+		else if(data > root.data)
+			root.right = insertRec(root.right,data);
+		
+		return root;
+	}
+	public void preOrder()
+	{
+		preOrderRec(root);
+	}
+	public void preOrderRec(Node root)
+	{
+		if(root!=null)
+		{
+			System.out.print(root.data+" ");
+			preOrderRec(root.left);
+			preOrderRec(root.right);
+		}
+	}
+	
+}
+class BinarySearchTree
+{
+	public static void main(String[] args) 
+	{
+		BST bst = new BST();
+		bst.insert(8);
+		bst.insert(7);
+		bst.insert(12);
+		bst.insert(15);
+		bst.insert(2);
+		bst.insert(5);
+		
+		bst.preOrder();
+	}
+}
+
+
+Search method in LinkedList 
+===========================
+class LinkedList
+{
+	class Node
+	{
+		int data;
+		Node next;
+		public Node(int data)
+		{
+			this.data=data;
+			this.next=null;
+		}
+	}
+	
+	Node head;
+	public void add(int data)
+	{
+		Node newNode = new Node(data);
+		
+		if(head==null)
+		{
+			head=newNode;
+		}
+		else
+		{
+			Node current=head;
+			while(current.next!=null)
+			{
+				current = current.next;
+			}
+			current.next=newNode;
+		}
+	}
+	public void printData()
+	{
+		Node current = head;
+		while(current!=null)
+		{
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+	}
+	public boolean search(int key)
+	{
+		Node current = head;
+		while(current!=null)
+		{
+			if(current.data==key)
+			{
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+}
+class SingularLinkedList 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.add(7);
+		ll.add(9); 
+		
+		ll.printData();
+		
+		System.out.println();
+		System.out.println("Element Found : "+ll.search(7));
+	}
+}
+
+delete method in LinkedList 
+============================
+Diagram: DSA10.3
+
+class LinkedList
+{
+	class Node
+	{
+		int data;
+		Node next;
+		public Node(int data)
+		{
+			this.data=data;
+			this.next=null;
+		}
+	}
+	
+	Node head;
+	public void add(int data)
+	{
+		Node newNode = new Node(data);
+		
+		if(head==null)
+		{
+			head=newNode;
+		}
+		else
+		{
+			Node current=head;
+			while(current.next!=null)
+			{
+				current = current.next;
+			}
+			current.next=newNode;
+		}
+	}
+	public void printData()
+	{
+		Node current = head;
+		while(current!=null)
+		{
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+	}
+	public boolean search(int key)
+	{
+		Node current = head;
+		while(current!=null)
+		{
+			if(current.data==key)
+			{
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+	public void delete(int key)
+	{
+		if(head.data==key)
+		{
+			head = head.next;
+		}
+		else
+		{
+			Node current = head;
+			while(current != null)
+			{
+				if(current.next!=null && current.next.data == key)
+				{
+					current.next = current.next.next;
+				}
+				current = current.next;
+			}
+		}
+	}
+}
+class SingularLinkedList 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.add(7);
+		ll.add(9); 
+		
+		ll.printData();
+		
+		System.out.println();
+		System.out.println("Element Found : "+ll.search(7));
+		
+		ll.delete(7);
+		
+		ll.printData();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

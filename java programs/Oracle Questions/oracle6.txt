@@ -1,0 +1,325 @@
+2)Scalar functions 
+===================
+Scalar functions are applicable for single row.
+
+It is categories into four types.
+
+i) Character Functions 
+
+ii) Number Functions 
+
+iii) Date Functions 
+
+iv) Conversion Functions 
+
+
+i) Character Functions 
+-----------------------
+We have following list of character functions.
+
+lower()
+------
+	select lower('ORACLE TRAINING') from dual;
+
+upper()
+-------
+	select upper('oracle training') from dual;
+
+initcap()
+---------
+	select initcap('oracle training') from dual;
+
+
+lpad()
+------
+	select lpad('oracle',10,'z') from dual;
+	
+
+rpad()
+------
+	select rpad('oracle',10,'z') from dual;
+
+
+ltrim()
+-------
+	select ltrim('zzoraclezz','z') from dual;
+
+
+rtrim()
+-------
+	select rtrim('zzoraclezz','z') from dual;
+
+
+trim()
+------
+	select trim('z' from 'zzoraclezz') from dual;
+
+
+replace()
+----------
+	select replace('oracle','a','A') from dual;
+
+ii) Number Functions 
+--------------------
+
+abs()
+-----
+	select abs(10.56) from dual; // 10.56
+	select abs(-10.56) from dual; // 10.56	
+sqrt()
+-----
+	select sqrt(25) from dual; // 5 
+
+power()
+-------
+	select power(5,3) from dual; //125
+
+ceil()
+------
+	select ceil(10.4) from dual; // 11 
+	select ceil(9.7) from dual; // 10 
+
+floor()
+-------
+	select floor(10.5) from dual; // 10
+	select floor(12.9) from dual; // 12 
+
+round()
+--------
+	select round(10.4) from dual; // 10
+	select round(10.5) from dual; // 11 
+
+trunc()
+-------
+	select trunc(10.56) from dual; // 10 
+	select trunc(145.2345) from dual; // 145
+
+greatest()
+---------
+	select greatest(6,9,1,2) from dual; // 9 
+
+least() 
+--------
+	select least(6,9,1,2) from dual; 
+
+Working with Date values 
+========================
+Every database software support different date patterns.
+ex:
+	oracle 	-	dd-MMM-yy
+	MySQL	- 	yyyy-MM-dd
+	and etc.
+
+
+drop table emp1;
+create table emp1(eid number(3),ename varchar2(10),edoj date);
+insert into emp1 values(501,'Alan','01-JAN-25');
+insert into emp1 values(502,'Jack',sysdate);
+insert into emp1 values(503,'Nelson',current_date);
+commit;
+select * from emp1;
+	
+
+
+iii) Date Functions 
+--------------------
+
+ADD_MONTHS()
+-------------
+	select ADD_MONTHS('01-JAN-25',5) from dual;	
+
+MONTHS_BETWEEN()
+-----------------
+	select MONTHS_BETWEEN('01-JAN-25','01-AUG-25') from dual;
+	select ABS(MONTHS_BETWEEN('01-JAN-25','15-AUG-25')) from dual;
+
+
+NEXT_DAY()
+-----------
+	select NEXT_DAY(current_date,'sunday') from dual;
+	select NEXT_DAY(current_date,'tuesday') from dual;
+
+
+LAST_DAY() 
+----------
+	select LAST_DAY(current_date) from dual;
+	select LAST_DAY('02-FEB-25') from dual;
+
+
+4) Conversion Functions
+-------------------------
+Conversion functions are used to convert from type to another type.
+
+ex:
+	TO_CHAR() 
+
+We have two pseudo's for TO_CHAR() function.
+
+i) Number TO_CHAR() 
+---------------------
+It accept only 9 in digits, dollar, euro's symbol.
+
+ex:
+	select eid,ename,esal from emp;
+	select eid,ename,TO_CHAR(esal,'99,999') from emp;
+	select eid,ename,TO_CHAR(esal,'99,999') AS ESAL from emp;
+	select eid,ename,TO_CHAR(esal,'$99,999') AS ESAL from emp;
+
+ii) Date TO_CHAR()
+------------------
+	select TO_CHAR(sysdate,'dd-MM-yyyy') from dual;
+	select TO_CHAR(sysdate,'yyyy-MM-dd') from dual;
+	select TO_CHAR(sysdate,'year') from dual;
+	select TO_CHAR(sysdate,'month') from dual;
+	select TO_CHAR(sysdate,'day') from dual;
+	select TO_CHAR(sysdate,'yyyy') from dual;
+	select TO_CHAR(sysdate,'MM') from dual;
+	select TO_CHAR(sysdate,'dd') from dual;
+	select TO_CHAR(sysdate,'HH:MI:SS') from dual;
+	select TO_CHAR(sysdate,'dd-MM-yyyy HH:MI:SS') from dual;
+
+	
+Q) Write a query to display employees information from emp table?
+
+	select * from emp;
+
+	select eid as id, 
+		upper(ename) as ename,
+		  TO_CHAR(esal,'$99,999') as SALARY,
+			deptno ,
+			    lower(job) as Designation,
+				comm from emp; 
+
+Group By clause 
+===============
+It is used divide the rows into groups so that we can apply group functions.
+
+Group by clause must be used after where clause.
+
+A column which is used in select clause, same column must used in group by clause.
+
+Q) Write a query to display sum of salary of each department?
+
+	select sum(esal),deptno from emp group by deptno;
+
+
+Q) Write a query to display average salary of each job?
+
+	select avg(esal),job from emp group by job;
+
+
+Q) Write a query to display minimum salary of each job?
+
+	select min(esal),job from emp group by job;
+
+Q) Write a query to display maximum salary of each department?
+
+	select max(esal),deptno from emp group by deptno;
+
+Having clause 
+===============
+Having clause is used to filter the rows in group by clause.
+
+Having clause must be used after group by clause.
+
+
+Q) Write a query to display sum of salary of each department where sum of salary is 
+   greater then 30000?
+
+  select sum(esal),deptno from emp group by deptno having sum(esal)>30000;
+
+
+Q) Write a query to display minimum salary of each job where minimum salary is less then	 10000?
+
+    select min(esal),job from emp group by job having min(esal)<10000;
+
+
+order by clause
+================
+It is used to arrange the rows in a table.
+
+By default it will arrange the rows in ascending order.
+
+Order by clause must be used after having clause.
+
+ex:
+	select * from emp order by eid;
+	select * from emp order by esal;
+	select * from emp order by esal DESC;
+	select * from emp order by ename;
+	select * from emp order by ename desc;
+
+
+Q) Write a query to display sum of salary of each department whose sum of salary is greater then 30000?
+
+	select sum(esal),deptno from emp group by deptno 
+				having sum(esal) > 30000
+				order by deptno;
+
+Q) Write a query to display sum of salary of each department except 20 department and display sum of salary is greater then 30000?
+
+	select sum(esal),deptno from emp where deptno<>20
+				 group by deptno 
+				having sum(esal) > 30000
+				order by deptno;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

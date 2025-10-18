@@ -1,0 +1,216 @@
+To use any JDBC Driver we need to register with DriverManager service.
+
+Every JDBC application contains one built-in service called DriverManager service.
+
+
+Class.forName()
+===============
+It is used to register JDBC driver with DriverManager service.
+
+It is used to load driver class but it won't create an object.
+
+ex:
+	Class.forName("driver-class-name");
+
+
+Connection object
+==================
+Connection is an interface which is present in java.sql package.
+
+It is an object of underlying supplied java class which implements java.sql.Connection interface.
+
+To perform any operation in a database we need to establish the connection.
+
+Once work with database is completed we need to close the connection.
+
+ex:
+	Connection con;
+
+DriverManager.getConnection()
+=============================
+DriverManager is a class which is present in java.sql package.
+
+A getConnection() static method is used to interact with database software and returns JDBC Connection object represent connectivity between java application and database software.
+
+ex:
+	Connection con = DriverManager.getConnection("url","username","password");	
+
+Statement object
+================
+It is an interface which is present in java.sql package.
+
+It acts like a vehicle between java application and database software.
+
+It is used to sends and executes SQL query in database.
+
+We can create Statement object by using createStatement() method of Connection object.
+ex:
+	Statement st = con.createStatement();
+
+
+ResultSet object 
+================
+Every ResulSet contains two positions.
+
+1) BFR (Before First Record/Row)
+
+2) ALR (After Last Record/Row)
+
+By default record pointer points to BFR position.
+
+Every record ResultSet having 1 as base index and every column of record ResultSet having 1 as base index.
+
+Diagram: jdbc2.1
+
+rs.next()
+==========
+It is used to move the record pointer to next position from current position.
+If next position is a record then it returns true. 
+If next position is ALR then it  returns false.
+
+To read the values from record ResultSet we will use getXxx(-) methods with index number or column name.
+
+Here getXxx(-) method means getInt(), getString(), getFloat(), getDouble() and etc.
+
+
+
+Types of queries in JDBC
+========================
+According to JDBC point of view we have two types of queries.
+
+1) Select Query 
+
+2) Non-Select Query 
+
+1) Select Query (DRL)
+---------------------
+It gives bunch of records from database table.
+ex:
+	select * from student;
+
+A JDBC Statement object gave executeQuery() method to execute select query.
+ex:
+	ResultSet rs = st.executeQuery("select * from student");
+
+
+2) Non-Select Query
+--------------------
+It gives numeric value representing number of records effecting in a database table.
+ex:
+	delete from student; 
+
+A JDBC Statement object gave executeUpdate() method to execute non-select query.
+ex:
+	int result = st.executeUpdate("delete from student");
+
+How to steps are there to develop JDBC Application 
+==================================================
+There are six steps to develop JDBC Application.
+
+1) Register JDBC Driver with DriverManager service.
+
+2) Establish the connection with database software.
+
+3) Create Statement object.
+
+4) Sends and executes SQL query in database software.
+
+5) Gather the result from database to process the result.
+
+6) Close all JDBC connection object.
+
+
+Type4 JDBC Driver / Native Protocol Driver 
+===========================================
+
+1) Driver Name 		:	oracle.jdbc.driver.OracleDriver	
+				------------------ ------------
+					pkg-name	class-name
+ 
+						protocol 
+				-----------------------------------
+2) Driver URL 		:	jdbc:oracle:thin:@localhost:1521:XE
+				-----------------   |        |    |
+ 				sub-protocol	hostname portno  logical-db-name
+			
+
+3) Database Username 	:	system 
+
+4) Database Password 	:	admin 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

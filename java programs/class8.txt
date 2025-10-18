@@ -1,0 +1,123 @@
+Internal Architecture of JVM 
+============================
+Diagram: class8.1
+
+Java application contains java code instructions.Our compiler converts java code instructions to byte code instructions in .class file.
+
+JVM invokes one module called classloader or subsystem to load all the byte code instructions from .class file. The work of classloader is to check these byte code instructions are proper or not. If they are not proper then it will refuse the execution. If they are proper then it will allocate the memory. 
+
+We have five memories in java.
+
+1) Method Area 
+-------------
+	It contains code of a class, code of a variable and code of a method.
+
+2) Heap 
+-------
+	Our object creation will store in heap area.
+
+3) Java Stack 
+-------------
+	Java methods store in method area.
+	But to execute those methods we required some memory and that memory is 
+	allocated in java stack.
+
+4) PC Register 
+------------
+	It is a program counter register which is used to track the address of an instructions.
+
+5) Native Method Stack.
+----------------------
+	Java methods execute in method area.
+	Similarly, native methods execute in native method stack. 
+	But to execute native methods we required a program called Native method interface.
+
+
+Execution Engine 
+-----------------
+Execution engine contains interpreter and JIT compiler.
+
+Whenever JVM loads byte code instructions from .class file. It simultenously uses interpreter and JIT compiler.
+
+Interpreter is used to execute our program line by line procedure.
+
+JIT compiler is used to increase the execution speed of our program.
+
+Finally, JVM converts byte code to machine code.
+
+Interview Questions 
+====================
+
+Q) How many memories are there in java?
+
+We have five memories in java.
+1) Method Area 
+2) Heap 
+3) JavaStack
+4) PC Register 
+5) Native Method Stack
+
+
+Q) What is JIT compiler?
+
+JIT compiler is a part of a JVM that is used to increase the execution speed of our program.
+
+
+
+Q) What is Native Method in Java?
+
+Method which is developed by using some other language is called native method.
+
+
+
+Q) How many classloaders are there in java?
+
+We have three predefined classloaders in java.
+
+1) Bootstrap classloader
+
+2) Extension classloader
+
+3) Application/System classloader 
+
+
+Q) What is package?
+
+A package is a collection of classes and interfaces.
+
+
+Q) Which package consider as default package in java?
+
+	java.lang package 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

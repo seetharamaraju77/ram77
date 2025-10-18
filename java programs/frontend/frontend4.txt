@@ -1,0 +1,524 @@
+Notepad++
+==========
+Download link : https://notepad-plus-plus.org/downloads/
+
+
+HTML table 
+==========
+A table is used to represent the data.
+
+A table is a collection of rows and columns.
+
+A <table> tag is used to display the table in a web page.
+
+A <tr> tag is used to represent table row.
+
+A <th> tag is used to represent table heading.
+
+A <td> tag is used to represent table data.
+
+Table heading comes in bold and centered.
+
+Table data comes in normal text and left align.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<table border="0">
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Address</th>
+			</tr>
+			<tr>
+				<td>101</td>
+				<td>Alan</td>
+				<td>Texas</td>
+			</tr>
+			<tr>
+				<td>102</td>
+				<td>Jose</td>
+				<td>Florida</td>
+			</tr>
+			<tr>
+				<td>103</td>
+				<td>Mark</td>
+				<td>Chicago</td>
+			</tr>
+			<tr>
+				<td>104</td>
+				<td>Jessica</td>
+				<td>Los Angeles</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<table border="1" width="50%" align="center">
+		<caption>Employee Details</caption>
+			<tr bgcolor="##00FF00">
+				<th>No</th>
+				<th>Name</th>
+				<th>Address</th>
+			</tr>
+			<tr>
+				<td>101</td>
+				<td>Alan</td>
+				<td>Texas</td>
+			</tr>
+			<tr>
+				<td>102</td>
+				<td>Jose</td>
+				<td>Florida</td>
+			</tr>
+			<tr>
+				<td>103</td>
+				<td>Mark</td>
+				<td>Chicago</td>
+			</tr>
+			<tr>
+				<td>104</td>
+				<td>Jessica</td>
+				<td>Los Angeles</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<table border="1" cellspacing="10px" cellpadding="10px">
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Address</th>
+			</tr>
+			<tr>
+				<td>101</td>
+				<td>Alan</td>
+				<td>Texas</td>
+			</tr>
+			<tr>
+				<td>102</td>
+				<td>Jose</td>
+				<td>Florida</td>
+			</tr>
+			<tr>
+				<td>103</td>
+				<td>Mark</td>
+				<td>Chicago</td>
+			</tr>
+			<tr>
+				<td>104</td>
+				<td>Jessica</td>
+				<td>Los Angeles</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+		<table border="1" width="50%" align="center">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Name</th>
+					<th>Address</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>101</td>
+					<td>Alan</td>
+					<td>Texas</td>
+				</tr>
+				<tr>
+					<td>102</td>
+					<td>Jose</td>
+					<td>Florida</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3"> <center>Thank You</center> </td>
+				</tr>	
+			</tfoot>
+		</table>
+	</body>
+</html>
+
+
+HTML Form 
+==========
+Forms are used to accept the data from the enduser.
+
+Forms are used to pass the data to server or database for processing.
+
+A <form> tag is used to create a form in a web page.
+
+We have following list of form components.
+ex:
+	label 
+	textfield
+	passwordfield
+	radio 
+	checkbox 
+	select box 
+	textarea
+	submit 
+	reset 
+	and etc. 
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form>
+				<label>Name:</label>
+				<input type="text" name="t1"/>   <br>
+				
+				<label>Password:</label>
+				<input type="password" name="t2"/> <br>
+				
+				<label>Age:</label>
+				<input type="number" name="t3"/> <br>
+			</form>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form>
+				<label>DOJ:</label>
+				<input type="date" name="t1"/>   <br>
+				
+				<label>Range:</label>
+				<input type="range" name="t2"/> <br>
+				
+				<label>File:</label>
+				<input type="file" name="t3"/> <br>
+				
+				<label>Color:</label>
+				<input type="color" name="t4"/> <br>
+				
+				<label>Email:</label>
+				<input type="email" name="t5"/> <br>
+				
+				<label>Search:</label>
+				<input type="search" name="t5"/> <br>
+			</form>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form>
+				<label>Gender:</label>
+				<input type="radio" name="t1" value="male"/> MALE
+				<input type="radio" name="t1" value="female"/> FEMALE
+				
+				<br>
+				
+				<label>Maritial Status:</label>
+				<input type="checkbox" name="t1" value="married"/> MARRIED
+				<input type="checkbox" name="t1" value="single"/> SINGLE
+				
+			</form>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form>
+				
+				<label>Country:</label>
+				<select name="t1">
+					<option value="">none</option>
+					<option value="ind">India</option>
+					<option value="usa">America</option>
+					<option value="aus">Australia</option>
+				</select>
+				<br>
+				<label>Address:</label>
+				<textarea cols="10" rows="5"></textarea>
+				
+			</form>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form>
+				
+				<button> normal </button>
+				<br>
+				<input type="submit" value="submit"/>
+				<br>
+				<input type="reset" value="reset"/>
+				
+			</form>
+	</body>
+</html>
+
+HTML form with table 
+=====================
+A "action" attribute describes where form data has to be submitted.
+
+A "target" attribute describes submitted data must be open in a same window or new window.
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form action="" target="_self">
+				
+				<table align="center">
+					<tr>
+						<td><label>UserName:</label></td>
+						<td><input type="text" name="t1"/></td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input type="password" name="t2"/></td>
+					</tr>
+					<tr>
+						<td><input type="reset" value="reset"/></td>
+						<td><input type="submit" value="submit"/></td>
+					</tr>
+				</table>
+				
+			</form>
+	</body>
+</html>
+
+ex:
+----
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form action="" target="_blank">
+				
+				<table align="center">
+					<tr>
+						<td><label>UserName:</label></td>
+						<td><input type="text" name="t1"/></td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input type="password" name="t2"/></td>
+					</tr>
+					<tr>
+						<td><input type="reset" value="reset"/></td>
+						<td><input type="submit" value="submit"/></td>
+					</tr>
+				</table>
+				
+			</form>
+	</body>
+</html>
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form action="" target="_blank">
+				
+				<table align="center">
+					<tr>
+						<td><label>UserName:</label></td>
+						<td><input type="text" name="t1" autocomplete="off" required/></td>
+					</tr>
+					<tr>
+						<td><label>Password:</label></td>
+						<td><input type="password" name="t2" required/></td>
+					</tr>
+					<tr>
+						<td><input type="reset" value="reset"/></td>
+						<td><input type="submit" value="submit"/></td>
+					</tr>
+				</table>
+				
+			</form>
+	</body>
+</html>
+
+
+ex:
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPage!</title>
+	</head>
+	<body>
+			<form action="" target="_blank">
+				
+				<table align="center">
+					<tr>
+						<td><input type="text" name="t1" 
+						autocomplete="off" placeholder="Enter Username" required/></td>
+					</tr>
+					<tr>
+						<td><input type="password" name="t2" 
+						placeholder="Enter Password"required/></td>
+					</tr>
+					<tr>
+						<td><center><input type="submit" value="Login"/></center></td>
+					</tr>
+				</table>
+				
+			</form>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

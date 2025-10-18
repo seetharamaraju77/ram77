@@ -1,0 +1,243 @@
+delete command 
+===============
+A delete command is used to delete the rows from database table.
+
+syntax:
+-------
+	delete from <table_name> where condition;
+
+ex:
+	delete from student where sno=104;
+	delete from student where sname='ramulu';
+	delete from student where sadd='vizag';
+
+Note:
+------
+	If we won't use where clause then all rows will be deleted.
+	ex:
+		delete from student;
+		delete from dept;
+		delete from emp;
+
+
+Interview questions 
+===================
+Q) Write a query to display employees information whose salary is greater then 25000?
+
+	select * from emp where esal>25000;
+
+Q) Write a query to promote employee from clerk to salesman whose employee id is 202?
+
+	update emp set job='Salesman' where eid=202;
+
+Q) Write a query to terminate all employees whose salary is greater then 35000?
+
+	delete from emp where esal>35000;	
+
+
+Logical operators 
+=================
+Logical operators are used to declare multiple conditions in where clause.
+
+We have three logical operators.
+
+1) AND 
+
+2) OR 
+
+3) NOT 
+
+1) AND
+-------
+	It returns the records if all conditions are true.
+	Here all conditions must be from same row. 
+	ex:
+		select * from emp where eid=201 AND ename='Alan';
+
+		select * from emp where eid=201 AND ename='Jose'; // no rows selected 
+
+		select * from emp where eid=201 AND ename='Lisa'; // no rows selected 
+
+2) OR 
+------
+	It returns the records if any condition is true.
+	Here conditions can be from any row.
+	ex:
+		select * from emp where eid=201 OR ename='Alan'; // 1 record 
+
+		select * from emp where eid=201 OR ename='Jose'; // 2 records 
+
+		select * from emp where eid=201 OR ename='Lisa'; // 1 record 
+
+3) NOT 
+-------
+	It returns the records except the condition.
+	Here <> denoted as NOT operator.
+	ex:
+		select * from emp where NOT eid=201;
+		select * from emp where eid<>201;	
+
+		select * from emp where NOT ename='Alan';
+		select * from emp where  ename<>'Alan';
+
+Between Operator 
+===============
+Between operator return the records those who are in the range of values.
+
+In between operator  first we need to lower limit then higher limit.
+
+ex:
+	select * from student where sno between 101 and 105;
+
+	select * from emp where eid between 201 and 204;
+
+
+IN Operator 
+============
+IN operator  is a replacement of OR operator.
+IN operator returns the records those who are matching in the list.
+ex:
+	select * from emp where eid IN (201,202,203);
+	select * from emp where ename IN ('Alan','Jose','Lisa');
+	
+Interview Queries 
+------------------
+Q) Write a query to display employee information whose employee id is 204 and working as a HR?
+
+	select * from emp where eid=204 and job='HR';
+
+
+Q) Write a query to display employees information those who are not working in 10 department?
+
+	select * from emp where deptno <>10;	
+
+
+Q) Write a query delete employees information whose employee id is 201,202,203?
+
+	delete from emp where eid IN (201,202,203);
+
+
+Q) Write a query to display employee information whose employee id 201 and comm is null?
+
+	select * from emp where eid=201 and comm is null;
+
+Q) Write a query to display employees information whose salary greater then 20000 and less then 50000?
+
+	select * from emp where esal>20000 AND esal<50000;
+
+
+Q) Write a query to drop the employee records from 10  to 30 department?
+
+	delete from emp where deptno between 10 and 30;
+
+
+Pattern Matching operators 
+===========================
+Pattern matching operators are used to select the letters from database table.
+
+We have two types of pattern matching operators.
+
+1) Percentage (%)  
+
+2) Underscore (_)
+
+1) Percentage (%) 
+-----------------
+Q) Write a query to display employees information whose employee name starts with 'K' letter?
+
+	select * from emp where ename like 'K%';
+
+Q) Write a query to display employees information whose employee name ending with 'n' letter?
+
+	select * from emp where ename like '%n';
+
+Q) Write a query to display employees information whose employee name having middle letter as 'l'?
+
+	select * from emp where ename like '%l%';
+
+
+2) Underscore (_)
+-----------------
+Q) Write a query to display employee information whose employee name having second letter as 'l'?
+
+	select * from emp where ename like '_l%';
+
+
+Q) Write a query to display employees information whose employee name having second last letter as 'o' ?
+
+	select * from emp where ename like '%o_';
+
+Q) Write a query to display employees information whose employee name having third letter as 's'?
+
+	select * from emp where ename like '__s%';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,479 @@
+Q) When Java throws NullPointerException?
+
+When our code attempts to read object reference which is not initialized then we will get NullPointerException.
+
+ex:
+	Test t = null;
+	System.out.println(t.i); // R.E NullPointerException 
+
+	Test t=null;
+	t.methodOne();  // R.E NullPointerException 
+
+	int[] arr=null;
+	System.out.println(arr[0]); // R.E NullPointerException 
+
+	ArrayList al = null;
+	System.out.println(al.get(0)); // R.E NullPointerException 
+
+	Test t=null;
+	synchronized(t)
+	{
+	}
+	// R.E NullPointerException 
+
+To overcome this limitation we need to following things.
+
+1) Intialized the object before using it.
+
+2) Perform null checks before dereferencing of an object.
+
+3) Using Optional class to perform null checks gracefully.
+	
+
+1) Intialized the object before using it
+-----------------------------------------
+ex:
+	Test t = new Test();
+	System.out.println(t.i); 
+
+	Test t=new Test();
+	t.methodOne();  
+
+	int[] arr=new int[3];
+	System.out.println(arr[0]); 
+
+	ArrayList al = new ArrayList();
+	System.out.println(al.get(0)); 
+
+	Test t=new Test();
+	synchronized(t)
+	{
+	}
+	
+
+
+2) Perform null checks before dereferencing of an object
+--------------------------------------------------------
+class Test  
+{
+	//instance variable 
+	int i=10;
+	
+	public static void main(String[] args) 
+	{
+		Test t = null;
+		
+		if(t==null)
+		{
+			t = new Test();
+		}
+		System.out.println(t.i); // 10
+	}
+}
+
+Optional
+=========
+Optional class introduced in Java 8.
+
+Optional class present in java.util package.
+
+Optional class is used to perform null checks.
+
+There are three ways to create object for Optional class.
+
+ex:
+	Optional<Object> optional = Optional.empty();
+	Optional<Object> optional = Optional.of();
+	Optional<Object> optional = Optional.ofNullable();
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		Optional<Object> optional = Optional.empty();
+		System.out.println(optional); //Optional.empty
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		String str="Hi";
+		Optional<Object> optional = Optional.of(str);
+		System.out.println(optional); //Optional[Hi]
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		String str=null;
+		Optional<Object> optional = Optional.of(str);
+		System.out.println(optional); //R.E NullPointerException 
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		String str="Hi";
+		Optional<Object> optional = Optional.ofNullable(str);
+		System.out.println(optional); //Optional[Hi]
+		System.out.println(optional.get());// Hi 
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		String str=null;
+		Optional<Object> optional = Optional.ofNullable(str);
+		System.out.println(optional.orElse("Value Not Found"));  
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{		
+		String str=null;
+		Optional<Object> optional = Optional.ofNullable(str);
+		System.out.println(optional.orElseThrow(()->new NullPointerException("No value")));  
+	}
+}
+
+ex:
+---
+import java.util.*;
+class Test  
+{
+	//instance variable 
+	int i=10;
+	
+	public static void main(String[] args) 
+	{
+		Test t = null;
+		
+		Optional<Object> optional = Optional.ofNullable(t);
+		
+		if(!optional.isPresent())
+		{
+			t = new Test();
+		}
+		System.out.println(t.i); // 10
+	}
+}
+
+Interview Questions 
+====================
+
+1) Write a java program to create thread-safe singleton class?
+
+class Singleton 
+{
+	private static Singleton single=null;
+	
+	//private constructor
+	private Singleton()
+	{
+		System.out.println("Singleton constructor");
+	}
+	
+	//thread safe method 
+	public synchronized static Singleton getInstance()
+	{
+		if(single==null)
+		{
+			single = new Singleton();
+		}
+		return single;
+	}
+	
+	public static void display()
+	{
+		System.out.println("Display Method");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Runnable task = ()->{
+								Singleton s = Singleton.getInstance();
+								s.display();
+							};	
+		Thread t1=new Thread(task);
+		Thread t2=new Thread(task);
+		Thread t3=new Thread(task);
+		
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+}
+
+2) Write a java program to create user defined exception and demonstrate it's meaning throw and catch it?
+
+import java.util.Scanner;
+class InvalidAgeException extends RuntimeException 
+{
+	InvalidAgeException(String message)
+	{
+		super(message);
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the age :");
+		int age = sc.nextInt();
+		
+		try
+		{
+			validate(age);
+		}
+		catch (InvalidAgeException iae)
+		{
+			System.out.println("Exception occured : "+iae.getMessage());
+		}
+		
+	}
+	public static void validate(int age)
+	{
+		if(age<18)
+			throw new InvalidAgeException("U r not eligible to vote");
+		else
+			System.out.println("You are eligible to vote");
+	}
+}
+
+3) Illustrate diamond problem in multiple inheritance?
+
+Java does not directly support multiple inheritance of classes.
+
+But it supports multiple inheritance via interfaces.
+
+A class must provide its implementation to resolve the ambiguity. This eliminates the issues that arise from the Diamond Problem.
+
+ex:
+---
+interface Dog 
+{
+	default void sound()
+	{
+		System.out.println("Bow Bow");
+	}
+}
+interface Cat 
+{
+	default void sound()
+	{
+		System.out.println("Meow Meow");
+	}
+}
+class Animal implements Dog,Cat
+{
+	@Override
+	public void sound()
+	{
+		Cat.super.sound();
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Animal a = new Animal();
+		a.sound();
+	}
+}
+
+
+4) Write a java program using multi-label switch case in java?
+
+import java.util.Scanner;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the day :");
+		String day = sc.next().toLowerCase();
+		
+		switch(day)
+		{
+			case "monday","tuesday","wednesday","thursday","friday" -> 
+					System.out.println("Weekdays ");
+			
+			case "saturday","sunday" -> 
+					System.out.println("Weekends");
+			
+			default ->
+				System.out.println("Invalid Day");
+		}
+	}
+}
+
+5) Iterate over a Map (any key and value samples) using stream functions and lamda expression?
+
+ex:
+--
+import java.util.*;
+import java.util.stream.*;
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Map<String,Integer> map = Map.of("one",1,"two",2,"three",3);
+		
+		map.entrySet()
+			.stream()
+			.forEach(entry -> System.out.println(entry.getKey() +"="+entry.getValue()));
+	}
+}
+
+
+6) Write a java program to write and read from text file?
+
+input:
+	Name,Age,City 
+
+ex:
+---
+import java.io.*;
+class Test 
+{
+	public static final String FILE_NAME="abc.txt";
+	
+	public static void main(String[] args)
+	{
+		writeToFile();	
+		System.out.println("");
+		readFromFile();
+	}
+	public static void writeToFile()
+	{
+		try(BufferedWriter bw =new BufferedWriter(new FileWriter(FILE_NAME));)
+		{
+			bw.write("Name,Age,City");
+			bw.newLine();
+			bw.write("Alan,49,Florida");
+			bw.newLine();
+			bw.write("Jose,19,Texas");
+			bw.newLine();
+			bw.write("Alex,34,Chicago");
+			bw.newLine();
+			bw.flush();
+			System.out.println("Data Inserted");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+	public static void readFromFile()
+	{
+		try(BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));)
+		{
+			System.out.println("Date Retrieve :");
+			String line;
+			while((line=br.readLine())!=null)
+			{
+				String[] sarr = line.split(",");
+				if(sarr.length==3)
+				{
+					System.out.println(sarr[0]+" "+sarr[1]+" "+sarr[2]);
+				}
+			}
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

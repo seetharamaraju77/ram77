@@ -1,0 +1,168 @@
+DCL commands 
+============
+
+Schema 
+------
+	Schame is a memory location which is used to run SQL commands.
+
+Privileges
+----------
+	Permissions given to a user is called privileges.
+	We have two types of privileges.
+	1) System privilege  : Permissions given by DBA to user.
+	2) Object privilege  : Permissions given by one user to another user.
+
+
+grant command 
+-------------
+It is used to grant the permissions to the user.
+
+syntax:
+------
+	grant <privilege1>,<privilege2> to <user_name>;
+
+
+revoke command
+---------------
+It is used to revoke the permissions from the user.
+
+syntax:
+-------
+	revoke <privilege1>,<privilege2> from <user_name>;
+
+DBA> create user anusha identified by anusha;
+DBA> create user kumar identified by kumar;
+
+anusha> conn anusha/anusha  -- logon denied
+
+kumar> conn kumar/kumar  -- logon denied 
+
+DBA> grant connect,resource to anusha,kumar;
+
+anusha> conn anusha/anusha
+  
+kumar> conn kumar/kumar  
+
+
+kumar> 
+create table employee(eid number(3),ename varchar2(10),esal number(10));
+insert into employee values(501,'Lara',25000);
+insert into employee values(502,'Nelson',38000);
+insert into employee values(503,'Jessica',45000);
+commit;
+
+anusha> select * from employee;  -- table or view does not exist
+
+kumar> grant select on employee to anusha;
+
+anusha> select * from  kumar.employee;
+
+anusha> delete from kumar.employee;  -- insufficient privileges
+
+kumar> grant update,delete on employee to anusha;
+
+anusha> delete from kumar.employee; 
+anusha> commit; 
+
+kumar> select * from employee;
+
+kumar> revoke select,update,delete on employee from anusha;
+
+anusha> disc  
+
+kumar> disc 
+
+DBA> revoke connect,resource from anusha,kumar;
+
+anusha> conn anusha/anusha -- logon denied 
+kumar> conn kumar/kumar  -- logon denied 
+
+
+Interview Queries 
+-----------------
+
+Q) Write a query to see the list of users present in a database?
+
+	select username from all_users;
+
+
+Q) Write a query to drop the user?
+
+	drop user anusha;
+	drop user kumar;
+
+
+Q) Write a query to change the password of a user?
+
+	alter user system identified by admin123;
+
+
+Synonyms 
+========
+Alter name given to a table is called synonym.
+
+We can use synonym name instead of table name for all commands.
+
+Using synonyms length of a table will reduce.
+
+syntax:
+------
+	create synonym <synonym_name> for <object_name>;
+
+ex:
+	create synonym sy1 for student;
+
+	select * from sy1;
+
+	delete from sy1 where sno=104;
+
+	select * from sy1;
+	select * from student;
+
+
+Interview Queries 
+-----------------
+Q) Write a query to see the list of synonyms present in a database?
+
+	select synonym_name from user_synonyms;
+
+Q) Write a query to drop the synonym?
+
+	drop synonym  sy1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

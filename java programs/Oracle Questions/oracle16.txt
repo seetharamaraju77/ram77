@@ -1,0 +1,310 @@
+Cursors
+=======
+It is a named control statement which is used to handle result set of select statement.
+
+It is a memory location which holds multiple rows of select commands.
+
+We have two types of cursors.
+
+1) Implicit cursor 
+
+2) Explicit cursor 
+
+1) Implicit cursor 
+-------------------
+All the activities related to cursor like opening the cursor, processing the cursor and closing the cursor which is done automatically is called implicit cursor.
+
+We have four types of implicit cursor attributes.
+
+i) SQL%ISOPEN 
+--------------
+	It is a boolean attribute which always returns false.
+
+ii) SQL%FOUND 
+------------
+	It is a boolean attribute returns true if SQL command is success and 
+	returns false if SQL command is failed.
+
+iii) SQL%NOTFOUND
+-----------------
+	It is completely reverse of SQL%FOUND.
+	It is a boolean attribute returns false if SQL command is success and 
+	returns true if SQL command is failed.
+
+iv) SQL%ROWCOUNT 
+---------------
+	It returns number of records effected in a database table.
+
+SQL%ISOPEN 
+----------
+	BEGIN 
+
+	IF SQL%ISOPEN THEN 
+	DBMS_OUTPUT.PUT_LINE('Cursor is open');
+	ELSE
+	DBMS_OUTPUT.PUT_LINE('Cursor is closed');
+	END IF;
+
+	END;
+	/
+	
+SQL%FOUND 
+---------
+	BEGIN 
+	update student set sname='rani' where sno=103;
+	IF SQL%FOUND THEN 
+	DBMS_OUTPUT.PUT_LINE('Record Updated');
+	ELSE
+	DBMS_OUTPUT.PUT_LINE('Record Not Updated');
+	END IF;
+	END;
+	/
+
+SQL%NOTFOUND 
+-------------
+	BEGIN 
+	update student set sname='ramana' where sno=103;
+	IF SQL%NOTFOUND THEN 
+	DBMS_OUTPUT.PUT_LINE('Record Updated');
+	ELSE
+	DBMS_OUTPUT.PUT_LINE('Record Not Updated');
+	END IF;
+	END;
+	/
+
+SQL%ROWCOUNT 
+------------
+	BEGIN 
+	update student set sname='raja';
+	DBMS_OUTPUT.PUT_LINE(SQL%ROWCOUNT||' Rows Updated');
+	END;
+	/
+
+
+2) Explicit cursor 
+-------------------
+All the activities related to cursor like opening the cursor, processing the cursor and closing the cursor which is done by a programmer is called explicit cursor.
+
+We have four types of explicit cursor attributes.
+
+i) %ISOPEN 
+----------
+	It is a boolean attribute which returns true if cursor is open and returns 
+	false if cursor is closed.
+
+ii) %FOUND 
+----------
+	It is a boolean attribute which returns true if SQL command is success and 
+	returns false if SQL command is failed.
+
+iii) %NOTFOUND 
+---------------
+	It is a boolean attribute which returns false if SQL command is success and 
+	returns true if SQL command is failed.
+
+iv) %ROWCOUNT 
+------------
+	It returns number of records effected in a database table.
+
+Steps to work with explicit cursor
+----------------------------------
+step1:
+------
+	Declare the cursor. 
+
+step2:
+-----
+	Open the cursor.
+
+step3:
+-----
+	Fetch the data from cursor to local variables.
+
+step4:
+-----
+	Close the cursor.
+	
+
+
+
+Q) Write a PL/SQL program to select employee names from employee table?
+
+	DECLARE 
+	CURSOR C1 is select ename from emp;
+	L_Ename emp.ename%TYPE;
+	BEGIN 
+	OPEN C1;
+
+	LOOP 
+	FETCH C1 into L_Ename;
+	EXIT WHEN C1%NOTFOUND;
+	DBMS_OUTPUT.PUT_LINE(L_Ename);
+	END LOOP;
+
+	CLOSE C1;
+	END;
+	/
+
+Q) Write a PL/SQL program to select all employee name and salary from employee table?
+	DECLARE 
+	CURSOR C2 is select ename,esal from emp;
+	L_Ename emp.ename%TYPE;
+	L_Esal emp.esal%TYPE;
+	BEGIN 
+	OPEN C2;
+	
+	LOOP 
+	FETCH C2 into L_Ename,L_Esal;
+	EXIT WHEN C2%NOTFOUND;
+	DBMS_OUTPUT.PUT_LINE(L_Ename||' '||L_Esal);
+	END LOOP;
+
+	CLOSE C2;
+	END;
+	/
+
+Q) Write a PL/SQL program to display employees information from employee table?
+
+	DECLARE 
+	CURSOR C3 is select * from emp;
+	A emp%ROWTYPE;
+	BEGIN 
+	OPEN C3;
+	LOOP 
+	FETCH C3 into A;
+	EXIT WHEN C3%NOTFOUND;
+	DBMS_OUTPUT.PUT_LINE(A.eid||' '||A.ename||' '||A.esal||' '||A.deptno);
+	END LOOP;
+	CLOSE C3;
+	END;
+	/
+
+Procedures 
+==========
+It is a named PL/SQL block which compiled and stored in a database permanently.
+
+It is used to execute the code repeatedly.	
+
+syntax:
+------
+	create or replace procedure <procedure_name> 
+	is
+	begin
+	-
+	-
+	-	
+	end;
+	/
+
+Q) Write a procedure to display Hello World?
+
+
+	create or replace procedure p1
+	is
+	begin
+	DBMS_OUTPUT.PUT_LINE('Hello World');
+	END;
+	/
+
+We can execute the procedure by using below command.
+ex:
+	exec  p1;
+
+Every procedure may contains three parameters.
+
+1) IN parameter 
+
+2) OUT parameter 
+
+3) IN OUT parameter 
+
+1) IN parameter 
+----------------
+It is used to take the inputs from the enduser.
+
+Q) Write a procedure to perform sum of two numbers?
+
+	create or replace procedure sum(A IN number, B IN number)
+	is
+	C number;
+	begin 
+	C:=A+B;
+	DBMS_OUTPUT.PUT_LINE(C);
+	END;
+	/
+We can execute above procedure by using below command.
+ex:
+	exec  sum(10,20);	
+
+2) OUT parameter 
+---------------
+It is used to return the value to the user.
+
+Q) Write a procedure to accept two numbers and return it's sum?
+
+	create or replace procedure ret_sum(A IN number,B IN number,C OUT number)
+	is
+	begin 
+	C:=A+B;
+	END;
+	/
+
+Steps to call the procedure having OUT parameter
+-----------------------------------------------
+step1:
+------
+	Declare the bind variable.
+	ex:
+		variable N number;
+
+step2:
+-----
+	Execute the procedure.
+	ex:
+		exec  ret_sum(10,20,:N);
+
+step3:
+------
+	Print the bind variable.
+	ex:
+		print N;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

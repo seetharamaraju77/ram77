@@ -1,0 +1,235 @@
+Types of data 
+=============
+We have two types of data.
+
+1) Unstructured data 
+--------------------
+Data which is not in readable format is called unstructured data.
+
+Meaningless data is called unstructured.
+
+ex:
+	201	  Lakemba	SYD	NSW	 AUS 
+
+
+2) Structured data 
+------------------
+Data which is in readable format is called structured data.
+
+Meaning full data is called structured data.
+
+ex:
+	Unit	  Locality      City    State	 Country 
+	----	  -------	----	-----	 --------
+	201	  Lakemba	SYD	NSW	 AUS
+
+Oracle 
+=======
+It is one of the database which is used to store structured data.
+
+It is also consider as relational database.
+
+It is a product of Oracle Corporation.
+
+It is classified into two types.
+
+1) SQL  (Structured Query Language)
+
+2) PL/SQL (Procedural Language Extensions to Structured Query Lang)
+
+Q) What is the difference between DBMS and RDBMS?
+
+DBMS				RDBMS
+-----				------
+DBMS stands for Database 	RDBMS stands for Relational Database
+Management System.		Management System.
+
+It is designed to store the 	It is designed to store the data
+data into a file.		in a table.
+
+It provides facility to		It provides facility to connect 
+connect a single user.		multiple users.
+
+It is not designed for large 	It is designed for large data 	
+data storage.			storage.
+
+There is no data security.	There is a high data security.
+
+It does not support 		It supports normalization.
+normalization.
+
+
+Client/Server Architecture 
+==========================
+In this architecture we will see how our data will store from frontend to backend.
+
+Diagram: oracle1.1
+
+
+Frontend
+--------
+The one which is visible to the end user to perform some operations is called frontend.
+ex:
+	C++, Java, Python, .Net, Perl, Scala and etc.
+
+Communication Channel 
+----------------------
+It acts like a bridge between frontend and backend.
+ex:
+	JDBC - Java Database Connectivity 
+	ODBC - Open Database Connectivity 
+	PDBC - Python Database Connectivity 
+
+Backend 
+-------
+The one which is not visible to the end user but it performs some operations based on the instructions given by frontend is called backend.
+
+ex:
+	Oracle, MySQL, MongoDB, PostgreSQL, MariaDB, Sybase and etc. 
+
+
+Management System 
+=================
+Management system is a software which is used to manage the data.
+
+Using management system we can perform following activities very easily.
+
+1) Adding new data 
+
+2) Modifying existing data 
+
+3) Deleting unnecessary data 
+
+4) Selecting Required data 
+
+
+RDBMS 
+=====
+RDBMS stands for Relational Database Management System.
+
+If a database is created based on relational theories to manage the database is called relational database management system.
+
+We have following list of relational databases.
+ex:
+	Oracle, MySQL, PostgreSQL, Teradata and etc.
+
+
+SQL
+=====
+SQL stands for Structured Query Language which is pronounce as SEQUEL.
+
+It is used to communicate with oracle database.
+
+It is a case insensitive language.
+
+It is a command based language.
+
+Every command must starts with verb and ends with semicolon.
+
+It is developed by Mr. Codd in 1972 (By IBM).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

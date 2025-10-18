@@ -1,0 +1,254 @@
+Duplicate table 
+===============
+Using create and select command we can create duplicate table.
+
+syntax:
+------
+	create table <table_name> as select stmt;
+
+ex:
+	create table employee as select * from emp;
+	create table employee as select eid,enane,esal from emp;
+	create table employee as select * from emp where deptno=10;
+	create table employee as select * from emp where eid<>201;
+	create table employee as select * from emp where ename IN ('Alan','Kelvin');
+	create table employee as select * from emp where comm is null;
+	create table employee as select * from emp where ename like 'A%';
+
+CL SCR
+======
+It is used to clear the output screen of SQL command prompt.
+ex:
+	CL  SCR 
+
+Integrity Constraints 
+=====================
+Constraints are rules which are applied on the table so that we can achieve accuracy and quality of data.
+
+We have five types of constraints.
+
+1) NOT NULL
+
+2) UNIQUE 
+
+3) PRIMARY KEY 
+
+4) FOREIGN KEY 
+
+5) CHECK 
+
+Contraints can be created at two levels.
+
+i) Column level 
+
+ii) Table level 
+
+
+1) NOT NULL
+------------
+NOT NULL constraint does not accept null values.
+NOT NULL constraint can take duplicates.
+NOT NULL constraint can be created at column level.
+
+column level
+------------
+drop table student;
+create table student(sno number(3) NOT NULL,sname varchar2(10),sadd varchar2(12));
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi');
+insert into student values(null,'ramana','vizag'); //invalid 
+select * from student;
+
+Note:
+-----
+NOT NULL constraint can be created for multiple columns.
+
+ex:
+
+drop table student;
+create table student(sno number(3) NOT NULL,
+			sname varchar2(10) NOT NULL,
+				sadd varchar2(12) NOT NULL);
+
+insert into student values(null,'raja','hyd'); // invalid 
+insert into student values(101,null,'delhi');  // invalid 
+insert into student values(101,'ramana',null); //invalid 
+
+insert into student values(101,'raja','hyd');  //valid 
+select * from student;
+
+
+2) UNIQUE 
+-----------
+UNIQUE constraint does not accept duplicates.
+
+UNIQUE constraint can accept null values.
+
+UNIQUE constraint can be created at column level and table level.
+
+column level
+------------
+drop table student;
+create table student(sno number(3) UNIQUE, sname varchar2(10),sadd varchar2(12));
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi'); // invalid 
+insert into student values(null,'ravi','delhi'); 
+select * from student;
+
+Note:
+----
+UNIQUE constriant can be applied to muliple columns.
+ex:
+
+drop table student;
+create table student(sno number(3) UNIQUE, 
+			sname varchar2(10) UNIQUE,
+				sadd varchar2(12) UNIQUE);
+
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi'); // invalid 
+insert into student values(102,'raja','delhi'); // invalid 
+select * from student;
+
+
+
+table level 
+------------
+drop table student;
+create table student(sno number(3), sname varchar2(10),sadd varchar2(12),UNIQUE(sno));
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi'); // invalid 
+insert into student values(null,'ravi','delhi'); 
+select * from student;
+
+
+3) PRIMARY KEY 
+--------------
+PRIMARY KEY is a combination of NOT NULL and UNIQUE constraint.
+
+PRIMARY KEY does not allow duplicates and null values.
+
+PRIMARY KEY can be created at column level and table level.
+
+A table can have only one primary key.
+
+column level
+------------
+drop table student;
+create table student(sno number(3) PRIMARY KEY,sname varchar2(10),sadd varchar2(12));
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi'); // invalid 
+insert into student values(null,'ramana','vizag'); // invalid 
+select * from student; 
+
+
+table level
+------------
+drop table student;
+create table student(sno number(3) ,sname varchar2(10),
+			sadd varchar2(12),PRIMARY KEY(sno));
+
+insert into student values(101,'raja','hyd');
+insert into student values(101,'ravi','delhi'); // invalid 
+insert into student values(null,'ramana','vizag'); // invalid 
+select * from student; 
+
+Foregin Key 
+===========
+Foreign key is used to establish the relationship between two tables.
+
+This relationships is also known as parent and child relationship or master and detailed relationship.
+
+To establish the relationship between two tables a parent table must have primary key or unique key and child table must have foreign key.
+
+A primary key and foreign key column name may or may not match with foreign key but datatype must match.
+
+A foreign key will accept only those values which are present in primary key.
+
+A foreign key can accept duplicates and null values.
+
+Diagram: oracle7.1
+
+college table 
+------------
+create table college(sno number(3) PRIMARY KEY,sname varchar2(10), sadd varchar2(12));
+insert into college values(101,'raja','hyd');
+insert into college values(102,'ravi','delhi');
+insert into college values(103,'ramana','vizag');
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,257 @@
+Identifiers 
+===========
+A name in java is called identifier.
+
+It can be variable name, method name, class name or label name.
+
+ex:
+---
+	class  Test
+	{
+		public static void main(String[] args)
+		{
+			int x = 10;
+
+			System.out.println(x);
+		}
+	}
+
+	Here Test, main, args and x are identifiers.
+
+
+Rules to declare an identifiers 
+===============================
+Rule1:
+------
+	Identifier will accept following characters.
+	ex:
+		A-Z
+		a-z
+		0-9
+		_
+		$
+
+Rule2:
+------
+	If we take other characters then we will get compile time error.
+	ex:
+		int  studId;
+		int  stud_id;
+		int  stud$Id;
+		int  stud#id; //invalid 
+
+Rule3:
+------
+	Every identifier is a case sensitive.
+	ex:
+		int a;
+		int A;
+
+Rule4:
+------
+	Identifier must and should starts with alphabet, Underscore or Dollar symbol but 
+	not with digit.
+	ex:
+		int emp1;
+		int _studId;
+		int $alary; 
+		int 1abcd; // invalid 
+
+Rule5:
+------
+	We can't take reserved words as an identifiers.
+	ex:
+		int if; //invalid 
+		int  else; //invalid 
+		int  for; //invalid 
+		int  public; //invalid 
+
+Rule6:
+-----
+	There is no length limit for an identifiers but it is not recommanded to take 
+	more then 15 characters.
+
+
+Rule7:
+------
+	We can take predefined classes and interfaces as identifier name but it is 
+	not good programming practice.
+	ex:
+		int  String = 10; 
+		int  Runnable = 20;		
+
+
+Reserved Words 
+===============
+There are some identifiers which are reserved to associate some functionality or meaning such type of identifiers are called reserved words.
+
+Java supports 53 reserved words.
+
+It is classified into two types.
+
+Diagram: class7.1
+
+Used keywords with respect to class
+-------------------------------------
+import
+package
+enum
+interface
+class
+extends 
+implements 
+
+Used keywords with respect to object
+----------------------
+new
+instanceof
+this
+super 
+
+Used keywords with respect to datatypes
+---------------------------
+byte
+short
+int
+long
+float
+double
+boolean
+char 
+
+Used keywords with respect to modifiers
+----------------------------------------
+default 
+public 
+private
+protected
+final
+abstract
+static
+synchronized 
+strictfp
+transient
+volatile 
+native 
+
+Used keywords with respect to returntype 
+--------------------------------
+void 
+
+Used keywords with respect to flow control
+--------------------------
+if
+else
+do
+while
+break
+continue
+switch
+case 
+return 
+for
+
+Used keywords with respect to exception handling 
+----------------------
+try
+catch
+throw
+throws
+finally
+assert 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

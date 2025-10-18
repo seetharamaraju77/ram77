@@ -1,0 +1,221 @@
+PriorityQueue 
+=============
+It is a special type of queue data structure where each element has priority associate to it and elements are served based on the priority instead of insertion order.
+ex:
+	Severe partient in hospital
+	CPU Scheduling Task
+
+In priority queue element which is having highest priority will be removed first from the queue.
+
+In ascending order priority queue , element with smallest priority given high priority.
+
+In descending order priority queue, element which highest priority given high priority.
+
+Diagram: DSA12.1
+
+Java contains a built-in class called java.util.PriorityQueue.
+
+
+Example1: Min Priority Queue
+-----------------------------
+import java.util.*;
+class Test
+{
+	public static void main(String[] args) 
+	{
+		PriorityQueue<Integer> minPQ = new PriorityQueue<>();
+		
+		minPQ.add(10);
+		minPQ.add(1);
+		minPQ.add(20);
+		minPQ.add(5);
+		
+		System.out.println("Priority Queue : "+minPQ);// [1, 5, 20, 10]
+		
+		while(!minPQ.isEmpty())
+		{
+			System.out.println("Removed :"+minPQ.poll());
+		}
+	}
+}
+
+
+Example2: Max Priority Queue
+-----------------------------
+import java.util.*;
+class Test
+{
+	public static void main(String[] args) 
+	{
+		PriorityQueue<Integer> maxPQ = new PriorityQueue<>(Collections.reverseOrder());
+		
+		maxPQ.add(10);
+		maxPQ.add(1);
+		maxPQ.add(20);
+		maxPQ.add(5);
+		
+		System.out.println("Priority Queue : "+maxPQ);// [1, 5, 20, 10]
+		
+		while(!maxPQ.isEmpty())
+		{
+			System.out.println("Removed :"+maxPQ.poll());
+		}
+	}
+}
+
+Example3: Custom Priority Queue 
+--------------------------------
+
+> Min priority queue
+--------------------
+import java.util.*;
+class Task
+{
+	String name;
+	int priority;
+	public Task(String name,int priority)
+	{
+		this.name=name;
+		this.priority=priority;
+	}
+}
+class Test
+{
+	public static void main(String[] args) 
+	{
+		PriorityQueue<Task> minpq=new PriorityQueue<>(
+			//ascending logic 
+			(t1,t2)-> Integer.compare(t1.priority,t2.priority)
+		);
+		
+		minpq.add(new Task("High Priority",10));
+		minpq.add(new Task("Low Priority",1));
+		minpq.add(new Task("Normal Priority",5));
+		
+		while(!minpq.isEmpty())
+		{
+			Task t= minpq.poll();
+			System.out.println(t.name+" "+t.priority);
+		}
+		
+	}
+}
+
+> Max priority queue 
+-------------------
+import java.util.*;
+class Task
+{
+	String name;
+	int priority;
+	public Task(String name,int priority)
+	{
+		this.name=name;
+		this.priority=priority;
+	}
+}
+class Test
+{
+	public static void main(String[] args) 
+	{
+		PriorityQueue<Task> minpq=new PriorityQueue<>(
+			//descending logic 
+			(t1,t2)-> Integer.compare(t2.priority,t1.priority)
+		);
+		
+		minpq.add(new Task("High Priority",10));
+		minpq.add(new Task("Low Priority",1));
+		minpq.add(new Task("Normal Priority",5));
+		
+		while(!minpq.isEmpty())
+		{
+			Task t= minpq.poll();
+			System.out.println(t.name+" "+t.priority);
+		}
+		
+	}
+}
+
+
+Graphs
+=======
+Graph is a non-linear data structure which consist of vertices and edges.
+
+Vectices : It is a fundamental unit or point in a graph.
+	   It can be labelled or unlabelled.
+	   It is also known as vertex.
+
+Edges:	Connections between the vertices is called edges.
+	It is also known as arc.
+
+Diagram: DSA12.2 
+
+
+Graphs represent many realworld problems.
+
+ex:
+	Example		Use-Case 
+	-------		---------
+	Facebook	Friend Suggestion 
+	Google Maps	Shortest path 
+	Networking	Routing 
+	Compilers 	Depedency graphs
+	and etc.
+
+Types of graphs 
+================
+1) Directed vs Undirected Graph
+--------------------------------
+	Directed :  Edges have directions. 
+	Undirected : Edges do not have directions.
+	Diagram: DSA12.3
+
+2) Weighted vs Unweighted Graph 
+-------------------------------
+	Weighted :  Each edge contains weight (cost ,distance and etc.)
+	Unweighted : Edge does not contain weight
+	Diagram: DSA12.4
+
+3) Cyclic vs Acyclic Graph 
+
+4) Connection vs Disconnect Graph 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

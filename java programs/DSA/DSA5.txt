@@ -1,0 +1,147 @@
+Bubble Sort 
+===========
+Bubble sort is a sorting alogirthm which compares two adjacent elements in array and swap them untill they are in intend order.
+
+Case			Complexity 		Description 
+-----			----------		-----------
+Best Case		O(n) (Linear Time)	when array is sorted order.  
+Average Case 		O(n²)(Quadratic Time)	When array elements are in random order
+Worst Case 		O(n²)(Quadratic Time)	When array elements are reversed order.
+
+Diagram: DSA5.1
+
+
+ex:
+
+input:
+	5 2 9 6 7 4 
+
+output:
+	2 4 5 6 7 9 
+
+
+class BubbleSortProgram 
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {5,2,9,6,7,4};
+		
+		System.out.println("Original Array");
+		printArray(arr);
+		
+		bubbleSort(arr);
+		
+		System.out.println("Sorted Array");
+		printArray(arr);
+		
+	}
+	public static void bubbleSort(int[] arr)
+	{
+		for(int i=0;i<arr.length;i++)
+		{
+			for(int j=0;j<arr.length-1;j++)
+			{
+				if(arr[j] > arr[j+1])
+				{
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+				}
+			}
+		}
+	}
+	
+	public static void printArray(int[] arr)
+	{
+		for(int i : arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+
+Selection Sort 
+===============
+Selection sort is a sorting algorithm which is used to find lower value from array and place it to front of an array.
+
+Case			Complexity 		Description 
+-----			----------		-----------
+Best Case		O(n²)(Quadratic Time)	when array is sorted order.  
+Average Case 		O(n²)(Quadratic Time)	When array elements are in random order
+Worst Case 		O(n²)(Quadratic Time)	When array elements are reversed order.
+
+Diagram: DSA5.2
+
+Note:
+-----
+In bubble sort we perform swapping logic inside inner loop of each iteration.
+In selection sort we perform swapping logic inside outer loop of each iteration.
+
+ex:
+---
+input:
+	5 2 9 6 7 4 
+
+output:
+	2 4 5 6 7 9 
+
+
+class SelectionSortProgram  
+{
+	public static void main(String[] args) 
+	{
+		int[] arr = {5,2,9,6,7,4};
+		
+		System.out.println("Original Array");
+		printArray(arr);
+		
+		selectionSort(arr);
+		
+		System.out.println("Sorted Array");
+		printArray(arr);
+	}
+	public static void selectionSort(int[] arr)
+	{
+		for(int i=0;i<arr.length-1;i++)
+		{
+			int minIndex = i;
+			
+			for(int j=i+1;j<arr.length;j++)
+			{
+				if(arr[j]<arr[minIndex])
+				{
+					minIndex = j;
+				}
+			}
+			//swapping logic 
+			int temp = arr[i];
+			arr[i]=arr[minIndex];
+			arr[minIndex]=temp;
+		}
+	}
+	public static void printArray(int[] arr)
+	{
+		for(int i:arr)
+		{
+			System.out.print(i+" ");
+		}
+		System.out.println();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

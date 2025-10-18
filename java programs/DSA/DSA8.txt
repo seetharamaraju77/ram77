@@ -1,0 +1,179 @@
+LinkedList 
+==========
+LinkedList is a linear data structure where each element stores in a node.
+
+Each node contains data and pointer(reference).
+
+We have three types of LinkedList.
+
+1) Singular LinkedList 
+
+2) Doubly LinkedList 
+
+3) Circular LinkedList
+
+
+1) Singular LinkedList 
+-----------------------
+In singular LinkedList our node points to next node in a sequence. 
+
+In singular LinkedList we can read the elements only in forward direction.
+
+Diagram: DSA8.1
+
+ex:
+---
+class LinkedList
+{
+	class Node
+	{
+		int data;
+		Node next;
+		public Node(int data)
+		{
+			this.data=data;
+			this.next=null;
+		}
+	}
+	
+	Node head;
+	public void add(int data)
+	{
+		Node newNode = new Node(data);
+		
+		if(head==null)
+		{
+			head=newNode;
+		}
+		else
+		{
+			Node current=head;
+			while(current.next!=null)
+			{
+				current = current.next;
+			}
+			current.next=newNode;
+		}
+	}
+	public void printData()
+	{
+		Node current = head;
+		while(current!=null)
+		{
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+	}
+}
+class SingularLinkedList 
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.add(7);
+		ll.add(9); 
+		
+		ll.printData();
+	}
+}
+
+2) Doubly LinkedList 
+----------------------
+In doubly LinkedList our node has reference to previous and next node.
+
+In doubly LinkedList we can read elements in bi-direction.
+
+Diagram: DSA8.2
+
+ex:
+---
+class LinkedList 
+{
+	class Node 
+	{
+		int data;
+		Node next,prev;
+		public Node(int data)
+		{
+			this.data=data;
+			this.next=null;
+			this.prev=null;
+		}
+	}
+	
+	Node head,tail;
+	public void add(int data)
+	{
+		Node newNode = new Node(data);	
+
+		if(head==null)
+		{
+			head = tail = newNode;
+		}
+		else
+		{
+			newNode.prev = tail;
+			tail.next = newNode;
+			tail = newNode;
+		}	
+	}
+	public void printForward()
+	{
+		Node current= head;
+		while(current!=null)
+		{
+			System.out.print(current.data+" ");
+			current = current.next;
+		}
+	}
+	public void printBackward()
+	{
+		Node current= tail;
+		while(current!=null)
+		{
+			System.out.print(current.data+" ");
+			current = current.prev;
+		}
+	}
+}
+class DoublyLinkedList  
+{
+	public static void main(String[] args) 
+	{
+		LinkedList ll = new LinkedList();
+		ll.add(5);
+		ll.add(3);
+		ll.add(7);
+		ll.printForward();
+		System.out.println();
+		ll.printBackward();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

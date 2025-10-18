@@ -1,0 +1,398 @@
+Q) Write a java program to copy the data from one file to another file?
+
+import java.io.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		try(
+			FileInputStream fis = new FileInputStream("source.txt");
+			FileOutputStream fos = new FileOutputStream("destination.txt");
+		    )
+		{
+			int byteRead;
+			while((byteRead = fis.read())!=-1)
+			{
+				fos.write(byteRead);
+			}
+			System.out.println("Data Copied");
+		}
+		catch(IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+
+
+Serialization 
+=============
+The process of storing object data into a file is called serialization.
+
+Converting object state to file state is called serialization.
+
+To perform  serialization we required ObjectOutputStream and FileOutputStream.
+
+We can perform serialization only for serialized objects.
+
+To create serialized object our class must implements Serializable interface.
+
+Serializable is a marker interface if we use that interface we will get some ability from JVM.
+
+Diagram: class43.1
+
+ex:
+----
+import java.io.*;
+class Person implements Serializable 
+{
+	private int age;
+	private String name;
+	
+	Person(int age,String name)
+	{
+		this.age=age;
+		this.name=name;
+	}
+	
+	public String toString()
+	{
+		return age+" "+name;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Person p = new Person(27,"Alan");	
+		
+		//store the data in a file 
+		try(
+			ObjectOutputStream ostream = 
+				new ObjectOutputStream(new FileOutputStream("abc.txt"));
+			)
+		{
+				ostream.writeObject(p);
+				System.out.println("Serialization Done");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+transient
+=========
+A transient means "Not serialized".
+
+If we don't need serialization for any perticular variable then we need to declare that variable as transient. But JVM will store default value for that variable.
+
+ex:
+----
+import java.io.*;
+class Person implements Serializable 
+{
+	private int age;
+	private String name;
+	transient private String address;
+	
+	Person(int age,String name,String address)
+	{
+		this.age=age;
+		this.name=name;
+		this.address=address;
+	}
+	
+	public String toString()
+	{
+		return age+" "+name+" "+address;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+		Person p = new Person(27,"Alan","Hyd");	
+		
+		//store the data in a file 
+		try(
+			ObjectOutputStream ostream = 
+				new ObjectOutputStream(new FileOutputStream("abc.txt"));
+			)
+		{
+				ostream.writeObject(p);
+				System.out.println("Serialization Done");
+		}
+		catch (IOException ioe)
+		{
+			ioe.printStackTrace();
+		}
+	}
+}
+
+
+
+Deserialization 
+=============
+The process of taking the data from a file and representing an object is called deserialization.
+
+Converting file state to object state is called deserialization.
+
+To perform deserialization we required ObjectInputStream and FileInputStream.
+
+We can perform deserialization only for serialized objects.
+
+To create serialized object our class must implements Serializable interface.
+
+Serializable is a marker interface if we use that interface we will get some ability from JVM.
+
+Diagram: class43.2
+
+import java.io.*;
+class Person implements Serializable 
+{
+	private int age;
+	private String name;
+	transient private String address;
+	
+	Person(int age,String name,String address)
+	{
+		this.age=age;
+		this.name=name;
+		this.address=address;
+	}
+	
+	public String toString()
+	{
+		return age+" "+name+" "+address;
+	}
+}
+class Test
+{
+	public static void main(String[] args)
+	{
+	
+		
+		//store the data in a file 
+		try(
+			ObjectInputStream istream = 
+				new ObjectInputStream(new FileInputStream("abc.txt"));
+			)
+		{
+				Person p = (Person) istream.readObject();
+				System.out.println(p);
+		}
+		catch (IOException | ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+Generics 
+=========
+Arrays are typesafe.
+It means we can give guarantee that what type of elements are present in array.
+ex:
+	int[] arr = new int[3];
+	arr[0]=10;
+	arr[1]=20;
+	arr[2]=30;
+
+If requirement is there to store String values then it is recommanded to use String array.
+ex:
+	String[] s = new String[3];
+	s[0]="Hi";
+	s[1]="Hello";
+	s[2]=10;     // invalid
+
+At the time of retrieving the data from array we don't need to perform typecasting.
+
+ex:
+	String[] s = new String[3];
+	s[0]="Hi";
+	s[1]="Hello";
+	-
+	-
+	String val1 = s[0];
+
+Collections 
+-----------
+Collections are not typesafe.
+It means we can't give guarantee that what type of elements are present in Collections.
+
+If requirement is there to store String values then it is never recommanded to use ArrayList class because we won't get any compile time error or runtime error but sometimes our program get failured.
+
+ex:
+	ArrayList al = new ArrayList();
+	al.add("Hi");
+	al.add("Hello");
+	al.add(10); 
+
+At the time of retrieving the data compulsary we need to perform typecasting.
+
+ex:
+	ArrayList al = new ArrayList();
+	al.add("Hi");
+	al.add("Hello");
+	al.add(10); 
+	-
+	-
+	String val1 = (String)al.get(0);
+	
+To overcome this limitation Sun Micro System introduced Generics concept in 1.5 version.
+
+The main objective of generics are
+
+1) To make Collections as typesafe.
+
+2) To avoid typecasting problem. 
+
+
+
+java.util package
+=================
+
+Q) What is the difference between Arrays and Collections?
+
+Arrays												Collections
+-------------										------------
+It is a collection of homogeneous data 		It is a collection of homogeneous and 
+elements.									hetrogeneous data elements.
+
+It is fixed in size.				        It is growable in nature.
+
+Performance point of view arrays are		Memory point of view Collections are  
+recommanded to use.						    recommanded to use.
+
+It holds primitive types and object types.	It holds only object types.
+
+Arrays are not implemented based on data 	Collections are implemented based on data 
+structure concept.Hence we can't expect 	structure concept.Hence we can expect ready
+any readymade methods.						made methods.
+
+
+Collection Framework 
+====================
+Collection framework defines several classes and interfaces to represent group of objects in a single entity.
+ex:
+		Java			C++
+		----			-----
+		Collections		Containers
+		Collection Framework	STL (Standard Template Library)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,390 @@
+Q) What is the difference between GET and POST methodology?
+
+GET					POST
+----					-----
+It is a default methodology.		It is not a default methodology.
+
+It sends the request fastly.		It is bit slow.
+
+It carries limited amount of data.	It carries unlimited amount of data.
+
+It is not good for secure data.		It is good for secure data.
+
+It is not suitable for encryption 	It is suitable for encryption and file 
+and file uploading.			uploading.
+
+To process GET methodology we will	To process POST methodology we will use  
+use doGet(-,-) method.			doPost(-,-) method.
+
+
+
+
+File Uploading 
+==============
+The process of capturing a file from client machine file system and storing in a server machine file system is called file uploading and reverse is called file downloading.
+
+While dealing with matrimonial applications, job portal applications, profile management applications we need to upload and downloading a file.
+
+There is no specific API in servlets to perform file uploading.
+
+We need to take the support of third party API called JAVAZOOM API.
+
+JAVAZOOM API comes in zip format and once if we extracted we will get three jar files.
+ex:
+	uploadbean.jar (Main Jar file)
+	struts.jar     (Dependent jar file)
+	cos.jar        (Dependent jar file)
+
+We can place file component in a form page as follow.
+ex:
+	<input type="file" name="f1"/>
+
+
+JAVAZOOM API 
+------------
+https://drive.google.com/file/d/1XXQqn3rQ_yWTr-i4DT0nl4_nCDE2ejWl/view?usp=drive_link
+
+
+Deployment Directory Structure 
+------------------------------
+UploadApp 
+|
+|---Java Resources
+	|
+	|-----src
+		|
+		|---com.ihub.www
+			|
+			|---TestSrv.java
+|---WebContent
+	|
+	|---form.html 
+	|---WEB-INF
+		|
+		|-----web.xml 
+		|-----lib
+			|
+			|---uploadbean.jar
+			|---struts.jar
+			|---cos.jar
+Note:
+-----
+In above application we need to add "servlet-api.jar" and "uploadbean.jar" file in project build path.
+
+form.html
+---------
+
+<form action="test" method="POST" enctype="multipart/form-data">
+
+	File1: <input type="file" name="f1"/> <br>
+	File2: <input type="file" name="f2"/> <br>
+	<input type="submit" value="upload"/>
+	
+</form>
+
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file>form.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>TestSrv</servlet-name>
+  	<servlet-class>com.ihub.www.TestSrv</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TestSrv</servlet-name>
+  	<url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
+
+
+TestSrv.java
+------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import javazoom.upload.MultipartFormDataRequest;
+import javazoom.upload.UploadBean;
+
+public class TestSrv extends HttpServlet 
+{
+	protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		
+		//file uploading 
+		try
+		{
+			UploadBean ub = new UploadBean();
+			ub.setOverwrite(false);
+			ub.setFolderstore("D://rakesh");
+			
+			MultipartFormDataRequest nreq = new MultipartFormDataRequest(req);
+			ub.store(nreq);
+			pw.println("<center><h1>Files are Uploaded Successfully</h1></center>");
+			pw.close();
+		}
+		catch(Exception e)
+		{
+			pw.println(e.getMessage());
+		}
+	}
+}
+
+Request url 
+---------
+	http://localhost:2525/UploadApp/
+
+
+@WebServlet Annotation
+=======================
+The @WebServlet annotation is a Java feature used in web applications to configure and declare a Servlet without manually define its mapping and other settings in the web.xml file. 
+
+By adding this annotation to a class that extends HttpServlet, developers specify the URL patterns that will trigger the servlet, along with other optional metadata like the servlet's name and description. 
+
+Deployment Directory Structure 
+------------------------------
+UploadApp 
+|
+|---Java Resources
+	|
+	|-----src
+		|
+		|---com.ihub.www
+			|
+			|---TestSrv.java
+|---WebContent
+	|
+	|---form.html 
+	|---WEB-INF
+		|
+		|-----web.xml 
+		|-----lib
+			|
+			|---uploadbean.jar
+			|---struts.jar
+			|---cos.jar
+Note:
+-----
+In above application we need to add "servlet-api.jar" and "uploadbean.jar" file in project build path.
+
+form.html
+---------
+
+<form action="test" method="POST" enctype="multipart/form-data">
+
+	File1: <input type="file" name="f1"/> <br>
+	File2: <input type="file" name="f2"/> <br>
+	<input type="submit" value="upload"/>
+	
+</form>
+
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file>form.html</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+
+TestSrv.java
+------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import javazoom.upload.MultipartFormDataRequest;
+import javazoom.upload.UploadBean;
+
+@WebServlet("/test")
+public class TestSrv extends HttpServlet 
+{
+	protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		
+		//file uploading 
+		try
+		{
+			UploadBean ub = new UploadBean();
+			ub.setOverwrite(false);
+			ub.setFolderstore("D://rakesh");
+			
+			MultipartFormDataRequest nreq = new MultipartFormDataRequest(req);
+			ub.store(nreq);
+			pw.println("<center><h1>Files are Uploaded Successfully</h1></center>");
+			pw.close();
+		}
+		catch(Exception e)
+		{
+			pw.println(e.getMessage());
+		}
+	}
+}
+
+Request url 
+---------
+	http://localhost:2525/UploadApp/
+
+	
+Servlet Life Cycle Methods 
+==========================
+We have three life cycle methods in servlets.
+
+1) public void init(ServletConfig config)throws ServletException
+--------------------------------------------------------------
+	It is used for instantiation event.
+	This method will execute just before servlet object creation.
+
+2) public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException
+--------------------------------------------------------------
+	It is used for request arrival event.
+	This method will execute when request goes to servlet program.
+
+
+3) public void destroy() 
+---------------------------------------------------------------
+	It is used for destruction event.
+	This method will execute just before servlet object destruction.
+
+Diagram: servlet6.1
+
+
+Deployment Directory structure 
+------------------------------
+LifeCycleApp
+|
+|---Java Resources
+|	|	
+	|-----src
+		|
+		|---com.ihub.www
+			|
+			|---TestSrv.java
+		
+|---WebContent
+	|
+	|---index.html 
+	|---WEB-INF
+		|
+		|---web.xml 
+Note:
+----
+In above application we need to add "servlet-api.jar" file in project build path.
+
+index.html 
+----------
+
+<center>
+	<h1>
+		<a href="test"> click Me </a>
+	</h1>
+</center>
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
+
+TestSrv.java
+--------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(name = "TestSrv", urlPatterns = "/test")
+public class TestSrv extends HttpServlet 
+{
+	public void init(ServletConfig config)throws ServletException
+	{
+	}
+	
+	public void service(ServletRequest req,ServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		pw.println("<center><h1>Servlet Life Cycle</h1></center>");
+		pw.close();
+	}
+	public void destroy()
+	{	
+	}
+}
+
+Request url 
+-----------
+	http://localhost:2525/LifeCycleApp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

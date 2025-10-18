@@ -1,0 +1,208 @@
+Q) Write a query to display employees information whose salary is greater then Jessica salary?
+
+	select * from emp where esal > 
+				(select esal from emp where ename='Jessica');
+
+
+Q) Write a query to display second highest salary from emp table?
+
+	select max(esal) from emp where esal<(select max(esal) from emp);
+
+
+
+2) Multiple Row Sub query 
+--------------------------
+If a sub query returns more then one row is called multiple row sub query.
+
+In multiple row sub query we need to use multiple row operators.
+
+We have three multiple row operators.
+
+i) ALL 
+-------
+	select * from emp where esal > ALL (select esal from emp where deptno=10);
+
+ii) ANY 
+--------
+	select * from emp where esal > ANY (select esal from emp where deptno=10);
+	select * from emp where esal < ANY (select esal from emp where deptno=10);
+
+iii) IN 
+-------
+	select * from emp where esal IN (select esal from emp where deptno=10);
+
+3) Multiple Column Sub Query 
+---------------------------
+If a sub query returns more then one column is called multiple column sub query.
+
+In multiple column sub query we will use IN operator.
+
+ex:
+---
+	select * from emp where(eid,ename,esal) IN (select eid,ename,esal from emp);
+	select eid,ename,esal from emp where(eid,ename,esal) IN 
+			(select eid,ename,esal from emp);
+
+
+interview question 
+-------------------
+Q) Write a query to display last three records from emp table?
+
+	SQL
+	----
+	select * from emp order by eid desc where rownum IN (1,2,3);
+
+	SUBQUERY 
+	--------
+	select * from (select * from emp order by eid desc) where rownum<=3;
+
+Q) What is the difference between RDBMS and MongoDB ?
+
+RDBMS 						MongoDB 
+---------					---------
+It is a relational database.			It is a non-relational database.
+						(It is a document based database)
+
+It does not store the data in key and 		It stores the data in key and value 
+value pair.					pair.
+
+It is not designed for heirarchical data.	It is designed for hierachical data.
+
+It supports structured query language.		It supports JSON query language.
+
+It contains tables.				It contains collections.
+
+It is row based.				It is document based.
+
+It is column based.				It is field based.
+
+It is slower.					It is faster.
+
+PL/SQL 
+=======
+PL/SQL stands for Procedural Language extensions to Structure Query Language.
+
+Using PL/SQL we can achieve following features.
+
+1) We can achieve programming features like control statements, loops and etc.
+
+2) It reduces network traffic.
+
+3) We can display custom messages by using concept of exception handling.
+
+4) We can perform related operations by using the concept of triggers.
+
+5) We can store the PL/SQL program permanently to database for repeated execution.
+
+
+PL/SQL BLOCK 
+=============
+A PL/SQL program is also known as PL/SQL block.
+
+syntax:
+------
+	DECLARE 
+	-
+	-  -- Declaration Section 
+	-
+	BEGIN
+	-
+	-  -- Executable Section 
+	-
+	EXCEPTION 
+	-
+	-  -- Exception Section 
+	-
+	END;
+	/
+
+Declaration Section 
+--------------------
+It is used to declare variables, exceptions, cursors and etc.
+It is optional section.
+
+Executable Section 
+-------------------
+It contains actual code of a PL/SQL program.
+It is mandatory section.
+
+Exception Section
+-------------------
+It contains lines of code which is executed when exception is raised.
+It is optional section.
+
+
+To see the output in PL/SQL we need to execute below command.
+ex:
+	SQL> set   serveroutput  on 
+
+
+Q) Write a PL/SQL program to print Hello World?
+
+	BEGIN 
+	DBMS_OUTPUT.PUT_LINE('Hello World');
+	END;
+	/
+
+	Here '/' is used to submit the PL/SQL program into database.
+
+
+Q) Write a PL/SQL program to perform sum of two numbers?
+
+	DECLARE 
+	A number;
+	B number;
+	C number;
+	BEGIN
+	A:=10;
+	B:=20;
+	C:=A+B;
+	DBMS_OUTPUT.PUT_LINE(C);
+	END;
+	/
+
+Declaration and intialization using single line
+----------------------------------------------
+	DECLARE 
+	A number:=10;
+	B number:=20;
+	C number:=A+B;
+	BEGIN
+	DBMS_OUTPUT.PUT_LINE('sum of two numbers is ='||C);
+	END;
+	/
+
+Using '&' symbol we can read dynamic inputs.
+
+ex:
+---
+	DECLARE 
+	A number(3);
+	B number(3);
+	C number(6);
+	BEGIN
+	A:=&a;
+	B:=&b;
+	C:=A+B;
+	DBMS_OUTPUT.PUT_LINE('sum of two numbers is ='||C);
+	END;
+	/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

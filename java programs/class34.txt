@@ -1,0 +1,442 @@
+Enum 
+=====
+Enum concept introduced in 1.5 version.
+
+Enum is a group of named constants.
+
+Using Enum we can create our own datatype called enumerated datatype.
+
+When compare to old language enum, java enum is more powerful.
+
+To declare enum we need to use enum keyword.
+
+syntax:
+------
+	enum  type_name
+	{
+		value1,value2,....,valueN
+	}
+ex:
+----
+	enum  Month
+	{
+		JAN,FEB,MAR	
+	}
+
+Internal implementation of enum 
+-------------------------------
+Every enum internally consider as class concept and it extends with java.lang.Enum class.
+
+Every enum constant is a reference variable of enum type.
+
+ex:
+
+enum  Month			public final class Month extends java.lang.Enum 	
+{				{
+	JAN,FEB,MAR	==>		public static final Month JAN = new Month();
+}					public static final Month FEB = new Month();
+					public static final Month MAR = new Month();
+				}	
+
+Declaration and Usage of enum
+-----------------------------
+enum Month 
+{
+	JAN,FEB,MAR
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Month m = Month.JAN;
+		System.out.println(m);
+	}
+}
+
+Enum is allowed in switch case.
+
+ex:
+---
+enum Drinks
+{
+	COLA,CAMPA,COKE
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Drinks d = Drinks.CAMPA;
+		switch(d)
+		{
+				case COLA : System.out.println("This is COLA"); break;
+				case CAMPA : System.out.println("This is CAMPA"); break;
+				case COKE : System.out.println("This is COKE"); break;
+		}
+	}
+}
+
+enum vs inheritance 
+-------------------
+Enum is a final so it is not possible to create child enum.
+
+ex:
+	enum A
+	{
+	}
+	enum B extends A  --> invalid 
+	{
+	}
+
+Enum extends with java.lang.Enum class so it is possible to extend some other class or enum.
+ex:
+	class A 
+	{
+	}
+	enum B extends A  --> invalid 
+	{
+	}
+
+But enum can implements interface.
+
+ex:
+	interface A 
+	{
+	}
+	enum B implements A  --> valid 
+	{	
+	}
+
+Hence we conclude that inheritance concept is not applicable for enum.
+
+
+java.lang.Enum
+----------------
+The power to enum will be inherited from java.lang.Enum class.
+
+It contains following two methods.
+
+1) values()
+------------
+	It is static method that is used to return group of constants from enum.
+
+2) ordinal() 
+------------
+	It is used to return ordinal number.
+
+ex:
+---
+enum Week
+{
+	MON,TUE,WED,THU,FRI,SAT,SUN
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Week[] w = Week.values();
+		
+		//for each loop
+		for(Week w1 : w)
+		{
+			System.out.println(w1+"---------------"+w1.ordinal());
+		}
+	}
+}
+
+When compare to old language enum , java enum is more powerful because in addition to constants we can declare variables, methods and constructors.
+
+ex:
+---
+enum Cloths
+{
+	SILK,COTTON,KHADI;
+	
+	Cloths()
+	{
+		System.out.println("constructor");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Cloths c = Cloths.SILK;
+	}
+}
+
+ex:
+---
+enum Cloths
+{
+	SILK,COTTON,KHADI;
+	
+	static int i=10;
+	
+	public static void main(String[] args) 
+	{
+		System.out.println(i);
+	}
+}
+
+Wrapper classes 
+===============
+The main objective of wrapper classes are
+
+1) To wrap primitive type to wrapper object and vice versa.
+
+2) To defined several utility methods 
+
+ex:
+	Primitive type			Wrapper class
+	--------------			-------------
+	byte 				Byte 
+	short				Short
+	int 				Integer				
+	long 				Long 
+	float				Float 
+	double				Double 
+	boolean 			Boolean 
+	char 				Character 
+
+constructor 
+-----------
+For every wrapper class we can create two constructors. One will take corresponding primitive as an argument and another will take corresponding String as an argument.
+
+ex:
+	Wrapper class			constructor 
+	-----------			-----------
+	Byte 				byte or String 
+	Short				short or String 
+	Integer				int or String 
+	Long 				long or String 
+	Float				float or String 
+	Double 				double or String 
+	Boolean 			boolean or String 
+	Character 			char 
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Integer i1 = new Integer(10);
+		System.out.println(i1); // 10
+		
+		Integer i2 = new Integer("20");
+		System.out.println(i2); // 20 
+	}
+}
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Boolean b1 = new Boolean(true);
+		System.out.println(b1); // true 
+		
+		Boolean b2 = new Boolean("false");
+		System.out.println(b2); // false 
+	}
+}
+
+ex:
+--
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Character c = new Character('a');
+		System.out.println(c); 
+	}
+}
+
+
+utility methods
+================
+Wrapper class provides following utility methods.
+
+1) valueOf() 
+
+2) xxxValue() 
+
+3) parseXxx() 
+
+4) toString() 
+
+
+1) valueOf() 
+-------------
+It is similar to constructor.
+
+It is used to convert primitive type to wrapper object.
+
+The process of automatic conversion from primitive type to wrapper object is called autoboxing.
+
+Autoboxing in Java internally uses the static valueOf() method of the corresponding wrapper class.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		
+		//Autoboxing 
+		int a = 10;
+		Integer i = a;
+		System.out.println(i);
+		
+		/*
+			int a = 10;
+			Integer i = Integer.valueOf(a);
+			System.out.println(i);
+		*/
+	}
+}
+
+2) xxxValue() 
+--------------
+It is used to convert wrapper object to primitive type.
+
+The process of automatic conversion from wrapper object to primitive type is called 
+autounboxing.
+
+Autounboxing in Java internally uses the xxxValue() methods of the wrapper classes to convert a wrapper class object to its corresponding primitive type.
+
+ex:
+---
+
+class Test 
+{
+	public static void main(String[] args)
+	{
+		
+		//auto unboxing 
+		Integer i1 = Integer.valueOf(10);
+		int a = i1;
+		System.out.println(a); 
+		
+		/*
+			Integer i1 = Integer.valueOf(10);
+		
+			int a = i1.intValue();
+		
+			System.out.println(a); 
+		*/
+	}
+}
+
+3) parseXxx()
+------------
+It is used to convert String type to primitive type or wrapper object.
+
+ex:
+--
+class Test 
+{
+	public static void main(String[] args)
+	{
+		
+		//String 
+		String str = "10";
+		
+		int i = Integer.parseInt(str);
+		System.out.println(i); // 10
+		
+		float f = Float.parseFloat(str);
+		System.out.println(f); // 10.0
+	}
+}
+
+4) toString()
+--------------
+It is used to convert wrapper object or primitive type to string type.
+
+ex:
+---
+class Test 
+{
+	public static void main(String[] args)
+	{
+		
+		Integer i1 = Integer.valueOf(10);
+		String str1 = i1.toString();
+		System.out.println(str1);
+		
+		int a=10;
+		String str2 = Integer.toString(a);
+		System.out.println(str2);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

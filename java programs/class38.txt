@@ -1,0 +1,318 @@
+Q) Write a java program to find out most repeating character in a given string?
+
+input:
+	ihubtalentinstitute
+
+output:
+	t repeating for 5 times 
+
+	class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ihubtalentinstitute";
+		
+		char ch=' ';
+		int maxCount=0;
+		
+		for(int i=0;i<str.length();i++)
+		{
+			int cnt=0;
+			
+			for(int j=0;j<str.length();j++)
+			{
+				if(str.charAt(i) == str.charAt(j))
+				{
+					cnt++;
+				}
+			}
+			if(cnt>maxCount)
+			{
+				maxCount=cnt;
+				ch = str.charAt(i);
+			}
+		}
+		System.out.println(ch+" is repeating for "+maxCount+" times");
+	}
+}
+
+Q) Jack purchased a new laptop for his office work. His son started to learn new words using letters.So Jack wants to write a program to find out longest word created by his son.
+
+input:
+	apple   cat   elephant   ball 
+
+output:
+	elephant 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="apple cat elephant ball";
+		String[] sarr = str.split(" ");
+		
+		int cnt=0;
+		String word="";
+		for(String s : sarr)
+		{
+			int len = s.length();
+			if(len>cnt)
+			{
+				cnt=len;
+				word=s;
+			}
+		}
+		System.out.println(word);
+	}
+}
+
+Q) Write a java program to encode the string?
+
+input:
+	1106
+
+output:
+	AAJF
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="1106";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			int n = Character.getNumericValue(str.charAt(i));
+			
+			if(n>0)
+			{
+				System.out.print((char)('A'+n-1));
+			}
+			else
+			{
+				int k = Integer.parseInt(str.substring(i-1,i+1));
+				System.out.print((char)('A'+k-1));
+			}
+			
+		}
+	}
+}
+
+Q) Write a java program to Decode the string?
+
+input:
+	AAJF
+
+output:
+	1106
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="AAJF";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			
+			int n = ch - 'A' + 1;
+			
+			if(String.valueOf(n).contains("0"))
+			{
+				System.out.print(n%10);
+			}
+			else
+			{
+				System.out.print(n);
+			}
+		}
+	}
+}
+
+Q) Write a java program to display the string in a given format?
+
+input:
+	A1B2C3D4
+
+output:
+	ABBCCCDDDD 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="A1B2C3D4";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			if(Character.isAlphabetic(str.charAt(i)))
+			{
+				System.out.print(str.charAt(i));
+			}
+			else
+			{
+				int n = Character.getNumericValue(str.charAt(i));	
+				for(int k=1;k<n;k++)
+				{
+					System.out.print(str.charAt(i-1));	
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to find out given string is Anagram or not?
+
+input:
+	silent 
+	listen 
+
+output:
+	It is a Anagram string 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str1="silent";
+		String str2="listen";
+		
+		char[] ch1 = str1.toCharArray();
+		char[] ch2 = str2.toCharArray();
+		
+		Arrays.sort(ch1); // e i l n s t 
+		Arrays.sort(ch2); // e i l n s t 
+		
+		if(ch1.length != ch2.length)
+		{
+			System.out.println("It is not a Anagram string");
+		}
+		else
+		{
+			boolean flag=true;
+			for(int i=0;i<ch1.length && i<ch2.length;i++)
+			{
+				if(ch1[i]!=ch2[i])
+				{
+					flag=false;
+					break;
+				}
+			}
+			if(flag==true)
+				System.out.println("It is a Anagram string");
+			else
+				System.out.println("It is not a Anagram string");
+		}
+
+	}
+}
+
+Q) Write a java program to display permutation of given string?
+
+input:
+	ABC 
+
+output:
+	ABC 
+	ACB
+	BAC 
+	BCA
+	CBA 
+	CAB 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="ABC";	
+		isPermutation(str.toCharArray(),0);
+	}
+	public static void  isPermutation(char[] arr,int fi)
+	{
+		if(fi==arr.length-1)
+		{
+			System.out.println(arr);
+			return;
+		}
+		for(int i=fi;i<arr.length;i++)
+		{
+			swap(arr,fi,i);
+			isPermutation(arr,fi+1);
+			swap(arr,fi,i);
+		}
+	}
+	public static void swap(char[] arr,int fi,int i)
+	{
+		char temp = arr[fi];
+		arr[fi]=arr[i];
+		arr[i]=temp;
+	}
+}
+
+Assignments
+===========
+Q) Write a java program to display the string in a given format?
+
+input:
+	ABBCCCDDDD
+output:
+	A1B2C3D4
+
+
+Q) Write a java program to count number of uppercase letters, lowercase letters, digits , words and spaces in a string?
+
+input:
+	This Is Java Class38
+
+output:
+	Uppercase letters : 4
+	Lowercase letters : 11
+	Digits : 2 
+	Words : 4
+	Spaces : 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,461 @@
+Q) What is the difference between interface and abstract class?
+
+interface					abstract class 
+---------					---------------
+To declare interface we will use interface 	To declare abstract class we will use abstract
+keyword.					keyword.
+
+It is a blue print of a class and it is a 	It is a collection of abstract methods and 	
+collection of abstract methods,default methods	concrete methods.
+and static methods.
+
+It contains constants.				It contains instance variables.
+
+We can achieve multiple inheritance.		We can't achieve multiple inheritance.
+
+To write the implementation for abstract 	To write the implementation of abstract 
+methods we will use implementation class.	methods we will use sub class.
+
+It does not allow blocks.			It allows blocks.
+
+It does not allow constructor.			It allows constructor.
+
+If we know only specification then 		If we know partial implementation then 
+we need to use interface.			we need to use abstract class.
+
+
+this keyword 
+============
+A this keyword is a java keyword which is used to refer current class object reference.
+
+We can utilize this keyword in following ways.
+
+1) To refer current class variables 
+
+2) To refer current class methods 
+
+3) To refer current class constructors
+
+1) To refer current class variables
+------------------------------------
+class A 
+{
+	int i = 10;
+	int j = 20;
+	
+	A(int i,int j)
+	{
+		System.out.println(i+" "+j); // 100  200
+		System.out.println(this.i+" "+this.j); //10  20
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A(100,200);
+	}
+}
+
+
+2) To refer current class methods
+---------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+		this.m2();
+	}
+	public void m2()
+	{
+		System.out.println("M2-Method");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+	}
+}
+
+3) To refer current class constructors
+-------------------------------------
+class A 
+{
+	A()
+	{
+		System.out.println("0-arg const");
+	}
+	A(int i)
+	{
+		this();
+		System.out.println("int-arg const");
+	}
+	A(double d)
+	{
+		this(10);
+		System.out.println("double-arg const");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A(10.5d);
+	}
+}
+
+
+super 
+======
+A super is a java keyword which is used to refer super class object reference.
+
+We can utilize super keyword in following ways.
+
+1) To refer super class variables 
+
+2) To refer super class methods 
+
+3) To refer super class constructors 
+
+
+1) To refer super class variables 
+----------------------------------
+class A 
+{
+	int i=10;
+	int j=20;
+}
+class B extends A 
+{
+	int i=100;
+	int j=200;
+	B(int i,int j)
+	{
+		System.out.println(this.i+" "+this.j); // 100  200
+		System.out.println(i+" "+j); // 1000 2000
+		System.out.println(super.i+" "+super.j);// 10  20
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b = new B(1000,2000);
+	}
+}
+
+
+2) To refer super class methods
+-------------------------------
+class A 
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+class B extends A 
+{
+	public void m2()
+	{
+		super.m1();
+		System.out.println("M2-Method");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b =new B();
+		b.m2();
+	}
+}
+
+3) To refer super class constructors 
+------------------------------------
+
+class A 
+{
+	A()
+	{
+		System.out.println("A-const");
+	}
+}
+class B extends A 
+{
+	B()
+	{
+		//super();
+		System.out.println("B-const");
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		B b =new B();
+	}
+}
+
+
+
+
+
+Composition Example 
+===================
+class Engine 
+{
+	private String type;
+	
+	Engine(String type)
+	{
+		this.type=type;
+	}
+	public void engineStart()
+	{
+		System.out.println("Engine "+type+" Started");
+	}	
+}
+class Car 
+{
+	private Engine engine;
+	Car(String engineType)
+	{
+		engine = new Engine(engineType);
+	}
+	
+	public void carStart()
+	{
+		engine.engineStart();
+		System.out.println("Car Started");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Car c = new Car("V8");
+		c.carStart();
+	}
+}
+
+Aggregation Example 
+===================
+class Engine 
+{
+	private String type;
+	
+	Engine(String type)
+	{
+		this.type=type;
+	}
+	public void engineStart()
+	{
+		System.out.println("Engine "+type+" Started");
+	}
+}
+class Car
+{
+	private Engine engine;
+	
+	Car(Engine engine)
+	{
+		this.engine = engine;
+	}
+	public void carStart()
+	{
+		engine.engineStart();
+		System.out.println("Car Started");
+	}
+}
+class Test 
+{
+	public static void main(String[] args)
+	{
+		Engine e = new Engine("v8");
+		Car c = new Car(e);
+		c.carStart();
+	}
+}
+
+
+
+	
+
+Packages
+========
+A package is a collection of classes, interfaces, enums and annotations.
+
+Enum is a special class and Annotation is a special interface.
+
+A package is also known as folder or a directory.
+
+In java, packages are divided into two types.
+
+1) Predefined packages 
+
+2) Userdefined packages
+
+1) Predefined packages
+-----------------------
+Built-In packages are called predefined packages.
+ex:
+	java.lang 
+	java.io
+	java.time 
+	java.text 
+	java.util
+	java.util.stream 
+	and etc.
+
+
+2) Userdefined packages
+------------------------
+Packages which are created by the user based on the application requirements are called userdefined packages.
+
+To declare a package we need to use package keyword.
+
+syntax:
+------
+	package   <package_name>;
+
+It is recommanded to declare package name in the reverse order of url.
+ex:
+	package  com.google.www;
+
+
+package com.ihub.www;
+import java.util.Calendar;
+class WishApp 
+{
+	public static void main(String[] args)
+	{
+		Calendar c = Calendar.getInstance();
+		int h = c.get(Calendar.HOUR_OF_DAY);
+		
+		if(h<12)
+			System.out.println("Good Morning");
+		else if(h<16)
+			System.out.println("Good Afternoon");
+		else if(h<20)
+			System.out.println("Good Evening");
+		else
+			System.out.println("Good Night");
+			
+	}
+}
+
+We can compile above program by using below command.
+ex:
+		current directory 
+		     |
+	javac   -d   .   WishApp.java
+		|
+	destination folder 
+
+We can execute above program by using below command.
+ex:
+	java   com.ihub.www.WishApp 
+			|
+		package-name 
+
+
+ex:2
+-----
+
+A.java
+-------
+package ihub;
+public class A   
+{
+	public void m1()
+	{
+		System.out.println("M1-Method");
+	}
+}
+javac  -d  .   A.java
+
+Test.java
+-----------
+import ihub.A;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		A a = new A();
+		a.m1();
+	}
+}
+
+javac   Test.java
+java    Test 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,203 @@
+3) Cyclic vs Acyclic Graph 
+---------------------------
+	Cyclic : It contains a cycle. (a path that starts and ends with same node)
+	Acyclic : It does not contain cycle.
+	Diagram: DSA13.1
+
+4) Connected vs Disconnected Graph
+--------------------------------
+	Connected : From one node we can visit any node in a graph is called 
+		    connected graph.
+	Disconnected : All nodes are not connected.
+	Diagram : DSA13.2
+
+Representing graph in a memory 
+==============================
+Diagram : DSA13.3
+Diagram : DSA13.4
+
+
+Q) Write a java program to display double array elements using for each loop?
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] darr = {{1,2,3},{4,5,6},{7,8,9}};
+		
+		for(int[] sarr : darr)
+		{
+			for(int i : sarr)
+			{
+				System.out.print(i+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+
+Q) Write a java program to store list in a list?
+
+import java.util.*;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		List<List<Integer>>  mainlist= Arrays.asList(
+									Arrays.asList(1,2,3),
+									Arrays.asList(4,5,6),
+									Arrays.asList(7,8,9)
+								);
+		for(List<Integer> list : mainlist)
+		{
+			for(int i : list)
+			{
+				System.out.print(i+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+		
+	}
+}
+
+Converting a graph into adjacent Matrix using Edges
+====================================================
+
+Example:1 - Directed and Indirected Graph 
+------------------------------------------
+Diagram: DSA13.5
+
+import java.util.*;
+class Graph 
+{
+	int[][] adjMatrix;
+	public Graph(int nodes)
+	{
+		adjMatrix = new int[nodes][nodes];
+	}
+	public void addEdgesInMatrix(int[][] edges,boolean isDirected)
+	{
+		for(int[] edge : edges)
+		{
+			int u = edge[0];
+			int v = edge[1];
+			if(isDirected)
+			{
+				adjMatrix[u][v]=1;
+			}
+			else
+			{
+				adjMatrix[u][v]=1;
+				adjMatrix[v][u]=1;
+			}
+		}
+	}
+	public void printMatrix()
+	{
+		for(int i=0;i<adjMatrix.length;i++)
+		{
+			System.out.print("row "+i+" -> ");
+			for(int j=0;j<adjMatrix[i].length;j++)
+			{
+				System.out.print(adjMatrix[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] edges = {{0,1},{0,2},{1,3}};
+		int nodes=4;
+		Graph graph = new Graph(nodes);
+		graph.addEdgesInMatrix(edges,true);
+		graph.printMatrix();
+	}
+}
+
+
+ 
+
+
+
+
+
+
+
+Converting a graph into adjacent Matrix with weight using Edges
+===============================================================
+
+Example:1 - Weighted Directed and Indirected Graph 
+----------------------------------------------
+Diagram: DSA13.6
+
+import java.util.*;
+class Graph 
+{
+	int[][] adjMatrix;
+	public Graph(int nodes)
+	{
+		adjMatrix = new int[nodes][nodes];
+	}
+	public void addEdgesInMatrix(int[][] edges,boolean isDirected)
+	{
+		for(int[] edge : edges)
+		{
+			int u = edge[0];
+			int v = edge[1];
+			int w = edge[2];
+			if(isDirected)
+			{
+				adjMatrix[u][v]=w;
+			}
+			else
+			{
+				adjMatrix[u][v]=w;
+				adjMatrix[v][u]=w;
+			}
+		}
+	}
+	public void printMatrix()
+	{
+		for(int i=0;i<adjMatrix.length;i++)
+		{
+			System.out.print("row "+i+" -> ");
+			for(int j=0;j<adjMatrix[i].length;j++)
+			{
+				System.out.print(adjMatrix[i][j]+" ");
+			}
+			//new line 
+			System.out.println();
+		}
+	}
+}
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int[][] edges = {{0,1,10},{0,2,20},{1,3,30}};
+		int nodes=4;
+		Graph graph = new Graph(nodes);
+		graph.addEdgesInMatrix(edges,true);
+		graph.printMatrix();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

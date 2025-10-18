@@ -1,0 +1,451 @@
+Q) Write a java program to find out number of digits ,find it sum and check it is even or odd?
+
+input:
+	NEX123
+
+output;
+	Number of Digits : 3
+	Sum of Digits : 6
+	It is even number 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="NEX123";
+		
+		String s = str.replaceAll("[^0-9]","");
+		
+		System.out.println("Number of Digits :"+s.length());
+		
+		int sum=0;
+		for(int i=0;i<s.length();i++)
+		{
+			int n = Character.getNumericValue(s.charAt(i));
+			sum+=n;
+		}
+		System.out.println("Sum of Digits :"+sum);
+		
+		if(sum%2==0)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+}
+
+
+Q) Write a java program to sort the characters in a given string?
+
+input:
+	eadcbf
+output:
+	abcdef 
+
+
+import java.util.Arrays;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str="eadcbf";
+		
+		char[] carr=str.toCharArray();
+		
+		Arrays.sort(carr);
+		
+		//make string empty
+		str="";
+		for(char ch:carr)
+		{
+			str+=ch;
+		}
+		System.out.println(str);
+	}
+}
+
+Q)Write a java program to perform right rotation of a given string?
+
+input:
+	str = ihubtalent 
+	cnt = 2
+	
+output:
+	ubtalentih
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "ihubtalent"; 
+		int cnt = 2;
+		
+		String word1 = str.substring(cnt,str.length());
+		String word2 = str.substring(0,cnt);
+		str = word1+word2;
+		System.out.println(str);
+	}
+}
+
+Q) Write a java program to display the extension of a file?
+
+input:
+	abc.txt 
+
+output:
+	txt 
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "abc.txt"; 
+		
+		int index = str.indexOf('.');
+		
+		String newStr = str.substring(index+1,str.length());
+	
+		System.out.println(newStr);
+	}
+}
+
+
+Q) Write a java program to insert a word in a given index?
+
+input:
+	str = ihubtalent
+	index = 4
+	word = for 
+
+output:
+	ihubfortalent
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "ihubtalent";
+		int index = 4;
+		String word = "for";
+
+		String word1 = str.substring(0,index);
+	
+		String word2 = str.substring(index);
+		
+		str = word1+word+word2;
+		System.out.println(str);
+	}
+}
+
+
+Q) Write a java program to display reverse of a string?
+
+input:
+	hello 
+
+output:
+	olleh 
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "hello";
+		
+		String rev="";
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev+=str.charAt(i);
+		}
+		System.out.println(rev);
+	}
+}
+
+
+Q) Write a java program to check given string is palindrome or not?
+
+input:
+	racar 
+
+output:
+	It is a palindrome string 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "racar";
+		
+		String rev="";
+		for(int i=str.length()-1;i>=0;i--)
+		{
+			rev+=str.charAt(i);
+		}
+		
+		if(str.equals(rev))
+			System.out.println("It is a palindrome string");
+		else
+			System.out.println("It is not a palindrome string");
+	}
+}
+
+
+Write a java program to display reverse of a sentence?
+
+input:
+	This is java class 
+
+output:
+	class java is This 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "This is java class";
+		
+		String[] sarr = str.split(" ");
+		
+		//reading reverse 
+		for(int i=sarr.length-1;i>=0;i--)
+		{
+			System.out.print(sarr[i]+" ");
+		}
+	}
+}
+
+
+Q) Write a java program to display reverse of a word?
+
+input:
+	This is java class
+
+output:
+	sihT si avaj ssalc 
+
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "This is java class";
+		
+		String[] sarr = str.split(" "); //This     is     java       class
+		
+		//for each loop
+		for(String s : sarr)
+		{
+			//reading reverse 
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				System.out.print(s.charAt(i));
+			}
+			//add space 
+			System.out.print(" ");
+		}
+	}
+}
+
+
+Q) Write a java program to display palindrome string?
+
+input:
+	racar is madam for students 
+
+output:
+	racar madam
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "racar is madam for students";
+		
+		String[] sarr = str.split(" ");
+		
+		for(String s : sarr)
+		{
+			String rev="";
+			for(int i=s.length()-1;i>=0;i--)
+			{
+				rev+=s.charAt(i);
+			}
+			if(s.equals(rev))
+				System.out.print(s+" ");
+		}
+	}
+}
+ 
+
+Q) Write a java program to display the string starting with uppercase letter?
+
+input:
+	This is Java class For student
+
+output:
+	This  Java  For 
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "This is Java class For student";
+		
+		String[] sarr = str.split(" ");
+		
+		for(String s : sarr)
+		{
+			if(s.charAt(0)>='A' && s.charAt(0)<='Z')
+			{
+				System.out.print(s+" ");
+			}
+		}
+	}
+}
+
+Q) Write a java program to convert uppercase to lowercase and lowercase to uppercase letters?
+
+input:
+	IhUbTAlenT
+
+output:
+	iHuBtaLENt 
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "IhUbTAlenT";
+		
+		char[] carr = str.toCharArray();
+		
+		for(int i=0;i<str.length();i++)
+		{
+			if(carr[i]>='A' && carr[i]<='Z')
+				carr[i] = (char)(carr[i]+32);
+			else if(carr[i]>='a' && carr[i]<='z')
+				carr[i] = (char)(carr[i]-32);
+		}
+		str="";
+		for(char c : carr)
+		{
+			str+=c;
+		}
+		System.out.println(str);
+	}
+}
+
+
+Q) Write a java program to display the string in a given format?
+
+input:
+	XYZ
+
+output:
+	XY 
+	XZ 
+	YX 
+	YZ 
+	ZX 
+	ZY 
+
+ex:
+--
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "XYZ";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			for(int j=0;j<str.length();j++)
+			{
+				if(i!=j)
+				{
+					System.out.println(str.charAt(i)+""+str.charAt(j));
+				}
+			}
+		}
+	}
+}
+
+Q) Write a java program to display duplicate and unique characters from given string?
+
+input:
+	sessiseppi 
+
+output:
+	duplicates : sepi 
+	uniques   : seip
+
+
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		String str = "sessiseppi";
+		
+		String duplicates="";
+		String unique="";
+		
+		for(int i=0;i<str.length();i++)
+		{
+			String current = Character.toString(str.charAt(i));
+			
+			if(unique.contains(current))
+			{
+				if(!duplicates.contains(current))
+				{
+					duplicates+=current;
+					continue;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			unique+=current;
+		}
+		System.out.println("Duplicate characters :"+duplicates);
+		System.out.println("Unique Characters :"+unique);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

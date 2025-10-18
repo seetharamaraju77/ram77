@@ -1,0 +1,292 @@
+HTML Form 
+=========
+<form>
+	Name: <input type="text" name="t1"/> <br>
+	Age: <input type="text" name="t2"/> <br>
+	<input type="submit" value="vote"/>
+</form>
+
+
+
+Example application on HTML based form page to servlet communication
+====================================================================
+Diagram: servlet4.1
+
+Deployment Directory Structure 
+------------------------------
+VoteApp 
+|
+|---Java Resources
+	|
+	|------src
+		|
+		|---com.ihub.www
+			|
+			|---VoteSrv.java
+|---WebContent 
+	|	
+	|---form.html 
+	|---WEB-INF
+		|
+		|---web.xml 
+Note:
+-----
+In above application we need to add "servlet-api.jar" file in project build path.
+
+
+We can send the request to servlet program in two methodologies.
+
+1) GET Methodology 
+------------------
+	It carries limited amount of data.
+
+2) POST Methodology
+-------------------
+	It carries unlimited amount of data. 
+
+While working with HttpServlet it is never recommanded to use service(-,-) method because it is not designed according to HTTP protocol. 
+
+It is recommanded to use doXxx(-,-) methods because they have designed according to HTTP protocol.
+
+We have seven doXxx(-,-) methods as given below.
+
+1) doGet(-,-)
+2) doPost(-,-)
+3) doPut(-,-)
+4) doHead(-,-)
+5) doOption(-,-)
+6) doTrace(-,-)
+7) doDelete(-,-)
+
+Prototype of doXxx(-,-) methods
+-------------------------------
+protected void doGet(HttpServletRequest req,HttpServletResponse res)throws 
+					ServletException,IOException
+{
+		
+}
+
+form.html 
+----------
+<form action="test" method="GET">
+	
+	Name: <input type="text" name="t1"/> <br> 
+	
+	Age: <input type="text" name="t2"/> <br> 
+	
+	<input type="submit" value="vote"/>
+	
+</form>
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <welcome-file-list>
+  	<welcome-file>form.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>VoteSrv</servlet-name>
+  	<servlet-class>com.ihub.www.VoteSrv</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>VoteSrv</servlet-name>
+  	<url-pattern>/test</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
+
+VoteSrv.java
+------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class VoteSrv extends HttpServlet 
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException 
+	{
+		PrintWriter pw = res.getWriter();
+		res.setContentType("text/html");
+		
+		//reading form data 
+		String name =req.getParameter("t1");
+		String sage =req.getParameter("t2");
+		
+		//convert string age to int age 
+		int age = Integer.parseInt(sage);
+		
+		if(age<18)
+			pw.println("<center><h1 style='color:red'>"+name+" u r not eligible to vote </h1></center>");
+		else
+			pw.println("<center><h1 style='color:green'>"+name+" u r eligible to vote</h1></center>");
+		
+		pw.close();
+	}
+}
+
+Request url 
+----------
+	http://localhost:2525/VoteApp/
+
+
+
+Interview Query 
+===============
+Q) Write a query to display employee name from employee table?
+
+emp1 table 
+----------
+eid 		ename		esalary 
+----		------		-------
+1		Alan Morries 	10000
+2		Erick Anderson	20000
+3		Jack Johnson	30000
+
+output:
+	Alan 
+	Erick 
+	Jack 
+
+select REGEXP_SUBSTR(ename,'^\S+') as First_Name from emp1; 
+
+
+
+
+Q) 
+Alice is planning to organize a contest with 4 players in each team. 
+
+There are two types of players named Experienced and Freshers. 
+
+To make the contest unbiased Alice wants to have a team in such a way that each team must 
+contain at least 1 Experienced and 1 Fresher.
+ 
+You are given N the number of Experienced and M the number of Freshers. 
+Your task is to determine the maximum number of team formations possible.
+
+Example:
+
+Input:
+	5 5
+Output:
+	2
+Input:
+	10  1
+Output: 
+	1
+
+public class Test  
+{
+	public static void main(String[] args) 
+	{
+		int N=5,M=5;
+		
+		int maxTeams = Math.min((N+M)/4, Math.min(N, M));
+		
+		System.out.println(maxTeams);
+	}
+}
+
+
+Q) 
+
+Given a string S representing a positive number, round it to the nearest multiple of 100.
+If the number is equally close to two multiples of 100, return the smaller one.
+
+Input:
+	S = "276";
+
+Output:
+	300
+
+
+public class Test  
+{
+	public static void main(String[] args) 
+	{
+		String S="276";
+		int num = Integer.parseInt(S);
+		
+		int lower = (num/100)*100;
+		int higher = ((num/100)+1)*100;
+		
+		//find differences
+		int lowerDiff = num - lower;
+		int higherDiff = higher - num;
+		
+		if(lowerDiff<=higherDiff)
+			System.out.println(lower);
+		else
+			System.out.println(higher);
+	}
+}
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

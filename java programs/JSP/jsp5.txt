@@ -1,0 +1,386 @@
+MVC in JSP 
+===========
+MVC stands for Model View Controller.
+
+It is one the design pattern which seperates business logic, persistence logic and data.
+
+Controller acts like a interface between Model and View.
+
+Controller is used to intercept all incoming request.
+
+Model contains logics and data.
+
+View represent presentation i.e UI (User Interface).
+
+Diagram: jsp5.1
+
+Deployment Directory Structure 
+------------------------------
+JspApp13
+|
+|---Java Resources
+	|
+	|------src
+		|
+		|---com.ihub.www
+			|
+			|---LoginController.java
+			|---LoginBean.java 
+|---WebContent
+	|	
+	|---form.html
+	|---view.jsp 
+	|---error.jsp 
+	|---WEB-INF
+		|
+		|---web.xml 
+Note:
+-----
+In above application we need to add "servlet-api.jar" file in project build path.
+
+form.html
+---------
+
+<form action="test" method="POST">
+	
+	<table align="center">
+		<caption>Login Here </caption>
+		<tr>
+			<td>UserName:</td>
+			<td><input type="text" name="username" autocomplete="off" required/></td>
+		</tr>
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" name="password" required/></td>
+		</tr>
+		<tr>
+			<td><input type="reset" value="refresh"/></td>
+			<td><input type="submit" value="Login"/></td>
+		</tr>
+	</table>
+	
+</form>
+
+
+LoginBean.java
+-------------
+package com.ihub.www;
+
+public class LoginBean 
+{
+	private String username;
+	private String password;
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+}
+
+web.xml 
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+ 
+ <welcome-file-list>
+ 	<welcome-file>form.html</welcome-file>
+ </welcome-file-list>
+ 
+</web-app>
+
+
+LoginController.java
+---------------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "LoginController", urlPatterns = "/test", loadOnStartup = 1)
+public class LoginController extends HttpServlet
+{
+	protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		
+		//reading form data 
+		String name = req.getParameter("username");
+		String pass = req.getParameter("password");
+		
+		LoginBean lb = new LoginBean();
+		lb.setUsername(name);
+		lb.setPassword(pass);
+		
+		//add bean object to HttpServletRequest
+		req.setAttribute("bean", lb);
+		
+		if(pass.equals("admin"))
+		{
+			RequestDispatcher rd = req.getRequestDispatcher("view.jsp");
+			rd.forward(req, res);
+		}
+		else
+		{
+			RequestDispatcher rd = req.getRequestDispatcher("error.jsp");
+			rd.forward(req, res);
+		}
+		pw.close();
+	}
+}
+
+view.jsp
+-------
+<%@page import="com.ihub.www.LoginBean" %>
+<%
+	LoginBean lb = (LoginBean) request.getAttribute("bean");
+%>
+<center>
+	<p>Login Done Successfully!!!</p>
+	<p>	
+		UserName : <%= lb.getUsername() %> <br>
+		Password : <%= lb.getPassword() %> <br>
+	</p>
+</center>
+
+error.jsp 
+---------
+
+<center>
+	<b style='color:red'>
+		Sorry! Incorrect username or password
+	</b>
+</center>
+
+<%@include  file="form.html" %>
+
+
+Request url
+---------
+	http://localhost:2525/JspApp13/
+
+
+Maven 
+=====
+Maven is a project building management tool.
+
+It is used to simplify the project development process.
+
+Maven project contains pom.xml file which contains goals,dependencies, packages and etc.
+
+POM stands for Project Object Model.
+
+
+Steps to develop Maven project for web application
+==================================================
+
+step1:
+------
+	Create a maven project i.e MavenProj.
+	ex:
+		File --> New --> Maven Project --> Next --> 
+		Group Id : org.apache.maven.archetype
+		Artificat Id : maven-archetype-webapp
+		Version : 1.0  ---> Next --> 	
+		Group Id :  com.ihub.www
+		Artificact Id : MavenProj
+		package : com.ihub.www  ---> Finish.
+
+step2:
+-----
+	Add servlet dependency inside pom.xml file.
+	ex:
+
+		pom.xml 
+		-------
+		-
+		-
+		<dependencies>
+			<dependency>
+    				<groupId>javax.servlet</groupId>
+    				<artifactId>servlet-api</artifactId>
+    				<version>2.5</version>
+    				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+
+step3:
+------
+	Add some logic inside index.jsp file.
+
+index.jsp
+---------
+<center>
+	<h1>
+		<a href="test"> clickMe </a>
+	</h1>
+</center>
+
+
+step4:
+-----
+	Configure welcome file list inside web.xml file.
+
+web.xml 
+-------
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+   <servlet>
+   	<servlet-name>TestSrv</servlet-name>
+   	<servlet-class>com.ihub.www.TestSrv</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+   	<servlet-name>TestSrv</servlet-name>
+   	<url-pattern>/test</url-pattern>
+   </servlet-mapping>
+  
+  <welcome-file-list>
+  	<welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+</web-app>
+
+
+step5:
+------
+	Create a "java" folder inside "src/main" folder.
+
+step6:
+------
+	Create a "com.ihub.www" package inside "src/main/java" folder.
+step7:
+------
+	Create a TestSrv.java file inside "com.ihub.www" package.
+
+TestSrv.java
+------------
+package com.ihub.www;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class TestSrv extends HttpServlet 
+{
+	protected void doGet(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		
+		pw.println("<center><h1>This is Servlet</h1></center>");
+		
+		pw.close();
+	}
+}
+
+step8:
+-----
+	Run maven project.
+
+step9:
+------
+	Test the application by using below request url.
+	ex:
+		http://localhost:2525/MavenProj/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

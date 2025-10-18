@@ -1,0 +1,657 @@
+Pre increment/decrement operators 
+---------------------------------
+Rule1: First Change 
+Rule2: Then take 
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10;
+		
+		++i;
+		
+		System.out.println(i); //11
+	}
+}
+
+ex:2
+-----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10;
+		
+		System.out.println(++i); // 11
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10;
+		
+		int j = ++i;
+		
+		System.out.println(i+" "+j); // 11  11
+	}
+}
+
+ex:
+----
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10;
+		
+		int j = ++i + ++i;//11 + 12 
+		
+		System.out.println(i+" "+j); // 12  23
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 10;
+		
+		int j =  --i + --i; // 9 + 8 
+		
+		System.out.println(i+" "+j); // 8  17 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 100;
+		
+		100++;
+			
+		System.out.println(i); // C.T.E 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		byte b = 127;
+		
+		b++;
+			
+		System.out.println(b); // -128 
+	}
+}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		int i = 20;
+		
+		System.out.println(i++ + ++i); //20 +22 =42
+	}
+}
+
+
+Control Statements 
+===================
+Control statement enables the programmer to control flow of a program.
+
+Control statement allows us to make decisions, to jump from one section of code to another section and to execute the code repeatedly.
+
+In java, we have three control statements.
+
+1) Decision Making statement 
+
+2) Iteration Statement 
+
+3) Jump Statement 
+
+1) Decision Making statement
+-----------------------------
+It is used to declare the conditions in our program.
+
+Decision making statement is possible by using following ways.
+
+i) if stmt 
+
+ii) if else stmt 
+
+iii) if else if ladder 
+
+iv) nested if stmt 
+
+v) switch case 
+
+i) if stmt 
+===========
+It is used to execute the source code only if our condition is true.
+
+syntax:
+------	
+	if(condition)
+	{
+		-
+		- //code to be execute if condition is true 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+		}
+		
+		System.out.println("stmt3");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt3
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>20)
+		{
+			System.out.println("stmt2");
+		}
+		
+		System.out.println("stmt3");
+	}
+}
+o/p:
+	stmt1
+	stmt3
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		
+		if(!(5>2))
+			System.out.println("stmt1");
+			System.out.println("stmt2");
+			System.out.println("stmt3");
+	}
+}
+o/p:
+	stmt2
+	stmt3
+
+
+Q) Write a java program to find out greatest of two numbers?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();
+		
+		if(a>b)
+			System.out.println(a+" is greatest");
+		
+		if(b>a)
+			System.out.println(b+" is greatest");
+
+	}
+}
+
+Q) Write a java program to find out greatest of three numbers?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the first number :");
+		int a = sc.nextInt();
+		
+		System.out.println("Enter the second number :");
+		int b = sc.nextInt();
+		
+		System.out.println("Enter the third number :");
+		int c = sc.nextInt();
+		
+		if((a>b) && (a>c))
+			System.out.println(a+" is greatest");
+		
+		if((b>a) && (b>c))
+			System.out.println(b+" is greatest");
+		
+		if((c>a) && (c>b))
+			System.out.println(c+" is greatest");
+
+	}
+}
+
+ii) if else stmt 
+=================
+It is used to execute the source code either our condition is true or false.
+
+syntax:
+-------
+	if(condition)
+	{
+		-
+		- // code to be execute if cond is true 
+		-
+	}
+	else
+	{
+		-
+		- // code to be execute if cond is false 
+		-
+	}
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>2)
+		{
+			System.out.println("stmt2");
+		}
+		else
+		{
+			System.out.println("stmt3");
+		}
+		
+		System.out.println("stmt4");
+	}
+}
+o/p:
+	stmt1
+	stmt2
+	stmt4
+
+ex:
+---
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		System.out.println("stmt1");
+		
+		if(5>20)
+		{
+			System.out.println("stmt2");
+		}
+		else
+		{
+			System.out.println("stmt3");
+		}
+		
+		System.out.println("stmt4");
+	}
+}
+o/p:
+	stmt1
+	stmt3
+	stmt4
+
+
+Q) Write a java program to check given age is eligible to vote or not?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the age :");
+		int age = sc.nextInt();
+		
+		if(age>=18)
+			System.out.println("U r elgible to vote");
+		else
+			System.out.println("U r not eligible to vote");
+	}
+}
+
+
+Q) Write a java program to check given number is positive or negative?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n==0)
+		{
+			System.out.println("It is a not a positive or negative number");
+			System.exit(0);
+		}
+		
+		if(n>0)
+			System.out.println("It is a positive number");
+		else
+			System.out.println("It is a negative number");
+	}
+}
+
+
+Q) Write a java program to find out given number is even or odd?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n%2==0)
+			System.out.println("It is even number");
+		else
+			System.out.println("It is odd number");
+	}
+}
+
+Q) Write a java program to find out given number is odd or not?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		
+		if(n%2!=0)
+			System.out.println("It is odd number");
+		else
+			System.out.println("It is not odd number");
+	}
+}
+
+Q) John decided to buy new shoes.One day he visited to big shoe showroom.But he has a myth that if shoe cost divisible by 3 and 5 then only he can buy the shoe.Write a java program to check John can buy the shoe or not?
+
+input:
+	show price : 1500 
+
+output:
+	John can buy the shoe
+
+ex:
+---
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the show price :");
+		int price = sc.nextInt(); 
+		
+		if((price%3==0) && (price%5==0))
+			System.out.println("John can buy the shoe");
+		else
+			System.out.println("John can't buy the shoe");
+	}
+}
+
+
+Q) Write a java program to check given year is a leap year or not?
+
+import java.util.Scanner;
+class Test  
+{
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter the year :");
+		int year = sc.nextInt(); 
+		
+		if((year%4==0 && year%100!=0) || year%400==0)
+			System.out.println("It is a leap year");
+		else
+			System.out.println("It is not a leap year");
+	}
+}
+
+Assignment 
+==========
+Q) Write a java program to find out greatest of two numbers using if else?
+
+
+
+iii)if else if ladder
+=======================
+It is used to execute the source code based on multiple conditions.
+
+syntax:
+-----
+	if(cond1)
+	{
+		- //code to be execute if cond1 is true 
+	}
+	else if(cond2)
+	{
+		- //code to be execute if cond2 is true 
+	}
+	else if(cond3)
+	{
+		- //code to be execute if cond3 is true 
+	}
+	else
+	{
+		- //code to be execute if all conditions are false
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
